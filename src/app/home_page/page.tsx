@@ -20,3 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description: page.data.meta_description,
   };
 }
+
+<script
+  async
+  defer
+  src="https://static.cdn.prismic.io/prismic.js?new=true&repo=airtime"
+></script>;
