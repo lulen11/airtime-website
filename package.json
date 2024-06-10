@@ -15,7 +15,8 @@
     "@prismicio/react": "^2.8.0",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sass": "^1.77.4"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.41",

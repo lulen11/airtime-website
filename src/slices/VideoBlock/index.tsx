@@ -2,6 +2,7 @@ import React from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicRichText, PrismicText } from "@prismicio/react";
+import styles from "./VideoBlock.module.scss";
 
 // /**
 //  * Props for `VideoBlock`.
@@ -21,7 +22,9 @@ const VideoBlock = ({ slice }: VideoBlockProps): JSX.Element => {
       Slices */}
       <div>
         {/* <h2>{slice.primary.title}</h2> */}
-        <PrismicRichText field={slice.primary.title} />
+        <h2 className={styles.boop}>
+          <PrismicRichText field={slice.primary.title} />
+        </h2>
         <PrismicRichText field={slice.primary.description} />
         {/* <video src={slice.primary.video_url} controls></video> */}
       </div>
