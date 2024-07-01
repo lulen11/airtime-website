@@ -3,5 +3,6 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  text_block: dynamic(() => import("./TextBlock")),
   video_block: dynamic(() => import("./VideoBlock")),
 };

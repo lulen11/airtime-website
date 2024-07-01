@@ -129,6 +129,61 @@ export type NavigationDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomePageDocument | NavigationDocument;
 
 /**
+ * Primary content in *TextBlock → Default → Primary*
+ */
+export interface TextBlockSliceDefaultPrimary {
+  /**
+   * Title Field field in *TextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.default.primary.title_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title_field: prismic.RichTextField;
+
+  /**
+   * Body Field field in *TextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.default.primary.body_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_field: prismic.RichTextField;
+}
+
+/**
+ * Default variation for TextBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TextBlock*
+ */
+type TextBlockSliceVariation = TextBlockSliceDefault;
+
+/**
+ * TextBlock Shared Slice
+ *
+ * - **API ID**: `text_block`
+ * - **Description**: TextBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBlockSlice = prismic.SharedSlice<
+  "text_block",
+  TextBlockSliceVariation
+>;
+
+/**
  * Primary content in *VideoBlock → Default → Primary*
  */
 export interface VideoBlockSliceDefaultPrimary {
@@ -210,6 +265,10 @@ declare module "@prismicio/client" {
       NavigationDocumentData,
       NavigationDocumentDataMenuItemsItem,
       AllDocumentTypes,
+      TextBlockSlice,
+      TextBlockSliceDefaultPrimary,
+      TextBlockSliceVariation,
+      TextBlockSliceDefault,
       VideoBlockSlice,
       VideoBlockSliceDefaultPrimary,
       VideoBlockSliceVariation,
