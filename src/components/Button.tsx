@@ -9,7 +9,7 @@ const Button = ({ link, label }) => {
       return (
         <>
           {text.substring(0, index)}
-          <span className="bouncing">{text.charAt(index)}</span>
+          <span className={styles.bouncing}>{text.charAt(index)}</span>
           {text.substring(index + 1)}
         </>
       );

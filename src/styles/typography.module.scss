@@ -9,6 +9,19 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
   line-height: 1.1;
   font-style: normal;
   font-weight: 600;
+  margin-bottom: 3.5rem;
+}
+
+@mixin headingFontUnderline {
+  position: relative;
+  z-index: -1;
+  font-weight: 600;
+  text-decoration-thickness: 25px;
+  text-decoration-color: $primary-pink;
+  text-decoration-line: underline;
+  text-decoration-style: inherit;
+  text-underline-offset: 2px;
+  text-underline-position: auto;
 }
 
 @mixin bodyFont {
@@ -17,6 +30,7 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
   font-weight: 500;
   font-style: normal;
   font-size: 1.125rem;
+  margin-bottom: 2.5rem;
 }
 
 @mixin buttonFont {
@@ -25,4 +39,48 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
   font-style: normal;
   font-size: 1rem;
   letter-spacing: -0.15rem;
+}
+
+@mixin bouncingO {
+  display: inline-block;
+  animation: bounce 2s ease infinite;
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    65%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-0.8rem);
+    }
+    55% {
+      transform: translateY(-0.45rem);
+    }
+    70% {
+      transform: translateY(-0.3rem);
+    }
+    // 70% {
+    //   transform: translateY(0%);
+    // }
+    // 80% {
+    //   transform: translateY(-30%);
+    // }
+    // 90% {
+    //   transform: translateY(0%);
+    // }
+    // 95% {
+    //   transform: translateY(-14%);
+    // }
+    // 97% {
+    //   transform: translateY(0%);
+    // }
+    // 99% {
+    //   transform: translateY(-6%);
+    // }
+    // 100% {
+    //   transform: translateY(0);
+    // }
+  }
 }
