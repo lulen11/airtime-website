@@ -18,6 +18,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/uzq0asd.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,500;1,500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className={inter.className}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />

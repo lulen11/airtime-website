@@ -1,0 +1,13 @@
+@import "colours.module.scss";
+@import "typography.module.scss";
+
+// *** GLOBAL VARIABLES ***
+
+// breakpoints
+$sm: 40rem; //640px
+$md: 64rem; //1024px
+$lg: 100rem; //1600px
+$xl: 150rem; //2400px
+
+// interactions
+$smooth-transition: all 0.1s ease-in-out;

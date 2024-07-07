@@ -27,5 +27,102 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "textBlockWithButton",
+		"primary": {
+			"title_field": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "We breakdown barriers to provide top basketball talent with top basketball opportunities",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"body_field": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Airtime Basketball is a not-for-profit organisation that scouts talented basketball players that despite their best efforts, cannot be placed in the positions they deserve. Through providing opportunities and placing these talents in college programs, Airtime Basketball is enabling basketball futures for every player.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"target": null
+				}
+			},
+			"button_label": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Learn More"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "textBlockCenterWithButton",
+		"primary": {
+			"title_field": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ipsum exercitation consectetur do mollit. Ex consectetur deserunt occaecat ipsum."
+						}
+					}
+				]
+			},
+			"body_field": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Magna voluptate nisi tempor quis id magna pariatur aliqua ullamco cillum proident qui tempor. Consequat esse ut consectetur. Voluptate eiusmod magna commodo."
+						}
+					}
+				]
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			},
+			"button_label": {
+				"__TYPE__": "FieldContent",
+				"value": "sharp",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

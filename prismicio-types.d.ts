@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomePageDocumentDataSlicesSlice = VideoBlockSlice;
+type HomePageDocumentDataSlicesSlice = TextBlockSlice | VideoBlockSlice;
 
 /**
  * Content for Home Page documents
@@ -167,9 +167,129 @@ export type TextBlockSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *TextBlock → TextBlock - WithButton → Primary*
+ */
+export interface TextBlockSliceTextBlockWithButtonPrimary {
+  /**
+   * Title Field field in *TextBlock → TextBlock - WithButton → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockWithButton.primary.title_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title_field: prismic.RichTextField;
+
+  /**
+   * Body Field field in *TextBlock → TextBlock - WithButton → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockWithButton.primary.body_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_field: prismic.RichTextField;
+
+  /**
+   * Button Link field in *TextBlock → TextBlock - WithButton → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockWithButton.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Label field in *TextBlock → TextBlock - WithButton → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockWithButton.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+}
+
+/**
+ * TextBlock - WithButton variation for TextBlock Slice
+ *
+ * - **API ID**: `textBlockWithButton`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBlockSliceTextBlockWithButton = prismic.SharedSliceVariation<
+  "textBlockWithButton",
+  Simplify<TextBlockSliceTextBlockWithButtonPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *TextBlock → TextBlockCenter - With Button → Primary*
+ */
+export interface TextBlockSliceTextBlockCenterWithButtonPrimary {
+  /**
+   * Title Field field in *TextBlock → TextBlockCenter - With Button → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockCenterWithButton.primary.title_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title_field: prismic.RichTextField;
+
+  /**
+   * Body Field field in *TextBlock → TextBlockCenter - With Button → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockCenterWithButton.primary.body_field
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_field: prismic.RichTextField;
+
+  /**
+   * Button Link field in *TextBlock → TextBlockCenter - With Button → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockCenterWithButton.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Label field in *TextBlock → TextBlockCenter - With Button → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockCenterWithButton.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+}
+
+/**
+ * TextBlockCenter - With Button variation for TextBlock Slice
+ *
+ * - **API ID**: `textBlockCenterWithButton`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBlockSliceTextBlockCenterWithButton =
+  prismic.SharedSliceVariation<
+    "textBlockCenterWithButton",
+    Simplify<TextBlockSliceTextBlockCenterWithButtonPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *TextBlock*
  */
-type TextBlockSliceVariation = TextBlockSliceDefault;
+type TextBlockSliceVariation =
+  | TextBlockSliceDefault
+  | TextBlockSliceTextBlockWithButton
+  | TextBlockSliceTextBlockCenterWithButton;
 
 /**
  * TextBlock Shared Slice
@@ -267,8 +387,12 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
+      TextBlockSliceTextBlockWithButtonPrimary,
+      TextBlockSliceTextBlockCenterWithButtonPrimary,
       TextBlockSliceVariation,
       TextBlockSliceDefault,
+      TextBlockSliceTextBlockWithButton,
+      TextBlockSliceTextBlockCenterWithButton,
       VideoBlockSlice,
       VideoBlockSliceDefaultPrimary,
       VideoBlockSliceVariation,

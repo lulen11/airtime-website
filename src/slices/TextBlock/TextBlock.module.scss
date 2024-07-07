@@ -1,0 +1,26 @@
+@import "../../styles/globals.module.scss";
+
+/* TextBlock.module.css */
+.sectionTextBlock {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 3px solid greenyellow;
+
+  .wrapper {
+    width: 80%;
+    padding: 2rem;
+  }
+
+  h1,
+  h2 {
+    @include headingFont;
+    color: $primary-blue;
+  }
+
+  p {
+    @include bodyFont;
+    color: $primary-blue;
+  }
+}

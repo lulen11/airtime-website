@@ -1,0 +1,28 @@
+$heading-font: "new-kansas", Georgia, Palatino, sans-serif;
+$body-font: "DM Mono", "Courier New", Courier, monospace;
+$button-font: "lulo-one", "DM Mono", Courier, sans-serif;
+
+@mixin headingFont {
+  font-family: $heading-font;
+  color: $primary-blue;
+  font-size: 6.875rem;
+  line-height: 1.1;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin bodyFont {
+  font-family: $body-font;
+  color: $primary-blue;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.125rem;
+}
+
+@mixin buttonFont {
+  font-family: $button-font;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  letter-spacing: -0.15rem;
+}
