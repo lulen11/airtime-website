@@ -1,16 +1,21 @@
 @import "../../styles/globals.module.scss";
 
-/* TextBlock.module.css */
 .sectionTextBlock {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  border: 3px solid greenyellow;
+
+  &Center {
+    align-items: center;
+  }
 
   .wrapper {
-    width: 80%;
-    padding: 2rem;
+    padding: 3rem 1rem;
+    @media only screen and (min-width: $md) {
+      width: 80%;
+      padding: 6rem 2rem;
+    }
   }
 
   h1,
@@ -26,5 +31,49 @@
   p {
     @include bodyFont;
     color: $primary-blue;
+  }
+}
+
+.btnWrapper {
+  &::before {
+    position: relative;
+    content: " ";
+
+    border-bottom: $primary-border;
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+
+.contentLeft {
+  display: flex;
+  align-items: flex-end;
+
+  .btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &::before {
+      width: 5rem;
+      height: 2px;
+    }
+  }
+}
+
+.contentCenter {
+  display: block;
+  .btnWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    &::before {
+      height: 3rem;
+      width: 2px;
+      border-bottom: none;
+      border-left: $primary-border;
+    }
   }
 }

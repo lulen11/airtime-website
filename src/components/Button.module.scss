@@ -4,9 +4,11 @@
   @include buttonFont;
   color: $primary-blue;
   text-transform: uppercase;
-  border: 2px dashed $primary-pink;
+  border: $primary-border;
   border-radius: 2.5rem;
   padding: 0.625rem 1.25rem;
+  position: relative;
+  text-wrap: nowrap;
 }
 
 .bouncing {

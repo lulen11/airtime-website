@@ -18,23 +18,29 @@ const TextBlock = ({ slice }: TextBlockProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       // className={`w-full h-auto rounded-3xl ${["default"].includes(slice.variation) ? "" : "text-center mx-auto"}`.trim()}
-      className={`${styles.sectionTextBlock} w-full h-auto rounded-3xl ${slice.variation === "textBlockCenterWithButton" ? "text-center mx-auto" : ""}`.trim()}
+      className={`${styles.sectionTextBlock} w-full h-auto rounded-3xl ${slice.variation === "textBlockCenterWithButton" ? styles.sectionTextBlockCenter + " text-center mx-auto" : ""}`.trim()}
     >
       <div className={styles.wrapper}>
         <PrismicRichText field={slice.primary.title_field} />
-        <PrismicRichText field={slice.primary.body_field} />
 
-        {/* NOTE: This logic checks if it's *any* variation where as 
-        what I've used checks for specifically named variations */}
-        {/* {slice.variation && ( */}
-        {["textBlockCenterWithButton", "textBlockWithButton"].includes(
-          slice.variation
-        ) && (
-          <Button
-            link={slice.primary.button_link}
-            label={slice.primary.button_label}
-          />
-        )}
+        <div
+          className={`${slice.variation === "textBlockWithButton" ? styles.contentLeft : styles.contentCenter}`}
+        >
+          <PrismicRichText field={slice.primary.body_field} />
+
+          {/* NOTE: This logic: {slice.variation && ( ... checks if it's *any* variation 
+        where as what I've used checks for specifically named variations */}
+          {["textBlockCenterWithButton", "textBlockWithButton"].includes(
+            slice.variation
+          ) && (
+            <div className={styles.btnWrapper}>
+              <Button
+                link={slice.primary.button_link}
+                label={slice.primary.button_label}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
