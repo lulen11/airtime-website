@@ -100,6 +100,34 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "textBlockWithImage",
+      "name": "TextBlock - WithImage ",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "body_field": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body Field",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
