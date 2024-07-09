@@ -18,13 +18,20 @@ const TextBlock = ({ slice }: TextBlockProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       // className={`w-full h-auto rounded-3xl ${["default"].includes(slice.variation) ? "" : "text-center mx-auto"}`.trim()}
-      className={`${styles.sectionTextBlock} w-full h-auto rounded-3xl ${slice.variation === "textBlockCenterWithButton" ? styles.sectionTextBlockCenter + " text-center mx-auto" : ""}`.trim()}
+      className={`${styles.sectionTextBlock} w-full ${slice.primary.text_align}`}
     >
-      <div className={styles.wrapper}>
+      <div
+        className={`${styles.wrapper} ${slice.primary.text_align === "text-left" ? styles.wrapperLeft : ""}`}
+      >
+        {/* <div
+        className={classNames(styles.wrapper, "w-full", {
+          "md:w-5/6": slice.primary.text_align === "text-center",
+        })}
+      > */}
         <PrismicRichText field={slice.primary.title_field} />
 
         <div
-          className={`${slice.variation === "textBlockWithButton" ? styles.contentLeft : styles.contentCenter}`}
+          className={`${slice.variation && slice.primary.text_align === "text-left" ? styles.contentLeft : styles.contentCenter}`}
         >
           <PrismicRichText field={slice.primary.body_field} />
 

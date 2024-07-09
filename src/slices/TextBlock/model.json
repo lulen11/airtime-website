@@ -6,12 +6,24 @@
   "variations": [
     {
       "id": "default",
-      "name": "Default",
+      "name": "TextBlock",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Text Align",
+            "placeholder": "",
+            "options": [
+              "text-left",
+              "text-center"
+            ],
+            "default_value": "text-left"
+          }
+        },
         "title_field": {
           "type": "StructuredText",
           "config": {
@@ -41,50 +53,18 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title_field": {
-          "type": "StructuredText",
+        "text_align": {
+          "type": "Select",
           "config": {
-            "label": "Title Field",
+            "label": "Text Align",
             "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "options": [
+              "text-left",
+              "text-center"
+            ],
+            "default_value": "text-left"
           }
         },
-        "body_field": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Body Field",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "button_link": {
-          "type": "Link",
-          "config": {
-            "label": "Button Link",
-            "placeholder": "",
-            "select": null
-          }
-        },
-        "button_label": {
-          "type": "Text",
-          "config": {
-            "label": "Button Label",
-            "placeholder": ""
-          }
-        }
-      },
-      "items": {}
-    },
-    {
-      "id": "textBlockCenterWithButton",
-      "name": "TextBlockCenter - With Button",
-      "docURL": "...",
-      "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
-      "primary": {
         "title_field": {
           "type": "StructuredText",
           "config": {

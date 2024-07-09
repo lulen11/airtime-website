@@ -3,18 +3,16 @@
 .sectionTextBlock {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
-
-  &Center {
-    align-items: center;
-  }
 
   .wrapper {
     padding: 3rem 1rem;
     @media only screen and (min-width: $md) {
-      width: 80%;
       padding: 6rem 2rem;
+
+      &Left {
+        width: 80%;
+      }
     }
   }
 

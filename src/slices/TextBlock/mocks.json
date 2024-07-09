@@ -24,55 +24,14 @@
 						}
 					}
 				]
+			},
+			"text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "text-left",
+				"type": "Select"
 			}
 		},
 		"items": []
-	},
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "textBlockCenterWithButton",
-		"primary": {
-			"title_field": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Ipsum exercitation consectetur do mollit. Ex consectetur deserunt occaecat ipsum."
-						}
-					}
-				]
-			},
-			"body_field": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Magna voluptate nisi tempor quis id magna pariatur aliqua ullamco cillum proident qui tempor. Consequat esse ut consectetur. Voluptate eiusmod magna commodo."
-						}
-					}
-				]
-			},
-			"button_link": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "http://twitter.com"
-				}
-			},
-			"button_label": {
-				"__TYPE__": "FieldContent",
-				"value": "sharp",
-				"type": "Text"
-			}
-		},
-		"items": [
-			{
-				"__TYPE__": "GroupItemContent",
-				"value": []
-			}
-		]
 	},
 	{
 		"__TYPE__": "SharedSliceContent",
@@ -116,6 +75,11 @@
 				"__TYPE__": "FieldContent",
 				"type": "Text",
 				"value": "Learn more"
+			},
+			"text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "text-left",
+				"type": "Select"
 			}
 		},
 		"items": [
