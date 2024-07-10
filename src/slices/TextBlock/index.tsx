@@ -15,41 +15,45 @@ export type TextBlockProps = SliceComponentProps<Content.TextBlockSlice>;
  * Component for "TextBlock" Slices.
  */
 const TextBlock = ({ slice }: TextBlockProps): JSX.Element => {
+  // Type guards to check if [text_align] (slice fields) exist
+  const textAlign =
+    "text_align" in slice.primary ? slice.primary.text_align : "";
+  const sliceImage = "image" in slice.primary ? slice.primary.image : null;
+  const titleField =
+    "title_field" in slice.primary ? slice.primary.title_field : null;
+  const bodyField =
+    "body_field" in slice.primary ? slice.primary.body_field : null;
+  const buttonLink =
+    "button_link" in slice.primary ? slice.primary.button_link : null;
+  const buttonLabel =
+    "button_label" in slice.primary ? slice.primary.button_label : null;
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      // className={`w-full h-auto rounded-3xl ${["default"].includes(slice.variation) ? "" : "text-center mx-auto"}`.trim()}
-
-      // className={`${styles.sectionTextBlock} ${["textBlockWithButton"].includes(slice.variation) && styles.sectionTextBlockWithButton} w-full ${slice.primary.text_align}`}
-
-      className={`${styles.sectionTextBlock} ${styles[slice.variation]} w-full ${slice.primary.text_align}`}
+      className={`${styles.sectionTextBlock} ${styles[slice.variation]} w-full ${textAlign}`}
     >
       <div
-        className={`${styles.wrapper} ${slice.primary.text_align === "text-left" ? styles.wrapperLeft : ""}`}
+        className={`${styles.wrapper} ${textAlign === "text-left" ? styles.wrapperLeft : ""}`}
       >
-        {["textBlockWithImage"].includes(slice.variation) && (
+        {["textBlockWithImage"].includes(slice.variation) && sliceImage && (
           <PrismicNextImage
-            field={slice.primary.image}
+            field={sliceImage}
             className="w-full h-auto rounded-3xl"
           />
         )}
 
-        <PrismicRichText field={slice.primary.title_field} />
+        {titleField && <PrismicRichText field={titleField} />}
 
         <div
-          className={`${slice.variation && slice.primary.text_align === "text-left" ? styles.contentLeft : styles.contentCenter}`}
+          className={`${slice.variation && textAlign === "text-left" ? styles.contentLeft : styles.contentCenter}`}
         >
-          <PrismicRichText field={slice.primary.body_field} />
+          {bodyField && <PrismicRichText field={bodyField} />}
 
-          {/* NOTE: This logic: {slice.variation && ( ... checks if it's *any* variation 
-        where as what I've used checks for specifically named variations */}
           {["textBlockWithButton"].includes(slice.variation) && (
             <div className={styles.btnWrapper}>
-              <Button
-                link={slice.primary.button_link}
-                label={slice.primary.button_label}
-              />
+              <Button link={buttonLink} label={buttonLabel} />
             </div>
           )}
         </div>
