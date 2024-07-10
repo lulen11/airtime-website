@@ -23,7 +23,19 @@
   }
 
   h1 strong {
-    @include headingFontUnderline;
+    position: relative;
+    // @include headingFontUnderline;
+    &::after {
+      content: " ";
+      background: $primary-pink;
+      width: 105%;
+      height: 25px;
+      position: absolute;
+      display: inline-block;
+      bottom: 1.9rem;
+      z-index: -1;
+      left: 0;
+    }
   }
 
   p {
