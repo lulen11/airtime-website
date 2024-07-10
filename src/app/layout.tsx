@@ -3,6 +3,7 @@ import { repositoryName } from "@/prismicio";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header/Header";
+import styles from "./layout.module.scss";
 
 import "./globals.css";
 
@@ -33,7 +34,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>
+      <body className={styles.pageBody}>
         <Header />
         {children}
         <PrismicPreview repositoryName={repositoryName} />

@@ -1,16 +1,27 @@
 @import "../styles/globals.module.scss";
 
+.bouncing {
+  @include bouncingO;
+}
+
 .button {
   @include buttonFont;
-  color: $primary-blue;
+  color: $primary-white;
   text-transform: uppercase;
+  background-color: $primary-blue;
   border: $primary-border;
   border-radius: 2.5rem;
   padding: 0.625rem 1.25rem;
   position: relative;
   text-wrap: nowrap;
-}
+  transition: $smooth-transition;
+  transition-duration: 0.5s;
 
-.bouncing {
-  @include bouncingO;
+  &:hover {
+    background-color: $primary-pink;
+    color: $primary-white;
+    .bouncing {
+      animation: none;
+    }
+  }
 }
