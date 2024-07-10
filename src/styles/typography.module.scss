@@ -4,7 +4,7 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
 
 @mixin headingFont {
   font-family: $heading-font;
-  color: $primary-blue;
+  color: $primary-white;
   font-size: 6.875rem;
   line-height: 1.1;
   font-style: normal;
@@ -26,7 +26,7 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
 
 @mixin bodyFont {
   font-family: $body-font;
-  color: $primary-blue;
+  color: $primary-white;
   font-weight: 500;
   font-style: normal;
   font-size: 1.125rem;

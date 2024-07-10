@@ -19,7 +19,7 @@
   h1,
   h2 {
     @include headingFont;
-    color: $primary-blue;
+    color: $primary-white;
   }
 
   h1 strong {
@@ -28,7 +28,7 @@
 
   p {
     @include bodyFont;
-    color: $primary-blue;
+    color: $primary-white;
   }
 }
 
