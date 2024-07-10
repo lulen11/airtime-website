@@ -1,7 +1,12 @@
 import { PrismicNextLink } from "@prismicio/next";
 import styles from "./Button.module.scss";
 
-const Button = ({ link, label }) => {
+interface ButtonProps {
+  link: string;
+  label: string;
+}
+
+const Button: React.FC<ButtonProps> = ({ link, label }) => {
   const buttonLabel = label || "";
   const wrapOInSpan = (text) => {
     const index = text.indexOf("o");
