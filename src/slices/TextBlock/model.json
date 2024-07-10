@@ -97,6 +97,14 @@
             "label": "Button Label",
             "placeholder": ""
           }
+        },
+        "testing_link": {
+          "type": "Link",
+          "config": {
+            "label": "Testing Link",
+            "placeholder": "",
+            "select": null
+          }
         }
       },
       "items": {}

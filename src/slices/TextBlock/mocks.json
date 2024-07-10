@@ -1,6 +1,58 @@
 [
 	{
 		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title_field": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Reprehenderit commodo ipsum sit qui nisi et non nostrud dolor laboris ea ipsum magna. Incididunt ut sit veniam ullamco enim. Do ea dolore deserunt ea aliquip in non culpa nostrud est pariatur ut fugiat."
+						}
+					}
+				]
+			},
+			"body_field": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Culpa commodo minim cupidatat ad ea qui aute ad deserunt velit ex culpa. Ea qui reprehenderit irure id.",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Culpa commodo minim cupidatat ad ea qui aute ad deserunt velit ex culpa. Ea qui reprehenderit irure id.",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Culpa commodo minim cupidatat ad ea qui aute ad deserunt velit ex culpa. Ea qui reprehenderit irure id.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "text-left",
+				"type": "Select"
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
 		"variation": "textBlockWithButton",
 		"primary": {
 			"title_field": {
@@ -46,6 +98,13 @@
 				"__TYPE__": "FieldContent",
 				"value": "text-left",
 				"type": "Select"
+			},
+			"testing_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
 			}
 		},
 		"items": [
@@ -100,57 +159,5 @@
 				"value": []
 			}
 		]
-	},
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"title_field": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Reprehenderit commodo ipsum sit qui nisi et non nostrud dolor laboris ea ipsum magna. Incididunt ut sit veniam ullamco enim. Do ea dolore deserunt ea aliquip in non culpa nostrud est pariatur ut fugiat."
-						}
-					}
-				]
-			},
-			"body_field": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Culpa commodo minim cupidatat ad ea qui aute ad deserunt velit ex culpa. Ea qui reprehenderit irure id.",
-							"spans": []
-						},
-						"direction": "ltr"
-					},
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Culpa commodo minim cupidatat ad ea qui aute ad deserunt velit ex culpa. Ea qui reprehenderit irure id.",
-							"spans": []
-						},
-						"direction": "ltr"
-					},
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Culpa commodo minim cupidatat ad ea qui aute ad deserunt velit ex culpa. Ea qui reprehenderit irure id.",
-							"spans": []
-						},
-						"direction": "ltr"
-					}
-				]
-			},
-			"text_align": {
-				"__TYPE__": "FieldContent",
-				"value": "text-left",
-				"type": "Select"
-			}
-		},
-		"items": []
 	}
 ]

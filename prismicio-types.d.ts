@@ -99,6 +99,17 @@ export interface NavigationDocumentDataMenuItemsItem {
  */
 interface NavigationDocumentData {
   /**
+   * Logo field in *Navigation*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
    * Menu Items field in *Navigation*
    *
    * - **Field Type**: Group
@@ -391,6 +402,16 @@ export interface TextBlockSliceTextBlockWithButtonPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   button_label: prismic.KeyTextField;
+
+  /**
+   * Testing Link field in *TextBlock → TextBlock - WithButton → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.textBlockWithButton.primary.testing_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  testing_link: prismic.LinkField;
 }
 
 /**
