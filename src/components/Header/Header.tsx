@@ -30,9 +30,9 @@ export default async function Header() {
               );
             })}
           </ul>
-          <div className={styles.btnWrapper}>
+          {/* <div className={styles.btnWrapper}>
             <Button link={""} label="Donate" />
-          </div>
+          </div> */}
         </div>
       </header>
     </>
