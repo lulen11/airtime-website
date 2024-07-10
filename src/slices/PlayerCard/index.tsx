@@ -29,7 +29,6 @@ const PlayerCard = ({ slice }: PlayerCardProps): JSX.Element => {
       </ul>
       <PrismicRichText field={slice.primary.player_bio} />
       <hr />
-      <PrismicRichText field={slice.primary.player_story} />
     </section>
   );
 };
