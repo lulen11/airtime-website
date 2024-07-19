@@ -32,10 +32,24 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
       const response = await client.getByIDs(playerIds, {
         fetchLinks: ["player_card.player_name"],
       });
-      const playerData = response.results.map((player) => ({
-        id: player.id,
-        name: player.data.player_name,
-      }));
+      type PlayerCardDocumentData = {
+        player_name: string;
+        // add other fields as needed
+      };
+
+      function isPlayerCardData(data: any): data is PlayerCardDocumentData {
+        return data && "player_name" in data;
+      }
+
+      const playerData = response.results.map((player) => {
+        if (isPlayerCardData(player.data)) {
+          return {
+            id: player.id,
+            name: player.data.player_name,
+          };
+        }
+        return { id: player.id, name: "Unknown" }; // Handle case where type guard fails
+      });
       setPlayers(playerData);
     };
 
@@ -49,7 +63,7 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
         {players.map((player) => (
           <div className={styles.playerCard} key={player.id}>
             <h3>{player.name}</h3> {/* Displaying the player's name */}
-            <h2>sds on</h2>
+            <h2>This one</h2>
           </div>
         ))}
       </div>
