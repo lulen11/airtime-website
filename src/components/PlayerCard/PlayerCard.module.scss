@@ -1,0 +1,48 @@
+@import "../../styles/globals.module.scss";
+
+.header {
+  @include bodyFont;
+  padding: 2rem 1rem;
+  overflow: hidden;
+}
+
+.navItem {
+  position: relative;
+  padding: 0 0.75rem;
+  &::after {
+    content: " ";
+    display: block;
+    width: 35px;
+    border-bottom: $primary-border;
+    position: absolute;
+    /* left: 0; */
+    top: 50%;
+    right: -2rem;
+    height: 2px;
+  }
+
+  a {
+    transition: $smooth-transition;
+    &:hover {
+      color: $primary-pink;
+    }
+  }
+}
+
+.logo {
+  width: 12.5rem;
+  height: 3.56rem;
+}
+
+.navItem::after,
+.btnWrapper button {
+  border-color: $primary-white;
+}
+
+.btnWrapper button {
+  margin-right: -2.5rem;
+  position: relative;
+  padding: 0.5rem 5rem 0.4rem 1.25rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.2rem;
+}

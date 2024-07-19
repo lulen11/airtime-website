@@ -1,26 +1,17 @@
 {
   "format": "page",
-  "id": "player_page",
-  "label": "OldPlayerPlage",
-  "repeatable": true,
+  "id": "player_listing_page",
+  "label": "Player Listing Page",
+  "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "uid": {
-        "config": {
-          "label": "UID"
-        },
-        "type": "UID"
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "text_block": {
-              "type": "SharedSlice"
-            },
-            "player_card": {
+            "player_list": {
               "type": "SharedSlice"
             }
           }

@@ -1,0 +1,9 @@
+@import "../../styles/globals.module.scss";
+
+.playerList {
+  display: flex;
+  padding-bottom: 5rem;
+}
+.playerCard {
+  border: 1px solid $primary-white;
+}
