@@ -2,32 +2,20 @@
 
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/prismicio";
-import { SliceComponentProps } from "@prismicio/react";
-import { PrismicDocument } from "@prismicio/types";
+import { SliceComponentProps, SliceLike } from "@prismicio/react";
 import styles from "./PlayerList.module.scss";
 
-interface PlayerCardCustomType extends PrismicDocument {
-  data: {
-    player_name: string; // Adjust if your field key differs
-  };
-}
-
-interface PlayerListSlice {
+type PlayerListSlice = SliceLike<string> & {
   primary: {
     player_1: { id: string };
     player_2: { id: string };
     players: { id: string };
   };
-}
+};
 
-interface PlayerListProps extends SliceComponentProps {
-  slice: PlayerListSlice; // Use the specific slice structure
-}
+type PlayerListProps = SliceComponentProps<PlayerListSlice>;
 
-interface PlayerInfo {
-  id: string;
-  name: string;
-}
+type PlayerInfo = { id: string; name: string };
 
 const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
   const [players, setPlayers] = useState<PlayerInfo[]>([]);
@@ -61,7 +49,7 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
         {players.map((player) => (
           <div className={styles.playerCard} key={player.id}>
             <h3>{player.name}</h3> {/* Displaying the player's name */}
-            <h2>come on</h2>
+            <h2>sds on</h2>
           </div>
         ))}
       </div>
