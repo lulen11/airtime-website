@@ -15,7 +15,7 @@ export default async function PlayerCard() {
         {/* <PrismicNextLink field={slice.primary.player}>Link</PrismicNextLink> */}
       </h1>
       <div>
-        <PrismicNextImage field={nav.data.logo} className={styles.logo} />
+        {/* <PrismicNextImage field={nav.data.logo} className={styles.logo} /> */}
 
         <ul className="flex gap-8">
           {/* {nav.data.menu_items.map((item) => {
