@@ -15,7 +15,7 @@ type PlayerListSlice = SliceLike<string> & {
 
 type PlayerListProps = SliceComponentProps<PlayerListSlice>;
 
-type PlayerInfo = { id: string; name: string };
+type PlayerInfo = { id: string; name: string; position: string };
 
 const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
   const [players, setPlayers] = useState<PlayerInfo[]>([]);
@@ -30,26 +30,23 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
       ];
 
       const response = await client.getByIDs(playerIds, {
-        fetchLinks: ["player_card.player_name"],
+        fetchLinks: ["player_card.player_name", "player_card.player_position"],
       });
       type PlayerCardDocumentData = {
         player_name: string;
+        player_position: string;
         // add other fields as needed
       };
 
       function isPlayerCardData(data: any): data is PlayerCardDocumentData {
-        return data && "player_name" in data;
+        return data && "player_name" && "player_position" in data;
       }
 
-      const playerData = response.results.map((player) => {
-        if (isPlayerCardData(player.data)) {
-          return {
-            id: player.id,
-            name: player.data.player_name,
-          };
-        }
-        return { id: player.id, name: "Unknown" }; // Handle case where type guard fails
-      });
+      const playerData = response.results.map((player) => ({
+        id: player.id,
+        name: (player.data as PlayerCardDocumentData).player_name,
+        position: (player.data as PlayerCardDocumentData).player_position,
+      }));
       setPlayers(playerData);
     };
 
@@ -62,8 +59,8 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
       <div className={styles.playerList}>
         {players.map((player) => (
           <div className={styles.playerCard} key={player.id}>
-            <h3>{player.name}</h3> {/* Displaying the player's name */}
-            <h2>This one</h2>
+            <h3>{player.name}</h3>
+            <h3>{player.position}</h3>
           </div>
         ))}
       </div>
