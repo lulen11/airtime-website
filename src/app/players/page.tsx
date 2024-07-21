@@ -4,13 +4,15 @@ import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
+import { PrismicNextImage } from "@prismicio/next";
+import styles from "./players.module.scss";
 
 type Player = {
   uid: string;
   data: {
     player_name: string;
-    // description: string;
-    // Include other fields you need here
+    player_position: string;
+    player_location: string;
   };
 };
 
@@ -27,16 +29,41 @@ export default async function AllPlayersPage() {
       <SliceZone slices={playerPage.data.slices} components={components} />;
       <div>
         <h1>All Playersdss</h1>
-        <ul>
+        <section className={styles.playerCardsGrid}>
           {players.map((player: Player) => (
-            <li key={player.uid}>
+            <div className={styles.playerCard} key={player.uid}>
               <a href={`/players/${player.uid}`}>
-                <h2>{player.data.player_name}</h2>
-                {/* <p>{player.data.description}</p> */}
+                <div className={styles.playerCardInner}>
+                  <div className={styles.playerCardFront}>
+                    <h3>
+                      {player.data.player_name} <br />
+                      <span>{player.data.player_position}</span>
+                    </h3>
+                    {player.data.image && (
+                      <PrismicNextImage field={player.data.image} />
+                    )}
+                  </div>
+                  <div className={styles.playerCardBack}>
+                    <h3>{player.data.player_name}</h3>
+                    <ul>
+                      <li>
+                        <strong>Position:</strong> {player.data.player_position}
+                      </li>
+                      <>
+                        {player.data.player_stats.map((item) => (
+                          <li key={item.stat_label}>
+                            <strong>{item.stat_label}: </strong>
+                            {item.stat}
+                          </li>
+                        ))}
+                      </>
+                    </ul>
+                  </div>
+                </div>
               </a>
-            </li>
+            </div>
           ))}
-        </ul>
+        </section>
       </div>
     </>
   );

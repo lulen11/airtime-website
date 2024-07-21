@@ -140,6 +140,31 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Player → Player Stats*
+ */
+export interface PlayerCardDocumentDataPlayerStatsItem {
+  /**
+   * Stat Label field in *Player → Player Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.player_stats[].stat_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  stat_label: prismic.KeyTextField;
+
+  /**
+   * Stat field in *Player → Player Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.player_stats[].stat
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  stat: prismic.KeyTextField;
+}
+
 type PlayerCardDocumentDataSlicesSlice = never;
 
 /**
@@ -169,26 +194,39 @@ interface PlayerCardDocumentData {
   player_position: prismic.KeyTextField;
 
   /**
-   * Player Location field in *Player*
+   * Image field in *Player*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Player Stats field in *Player*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.player_stats[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  player_stats: prismic.GroupField<
+    Simplify<PlayerCardDocumentDataPlayerStatsItem>
+  >;
+
+  /**
+   * Short Bio field in *Player*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.player_location
+   * - **API ID Path**: player_card.short_bio
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  player_location: prismic.KeyTextField;
-
-  /**
-   * Player Type field in *Player*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.player_type
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  player_type: prismic.SelectField<"Local" | "US">;
+  short_bio: prismic.KeyTextField;
 
   /**
    * Player Story field in *Player*
@@ -202,15 +240,15 @@ interface PlayerCardDocumentData {
   player_story: prismic.RichTextField;
 
   /**
-   * Image field in *Player*
+   * Player Type field in *Player*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Select
    * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.image
+   * - **API ID Path**: player_card.player_type
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
-  image: prismic.ImageField<never>;
+  player_type: prismic.SelectField<"Local" | "US">;
 
   /**
    * Slice Zone field in *Player*
@@ -457,6 +495,16 @@ export interface PlayerCardSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   player_bio: prismic.RichTextField;
+
+  /**
+   * Player Position field in *PlayerCard → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.default.primary.player_position
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  player_position: prismic.KeyTextField;
 }
 
 /**
@@ -843,6 +891,7 @@ declare module "@prismicio/client" {
       NavigationDocumentDataMenuItemsItem,
       PlayerCardDocument,
       PlayerCardDocumentData,
+      PlayerCardDocumentDataPlayerStatsItem,
       PlayerCardDocumentDataSlicesSlice,
       PlayerListingPageDocument,
       PlayerListingPageDocumentData,

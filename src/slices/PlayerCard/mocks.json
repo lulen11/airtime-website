@@ -65,6 +65,11 @@
 						}
 					}
 				]
+			},
+			"player_position": {
+				"__TYPE__": "FieldContent",
+				"value": "breathing",
+				"type": "Text"
 			}
 		},
 		"items": []

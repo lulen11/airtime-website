@@ -1,0 +1,59 @@
+@import "../../styles/globals.module.scss";
+
+.playerCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  @media only screen and (min-width: $sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media only screen and (min-width: $md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.playerCard {
+  cursor: pointer;
+  transition: $smooth-transition;
+  position: relative;
+  perspective: 1000px;
+  background-color: transparent;
+  height: 26rem;
+  width: 100%;
+  height: 26rem;
+  // min-width: 16rem;
+
+  &Inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  &:hover .playerCardInner {
+    transform: rotateY(180deg);
+  }
+  &Front,
+  &Back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  &Front {
+    background-color: $primary-blue;
+    color: $primary-white;
+    border: 2px solid $primary-white;
+  }
+  &Back {
+    background-color: $primary-grey;
+    color: $primary-blue;
+    transform: rotateY(180deg);
+  }
+}

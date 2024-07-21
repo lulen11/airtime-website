@@ -26,19 +26,42 @@
           "placeholder": ""
         }
       },
-      "player_location": {
-        "type": "Text",
+      "image": {
+        "type": "Image",
         "config": {
-          "label": "Player Location",
-          "placeholder": ""
+          "label": "Image",
+          "constraint": {},
+          "thumbnails": []
         }
       },
-      "player_type": {
-        "type": "Select",
+      "player_stats": {
+        "type": "Group",
         "config": {
-          "label": "Player Type",
-          "placeholder": "",
-          "options": ["Local", "US"]
+          "label": "Player Stats",
+          "repeat": true,
+          "fields": {
+            "stat_label": {
+              "type": "Text",
+              "config": {
+                "label": "Stat Label",
+                "placeholder": ""
+              }
+            },
+            "stat": {
+              "type": "Text",
+              "config": {
+                "label": "Stat",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "short_bio": {
+        "type": "Text",
+        "config": {
+          "label": "Short Bio",
+          "placeholder": ""
         }
       },
       "player_story": {
@@ -50,12 +73,12 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "image": {
-        "type": "Image",
+      "player_type": {
+        "type": "Select",
         "config": {
-          "label": "Image",
-          "constraint": {},
-          "thumbnails": []
+          "label": "Player Type",
+          "placeholder": "",
+          "options": ["Local", "US"]
         }
       },
       "slices": {
