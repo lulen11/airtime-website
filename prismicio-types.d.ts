@@ -221,7 +221,27 @@ interface PlayerCardDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<PlayerCardDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<PlayerCardDocumentDataSlicesSlice> /**
+   * Meta Title field in *Player*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Player*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
 }
 
 /**
@@ -240,7 +260,7 @@ export type PlayerCardDocument<Lang extends string = string> =
     Lang
   >;
 
-type PlayerListingPageDocumentDataSlicesSlice = PlayerListSlice;
+type PlayerListingPageDocumentDataSlicesSlice = TextBlockSlice;
 
 /**
  * Content for Player Listing Page documents
@@ -299,7 +319,7 @@ interface PlayerListingPageDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type PlayerListingPageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
+  prismic.PrismicDocumentWithUID<
     Simplify<PlayerListingPageDocumentData>,
     "player_listing_page",
     Lang

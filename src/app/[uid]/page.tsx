@@ -1,42 +1,44 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { SliceZone } from "@prismicio/react";
+// TODO: REMOVE THIS EVENTUALLY. KEEPING HERE FOR REFERENCE
 
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
+// import { Metadata } from "next";
+// import { notFound } from "next/navigation";
+// import { SliceZone } from "@prismicio/react";
 
-type Params = { uid: string };
+// import { createClient } from "@/prismicio";
+// import { components } from "@/slices";
 
-export default async function Page({ params }: { params: Params }) {
-  const client = createClient();
-  const page = await client
-    .getByUID("player_page", params.uid)
-    .catch(() => notFound());
+// type Params = { uid: string };
 
-  return <SliceZone slices={page.data.slices} components={components} />;
-}
+// export default async function Page({ params }: { params: Params }) {
+//   const client = createClient();
+//   const page = await client
+//     .getByUID("player_card", params.uid)
+//     .catch(() => notFound());
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
-  const client = createClient();
-  const page = await client
-    .getByUID("player_page", params.uid)
-    .catch(() => notFound());
+//   return <SliceZone slices={page.data.slices} components={components} />;
+// }
 
-  return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
-  };
-}
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: Params;
+// }): Promise<Metadata> {
+//   const client = createClient();
+//   const page = await client
+//     .getByUID("player_card", params.uid)
+//     .catch(() => notFound());
 
-export async function generateStaticParams() {
-  const client = createClient();
-  const pages = await client.getAllByType("player_page");
+//   return {
+//     title: page.data.meta_title,
+//     description: page.data.meta_description,
+//   };
+// }
 
-  return pages.map((page) => {
-    return { uid: page.uid };
-  });
-}
+// export async function generateStaticParams() {
+//   const client = createClient();
+//   const pages = await client.getAllByType("player_card");
+
+//   return pages.map((page) => {
+//     return { uid: page.uid };
+//   });
+// }
