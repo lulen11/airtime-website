@@ -9,7 +9,7 @@ type Player = {
   uid: string;
   data: {
     player_name: string;
-    description: string;
+    // description: string;
     // Include other fields you need here
   };
 };
@@ -32,7 +32,7 @@ export default async function AllPlayersPage() {
             <li key={player.uid}>
               <a href={`/players/${player.uid}`}>
                 <h2>{player.data.player_name}</h2>
-                <p>{player.data.description}</p>
+                {/* <p>{player.data.description}</p> */}
               </a>
             </li>
           ))}
