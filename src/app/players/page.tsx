@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
 import { PrismicNextImage } from "@prismicio/next";
 import styles from "./players.module.scss";
-import { PlayerCardDocument } from "@prismicio/types"; // Ensure this is correct based on your setup
+import { PrismicDocument } from "@prismicio/types"; // Ensure this is correct based on your setup
 
 type Player = {
   uid: string;
@@ -20,7 +20,7 @@ type Player = {
 
 export default async function AllPlayersPage() {
   const client = createClient();
-  const players: PlayerCardDocument[] = await client
+  const players: PrismicDocument[] = await client
     .getAllByType("player_card")
     .catch(() => notFound());
 
@@ -32,7 +32,7 @@ export default async function AllPlayersPage() {
       <div>
         <h1>All Players</h1>
         <section className={styles.playerCardsGrid}>
-          {players.map((player: PlayerCardDocument) => {
+          {players.map((player: PrismicDocument) => {
             const { player_name, player_position, image, player_stats } =
               player.data || {};
             return (
