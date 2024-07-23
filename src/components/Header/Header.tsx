@@ -1,7 +1,7 @@
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
-import Button from "../../components/Button";
+import Button from "../Button/Button";
 import styles from "./Header.module.scss";
 
 export default async function Header() {

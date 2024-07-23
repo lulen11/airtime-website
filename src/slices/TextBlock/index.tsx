@@ -3,7 +3,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
 import styles from "./TextBlock.module.scss";
 
 /**
