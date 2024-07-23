@@ -1,37 +1,82 @@
-import { createClient } from "@/prismicio";
+import React from "react";
+// import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-
-import Button from "../Button";
 import styles from "./PlayerCard.module.scss";
 
-export default async function PlayerCard() {
-  const client = createClient();
-  const playerCard = await client.getSingle("player_card");
+type PlayerCardProps = {
+  player: {
+    uid: string;
+    player_name: string;
+    player_position: string;
+    image?: any; // Adjust this type based on your actual image field type
+    player_stats?: { stat_label: string; stat: string }[];
+  };
+};
 
-  //  * TODO: This is not right at all. Remove or change
+const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
+  const { uid, player_name, player_position, image, player_stats } = player;
+
+  // export default async function PlayerCard() {
+  // const client = createClient();
+
   return (
     <>
-      <h1>
-        {/* <PrismicNextLink field={slice.primary.player}>Link</PrismicNextLink> */}
-      </h1>
-      <div>
-        {/* <PrismicNextImage field={nav.data.logo} className={styles.logo} /> */}
-
-        <ul className="flex gap-8">
-          {/* {nav.data.menu_items.map((item) => {
-              return (
-                <li className={styles.navItem} key={JSON.stringify(item)}>
-                  <PrismicNextLink field={item.link}>
-                    {item.label}
-                  </PrismicNextLink>
+      <div className={styles.playerCard} key={uid}>
+        <a href={`/players/${uid}`}>
+          <div className={styles.playerCardInner}>
+            <div className={styles.playerCardFront}>
+              <h3>
+                {player_name} <br />
+                <span>{player_position}</span>
+              </h3>
+              {image && <PrismicNextImage field={image} />}
+            </div>
+            <div className={styles.playerCardBack}>
+              <h3>{player_name}</h3>
+              <ul>
+                <li>
+                  <strong>Position:</strong> {player_position}
                 </li>
-              );
-            })} */}
-        </ul>
-        {/* <div className={styles.btnWrapper}>
-            <Button link={""} label="Donate" />
-          </div> */}
+                {player_stats?.map((item) => (
+                  <li key={item.stat_label}>
+                    <strong>{item.stat_label}: </strong>
+                    {item.stat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </a>
       </div>
+      {/* <div className={styles.playerCard} key={player.uid}>
+        <a href={`/players/${player.uid}`}>
+          <div className={styles.playerCardInner}>
+            <div className={styles.playerCardFront}>
+              <h3>
+                {player_name} <br />
+                <span>{player_position}</span>
+              </h3>
+              {image && <PrismicNextImage field={image} />}
+            </div>
+            <div className={styles.playerCardBack}>
+              <h3>{player_name}</h3>
+              <ul>
+                <li>
+                  <strong>Position:</strong> {player_position}
+                </li>
+                {player_stats?.map((item) => (
+                  <li key={item.stat_label}>
+                    <strong>{item.stat_label}: </strong>
+                    {item.stat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </a>
+      </div> */}
     </>
   );
-}
+};
+
+export default PlayerCard;

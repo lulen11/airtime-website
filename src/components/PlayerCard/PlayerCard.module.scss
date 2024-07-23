@@ -1,48 +1,44 @@
 @import "../../styles/globals.module.scss";
 
-.header {
-  @include bodyFont;
-  padding: 2rem 1rem;
-  overflow: hidden;
-}
-
-.navItem {
+.playerCard {
+  cursor: pointer;
+  transition: $smooth-transition;
   position: relative;
-  padding: 0 0.75rem;
-  &::after {
-    content: " ";
-    display: block;
-    width: 35px;
-    border-bottom: $primary-border;
+  perspective: 1000px;
+  background-color: transparent;
+  height: 26rem;
+  width: 100%;
+  height: 26rem;
+  // min-width: 16rem;
+
+  &Inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  &:hover .playerCardInner {
+    transform: rotateY(180deg);
+  }
+  &Front,
+  &Back {
     position: absolute;
-    /* left: 0; */
-    top: 50%;
-    right: -2rem;
-    height: 2px;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
-
-  a {
-    transition: $smooth-transition;
-    &:hover {
-      color: $primary-pink;
-    }
+  &Front {
+    background-color: $primary-blue;
+    color: $primary-white;
+    border: 2px solid $primary-white;
   }
-}
-
-.logo {
-  width: 12.5rem;
-  height: 3.56rem;
-}
-
-.navItem::after,
-.btnWrapper button {
-  border-color: $primary-white;
-}
-
-.btnWrapper button {
-  margin-right: -2.5rem;
-  position: relative;
-  padding: 0.5rem 5rem 0.4rem 1.25rem;
-  font-size: 1.2rem;
-  letter-spacing: -0.2rem;
+  &Back {
+    background-color: $primary-grey;
+    color: $primary-blue;
+    transform: rotateY(180deg);
+  }
 }
