@@ -18,10 +18,12 @@ type PlayerListProps = SliceComponentProps<PlayerListSlice>;
 
 type PlayerCardData = {
   uid: string;
-  player_name: string;
-  player_position: string;
-  image?: any; // Adjust this type based on your actual image field type
-  player_stats?: { stat_label: string; stat: string }[];
+  data: {
+    player_name: string;
+    player_position: string;
+    image?: any;
+    player_stats?: { stat_label: string; stat: string }[];
+  };
 };
 
 // type PlayerInfo = { id: string; name: string; position: string };
@@ -47,31 +49,17 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
         ],
       });
 
-      const playerData: PlayerCardData[] = response.results.map((player) => ({
-        uid: player.id,
-        player_name: player.data.player_name,
-        player_position: player.data.player_position,
-        image: player.data.image,
-        player_stats: player.data.player_stats,
-      }));
+      const playerData: PlayerCardData[] = response.results.map(
+        (player: any) => ({
+          uid: player.id,
+          player_name: player.data.player_name,
+          player_position: player.data.player_position,
+          image: player.data.image,
+          player_stats: player.data.player_stats,
+        })
+      );
 
       setPlayers(playerData);
-
-      // type PlayerCardDocumentData = {
-      //   player_name: string;
-      //   player_position: string;
-      //   // add other fields as needed
-      // };
-
-      // function isPlayerCardData(data: any): data is PlayerCardDocumentData {
-      //   return data && "player_name" && "player_position" in data;
-      // }
-
-      // const playerData = response.results.map((player) => ({
-      //   id: player.id,
-      //   name: (player.data as PlayerCardDocumentData).player_name,
-      //   position: (player.data as PlayerCardDocumentData).player_position,
-      // }));
     };
 
     fetchPlayers();
@@ -82,9 +70,7 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
       <h2>Player List</h2>
       <section className={styles.playerCardsGrid}>
         {players.map((player) => (
-          <div className={styles.playerCard} key={player.uid}>
-            <PlayerCard player={player} />
-          </div>
+          <PlayerCard player={player} key={player.uid} />
         ))}
       </section>
     </section>
