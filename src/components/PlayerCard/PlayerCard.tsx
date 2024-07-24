@@ -3,13 +3,14 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import styles from "./PlayerCard.module.scss";
 
 type PlayerCardProps = {
-  player: {
-    uid: string;
-    player_name: string;
-    player_position: string;
-    image?: any;
-    player_stats?: { stat_label: string; stat: string }[];
-  };
+  // player: {
+  //   uid: string;
+  //   player_name: string;
+  //   player_position: string;
+  //   image?: any;
+  //   player_stats?: { stat_label: string; stat: string }[];
+  // };
+  player: PlayerCardData;
 };
 
 const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {

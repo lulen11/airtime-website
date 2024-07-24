@@ -18,12 +18,10 @@ type PlayerListProps = SliceComponentProps<PlayerListSlice>;
 
 type PlayerCardData = {
   uid: string;
-  data: {
-    player_name: string;
-    player_position: string;
-    image?: any;
-    player_stats?: { stat_label: string; stat: string }[];
-  };
+  player_name: string;
+  player_position: string;
+  image?: any;
+  player_stats?: { stat_label: string; stat: string }[];
 };
 
 // type PlayerInfo = { id: string; name: string; position: string };
