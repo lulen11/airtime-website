@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/prismicio";
 import { SliceComponentProps, SliceLike } from "@prismicio/react";
+import PlayerCard from "../../components/PlayerCard/PlayerCard";
 import styles from "./PlayerList.module.scss";
 
 type PlayerListSlice = SliceLike<string> & {
@@ -15,10 +16,18 @@ type PlayerListSlice = SliceLike<string> & {
 
 type PlayerListProps = SliceComponentProps<PlayerListSlice>;
 
-type PlayerInfo = { id: string; name: string; position: string };
+type PlayerCardData = {
+  uid: string;
+  player_name: string;
+  player_position: string;
+  image?: any; // Adjust this type based on your actual image field type
+  player_stats?: { stat_label: string; stat: string }[];
+};
+
+// type PlayerInfo = { id: string; name: string; position: string };
 
 const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
-  const [players, setPlayers] = useState<PlayerInfo[]>([]);
+  const [players, setPlayers] = useState<PlayerCardData[]>([]);
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -30,24 +39,39 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
       ];
 
       const response = await client.getByIDs(playerIds, {
-        fetchLinks: ["player_card.player_name", "player_card.player_position"],
+        fetchLinks: [
+          "player_card.player_name",
+          "player_card.player_position",
+          "player_card.image",
+          "player_card.player_stats",
+        ],
       });
-      type PlayerCardDocumentData = {
-        player_name: string;
-        player_position: string;
-        // add other fields as needed
-      };
 
-      function isPlayerCardData(data: any): data is PlayerCardDocumentData {
-        return data && "player_name" && "player_position" in data;
-      }
-
-      const playerData = response.results.map((player) => ({
-        id: player.id,
-        name: (player.data as PlayerCardDocumentData).player_name,
-        position: (player.data as PlayerCardDocumentData).player_position,
+      const playerData: PlayerCardData[] = response.results.map((player) => ({
+        uid: player.id,
+        player_name: player.data.player_name,
+        player_position: player.data.player_position,
+        image: player.data.image,
+        player_stats: player.data.player_stats,
       }));
+
       setPlayers(playerData);
+
+      // type PlayerCardDocumentData = {
+      //   player_name: string;
+      //   player_position: string;
+      //   // add other fields as needed
+      // };
+
+      // function isPlayerCardData(data: any): data is PlayerCardDocumentData {
+      //   return data && "player_name" && "player_position" in data;
+      // }
+
+      // const playerData = response.results.map((player) => ({
+      //   id: player.id,
+      //   name: (player.data as PlayerCardDocumentData).player_name,
+      //   position: (player.data as PlayerCardDocumentData).player_position,
+      // }));
     };
 
     fetchPlayers();
@@ -56,14 +80,13 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
   return (
     <section>
       <h2>Player List</h2>
-      <div className={styles.playerList}>
+      <section className={styles.playerCardsGrid}>
         {players.map((player) => (
-          <div className={styles.playerCard} key={player.id}>
-            <h3>{player.name}</h3>
-            <h3>{player.position}</h3>
+          <div className={styles.playerCard} key={player.uid}>
+            <PlayerCard player={player} />
           </div>
         ))}
-      </div>
+      </section>
     </section>
   );
 };

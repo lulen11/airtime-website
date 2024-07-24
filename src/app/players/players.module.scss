@@ -1,17 +1,5 @@
 @import "../../styles/globals.module.scss";
 
 .playerCardsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
-  max-width: 75rem;
-  margin: 0 auto;
-  @media only screen and (min-width: $sm) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media only screen and (min-width: $md) {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  @include playerCardsGrid;
 }
