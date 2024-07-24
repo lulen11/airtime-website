@@ -1,6 +1,5 @@
 import React from "react";
 import { notFound } from "next/navigation";
-// import { createClient } from "@/prismicio";
 import { createClient } from "@/prismicio";
 
 type Params = { uid: string };
@@ -24,7 +23,7 @@ export default async function PlayerPage({ params }: { params: Params }) {
     <>
       <h1>{page.data.player_name}</h1>
       <p>{page.data.player_location}</p>
-      {/* Add other player details here */}
+      {/* TODO: Add other player details here */}
     </>
   );
 }

@@ -4,21 +4,11 @@ import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicDocument } from "@prismicio/types";
+// import { PrismicNextImage } from "@prismicio/next";
 import PlayerCard from "../../components/PlayerCard/PlayerCard";
 
 import styles from "./players.module.scss";
-import { PrismicDocument } from "@prismicio/types"; // Ensure this is correct based on your setup
-
-// type Player = {
-//   uid: string;
-//   data: {
-//     player_name: string;
-//     player_position: string;
-//     image?: any;
-//     player_stats?: { stat_label: string; stat: string }[];
-//   };
-// };
 
 export default async function AllPlayersPage() {
   const client = createClient();
@@ -43,45 +33,9 @@ export default async function AllPlayersPage() {
       <div>
         <h1>All Players</h1>
         <section className={styles.playerCardsGrid}>
-          {/* {players.map((player: PrismicDocument) => (
-            <PlayerCard key={player.uid} player={player.data} />
-          ))} */}
           {formattedPlayers.map((player) => (
             <PlayerCard key={player.uid} player={player} />
           ))}
-
-          {/* // const { player_name, player_position, image, player_stats } =
-            //   player.data || {};
-            // return (
-
-            //   <div className={styles.playerCard} key={player.uid}>
-            //     <a href={`/players/${player.uid}`}>
-            //       <div className={styles.playerCardInner}>
-            //         <div className={styles.playerCardFront}>
-            //           <h3>
-            //             {player_name} <br />
-            //             <span>{player_position}</span>
-            //           </h3>
-            //           {image && <PrismicNextImage field={image} />}
-            //         </div>
-            //         <div className={styles.playerCardBack}>
-            //           <h3>{player_name}</h3>
-            //           <ul>
-            //             <li>
-            //               <strong>Position:</strong> {player_position}
-            //             </li>
-            //             {player_stats?.map((item) => (
-            //               <li key={item.stat_label}>
-            //                 <strong>{item.stat_label}: </strong>
-            //                 {item.stat}
-            //               </li>
-            //             ))}
-            //           </ul>
-            //         </div>
-            //       </div>
-            //     </a>
-            //   </div>
-            //     ); */}
         </section>
       </div>
     </>
