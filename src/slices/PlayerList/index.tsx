@@ -4,11 +4,7 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "@/prismicio";
 import { SliceComponentProps, SliceLike } from "@prismicio/react";
 import PlayerCard from "../../components/PlayerCard/PlayerCard";
-import {
-  PlayerData,
-  PrismicPlayerDocument,
-  isPrismicPlayerDocument,
-} from "../../components/PlayerCard/types";
+import { PlayerData } from "../../components/PlayerCard/types";
 import styles from "./PlayerList.module.scss";
 
 type PlayerListSlice = SliceLike<string> & {
@@ -20,14 +16,6 @@ type PlayerListSlice = SliceLike<string> & {
 };
 
 type PlayerListProps = SliceComponentProps<PlayerListSlice>;
-
-// type PlayerCardData = {
-//   uid: string;
-//   player_name: string;
-//   player_position: string;
-//   image?: any;
-//   player_stats?: { stat_label: string; stat: string }[];
-// };
 
 const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
   const [players, setPlayers] = useState<PlayerData[]>([]);
@@ -49,14 +37,6 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
           "player_card.player_stats",
         ],
       });
-
-      // console.log("Fetched documents:", response.results);
-
-      // // Debugging type guard
-      // response.results.forEach((doc) => {
-      //   console.log("Checking document:", doc);
-      //   console.log("Is player document:", isPrismicPlayerDocument(doc));
-      // });
 
       const playerData = response.results.map((player) => ({
         uid: player.id,

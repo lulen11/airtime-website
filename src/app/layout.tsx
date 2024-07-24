@@ -22,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon@2x.ico" />
         <link rel="stylesheet" href="https://use.typekit.net/uzq0asd.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

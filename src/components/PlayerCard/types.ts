@@ -8,18 +8,19 @@ export type PlayerData = {
   player_stats?: { stat_label: string; stat: string }[];
 };
 
-export type PrismicPlayerDocument = {
-  id: string;
-  data: PlayerData;
-};
+// TODO: keep until you know if you need this for future components
+// export type PrismicPlayerDocument = {
+//   id: string;
+//   data: PlayerData;
+// };
 
-export function isPrismicPlayerDocument(
-  doc: any
-): doc is PrismicPlayerDocument {
-  return (
-    doc &&
-    typeof doc.id === "string" &&
-    doc.data &&
-    typeof doc.data.player_name === "string"
-  );
-}
+// export function isPrismicPlayerDocument(
+//   doc: any
+// ): doc is PrismicPlayerDocument {
+//   return (
+//     doc &&
+//     typeof doc.id === "string" &&
+//     doc.data &&
+//     typeof doc.data.player_name === "string"
+//   );
+// }
