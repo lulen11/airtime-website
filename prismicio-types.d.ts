@@ -363,179 +363,11 @@ export type PlayerListingPageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PlayerPageDocumentDataSlicesSlice = TextBlockSlice | PlayerCardSlice;
-
-/**
- * Content for OldPlayerPlage documents
- */
-interface PlayerPageDocumentData {
-  /**
-   * Slice Zone field in *OldPlayerPlage*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_page.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<PlayerPageDocumentDataSlicesSlice> /**
-   * Meta Description field in *OldPlayerPlage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: player_page.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *OldPlayerPlage*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_page.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
-
-  /**
-   * Meta Title field in *OldPlayerPlage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: player_page.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_title: prismic.KeyTextField;
-}
-
-/**
- * OldPlayerPlage document from Prismic
- *
- * - **API ID**: `player_page`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type PlayerPageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<PlayerPageDocumentData>,
-    "player_page",
-    Lang
-  >;
-
 export type AllDocumentTypes =
   | HomePageDocument
   | NavigationDocument
   | PlayerCardDocument
-  | PlayerListingPageDocument
-  | PlayerPageDocument;
-
-/**
- * Item in *PlayerCard → Default → Primary → Player Stats*
- */
-export interface PlayerCardSliceDefaultPrimaryPlayerStatsItem {
-  /**
-   * Stat Label field in *PlayerCard → Default → Primary → Player Stats*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.default.primary.player_stats[].stat_label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  stat_label: prismic.KeyTextField;
-
-  /**
-   * Stat field in *PlayerCard → Default → Primary → Player Stats*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.default.primary.player_stats[].stat
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  stat: prismic.KeyTextField;
-}
-
-/**
- * Primary content in *PlayerCard → Default → Primary*
- */
-export interface PlayerCardSliceDefaultPrimary {
-  /**
-   * Player Name field in *PlayerCard → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.default.primary.player_name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  player_name: prismic.KeyTextField;
-
-  /**
-   * Player Stats field in *PlayerCard → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.default.primary.player_stats[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  player_stats: prismic.GroupField<
-    Simplify<PlayerCardSliceDefaultPrimaryPlayerStatsItem>
-  >;
-
-  /**
-   * Player Bio field in *PlayerCard → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.default.primary.player_bio
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  player_bio: prismic.RichTextField;
-
-  /**
-   * Player Position field in *PlayerCard → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.default.primary.player_position
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  player_position: prismic.KeyTextField;
-}
-
-/**
- * Default variation for PlayerCard Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type PlayerCardSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<PlayerCardSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *PlayerCard*
- */
-type PlayerCardSliceVariation = PlayerCardSliceDefault;
-
-/**
- * PlayerCard Shared Slice
- *
- * - **API ID**: `player_card`
- * - **Description**: PlayerCard
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type PlayerCardSlice = prismic.SharedSlice<
-  "player_card",
-  PlayerCardSliceVariation
->;
+  | PlayerListingPageDocument;
 
 /**
  * Primary content in *PlayerList → Default → Primary*
@@ -896,15 +728,7 @@ declare module "@prismicio/client" {
       PlayerListingPageDocument,
       PlayerListingPageDocumentData,
       PlayerListingPageDocumentDataSlicesSlice,
-      PlayerPageDocument,
-      PlayerPageDocumentData,
-      PlayerPageDocumentDataSlicesSlice,
       AllDocumentTypes,
-      PlayerCardSlice,
-      PlayerCardSliceDefaultPrimaryPlayerStatsItem,
-      PlayerCardSliceDefaultPrimary,
-      PlayerCardSliceVariation,
-      PlayerCardSliceDefault,
       PlayerListSlice,
       PlayerListSliceDefaultPrimary,
       PlayerListSliceVariation,
