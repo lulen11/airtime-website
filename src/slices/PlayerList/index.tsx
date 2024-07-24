@@ -50,23 +50,21 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
         ],
       });
 
-      console.log("Fetched documents:", response.results);
+      // console.log("Fetched documents:", response.results);
 
-      // Debugging type guard
-      response.results.forEach((doc) => {
-        console.log("Checking document:", doc);
-        console.log("Is player document:", isPrismicPlayerDocument(doc));
-      });
+      // // Debugging type guard
+      // response.results.forEach((doc) => {
+      //   console.log("Checking document:", doc);
+      //   console.log("Is player document:", isPrismicPlayerDocument(doc));
+      // });
 
-      const playerData: PlayerData[] = response.results
-        .filter(isPrismicPlayerDocument)
-        .map((player) => ({
-          uid: player.id,
-          player_name: player.data.player_name,
-          player_position: player.data.player_position,
-          image: player.data.image,
-          player_stats: player.data.player_stats,
-        }));
+      const playerData = response.results.map((player) => ({
+        uid: player.id,
+        player_name: (player.data as any).player_name,
+        player_position: (player.data as any).player_position,
+        image: (player.data as any).image,
+        player_stats: (player.data as any).player_stats,
+      }));
 
       setPlayers(playerData);
     };
