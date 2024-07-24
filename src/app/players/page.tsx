@@ -10,15 +10,15 @@ import PlayerCard from "../../components/PlayerCard/PlayerCard";
 import styles from "./players.module.scss";
 import { PrismicDocument } from "@prismicio/types"; // Ensure this is correct based on your setup
 
-type Player = {
-  uid: string;
-  data: {
-    player_name: string;
-    player_position: string;
-    image?: any;
-    player_stats?: { stat_label: string; stat: string }[];
-  };
-};
+// type Player = {
+//   uid: string;
+//   data: {
+//     player_name: string;
+//     player_position: string;
+//     image?: any;
+//     player_stats?: { stat_label: string; stat: string }[];
+//   };
+// };
 
 export default async function AllPlayersPage() {
   const client = createClient();
@@ -28,15 +28,29 @@ export default async function AllPlayersPage() {
 
   const playerPage = await client.getSingle("player_listing_page");
 
+  // Map players to match the PlayerCardProps type
+  const formattedPlayers = players.map((player) => ({
+    uid: player.uid,
+    player_name: player.data.player_name,
+    player_position: player.data.player_position,
+    image: player.data.image,
+    player_stats: player.data.player_stats,
+  }));
+
   return (
     <>
       <SliceZone slices={playerPage.data.slices} components={components} />
       <div>
         <h1>All Players</h1>
         <section className={styles.playerCardsGrid}>
-          {players.map((player: PrismicDocument) => (
+          {/* {players.map((player: PrismicDocument) => (
             <PlayerCard key={player.uid} player={player.data} />
-            // const { player_name, player_position, image, player_stats } =
+          ))} */}
+          {formattedPlayers.map((player) => (
+            <PlayerCard key={player.uid} player={player} />
+          ))}
+
+          {/* // const { player_name, player_position, image, player_stats } =
             //   player.data || {};
             // return (
 
@@ -67,8 +81,7 @@ export default async function AllPlayersPage() {
             //       </div>
             //     </a>
             //   </div>
-            //     );
-          ))}
+            //     ); */}
         </section>
       </div>
     </>
