@@ -24,8 +24,6 @@ type PlayerCardData = {
   player_stats?: { stat_label: string; stat: string }[];
 };
 
-// type PlayerInfo = { id: string; name: string; position: string };
-
 const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
   const [players, setPlayers] = useState<PlayerCardData[]>([]);
 
@@ -47,15 +45,13 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
         ],
       });
 
-      const playerData: PlayerCardData[] = response.results.map(
-        (player: any) => ({
-          uid: player.id,
-          player_name: player.data.player_name,
-          player_position: player.data.player_position,
-          image: player.data.image,
-          player_stats: player.data.player_stats,
-        })
-      );
+      const playerData: PlayerCardData[] = response.results.map((player) => ({
+        uid: player.id,
+        player_name: player.data.player_name,
+        player_position: player.data.player_position,
+        image: player.data.image,
+        player_stats: player.data.player_stats,
+      }));
 
       setPlayers(playerData);
     };
