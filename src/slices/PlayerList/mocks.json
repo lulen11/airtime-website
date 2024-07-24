@@ -3,13 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"players": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "DocumentLink",
-					"id": "mock_document_id"
-				}
-			},
 			"type_filter": {
 				"__TYPE__": "FieldContent",
 				"value": "Local",
@@ -28,6 +21,20 @@
 				}
 			},
 			"player_2": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			},
+			"player_3": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			},
+			"player_4": {
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "DocumentLink",

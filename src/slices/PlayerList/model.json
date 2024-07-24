@@ -12,13 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "players": {
-          "type": "Link",
-          "config": {
-            "label": "Players",
-            "select": "document"
-          }
-        },
         "number_of_players": {
           "type": "Number",
           "config": {
@@ -48,6 +41,20 @@
           "type": "Link",
           "config": {
             "label": "Player 2",
+            "select": "document"
+          }
+        },
+        "player_3": {
+          "type": "Link",
+          "config": {
+            "label": "Player 3",
+            "select": "document"
+          }
+        },
+        "player_4": {
+          "type": "Link",
+          "config": {
+            "label": "Player 4",
             "select": "document"
           }
         }

@@ -374,16 +374,6 @@ export type AllDocumentTypes =
  */
 export interface PlayerListSliceDefaultPrimary {
   /**
-   * Players field in *PlayerList → Default → Primary*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_list.default.primary.players
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  players: prismic.ContentRelationshipField;
-
-  /**
    * Number of players to show field in *PlayerList → Default → Primary*
    *
    * - **Field Type**: Number
@@ -422,6 +412,26 @@ export interface PlayerListSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   player_2: prismic.ContentRelationshipField;
+
+  /**
+   * Player 3 field in *PlayerList → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_list.default.primary.player_3
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  player_3: prismic.ContentRelationshipField;
+
+  /**
+   * Player 4 field in *PlayerList → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_list.default.primary.player_4
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  player_4: prismic.ContentRelationshipField;
 }
 
 /**

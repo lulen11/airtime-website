@@ -11,7 +11,8 @@ type PlayerListSlice = SliceLike<string> & {
   primary: {
     player_1: { id: string };
     player_2: { id: string };
-    players: { id: string };
+    player_3: { id: string };
+    player_4: { id: string };
   };
 };
 
@@ -26,7 +27,8 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
       const playerIds = [
         slice.primary.player_1.id,
         slice.primary.player_2.id,
-        slice.primary.players.id,
+        slice.primary.player_3.id,
+        slice.primary.player_4.id,
       ];
 
       const response = await client.getByIDs(playerIds, {
