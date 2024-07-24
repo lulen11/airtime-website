@@ -27,4 +27,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Fonts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load custom Google and Adobe Fonts.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimise and load custom Google and Adobe Fonts.
