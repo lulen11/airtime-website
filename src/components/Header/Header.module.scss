@@ -8,17 +8,22 @@
 
 .navItem {
   position: relative;
-  padding: 0 0.75rem;
+  font-size: 0.85rem;
+  @media only screen and (min-width: $md) {
+    padding: 0 0.75rem;
+  }
   &::after {
-    content: " ";
-    display: block;
-    width: 35px;
-    border-bottom: $primary-border;
-    position: absolute;
-    /* left: 0; */
-    top: 50%;
-    right: -2rem;
-    height: 2px;
+    @media only screen and (min-width: $md) {
+      content: " ";
+      display: block;
+      width: 35px;
+      border-bottom: $primary-border;
+      position: absolute;
+      /* left: 0; */
+      top: 50%;
+      right: -2rem;
+      height: 2px;
+    }
   }
 
   a {

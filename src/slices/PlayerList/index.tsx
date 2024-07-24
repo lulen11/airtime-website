@@ -53,13 +53,12 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
   }, [slice.primary]);
 
   return (
-    <section>
-      <h2>Player List</h2>
-      <section className={styles.playerCardsGrid}>
+    <section className={styles.playerCardsList}>
+      <div className={styles.playerCardsGrid}>
         {players.map((player) => (
           <PlayerCard player={player} key={player.uid} />
         ))}
-      </section>
+      </div>
     </section>
   );
 };

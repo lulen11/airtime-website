@@ -16,25 +16,33 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
         <a href={`/players/${uid}`}>
           <div className={styles.playerCardInner}>
             <div className={styles.playerCardFront}>
-              <h3>
+              <h3 className={styles.name}>
                 {player_name} <br />
                 <span>{player_position}</span>
               </h3>
-              {image && <PrismicNextImage field={image} />}
+              {image && (
+                <PrismicNextImage
+                  className={styles.playerImage}
+                  field={image}
+                />
+              )}
             </div>
             <div className={styles.playerCardBack}>
-              <h3>{player_name}</h3>
-              <ul>
-                <li>
-                  <strong>Position:</strong> {player_position}
-                </li>
-                {player_stats?.map((item) => (
-                  <li key={item.stat_label}>
-                    <strong>{item.stat_label}: </strong>
-                    {item.stat}
+              <div className={styles.playerCardBackLogo}>&nbsp;</div>
+              <div className={styles.playerDetails}>
+                <h3 className={styles.name}>{player_name}</h3>
+                <ul className={styles.stats}>
+                  <li>
+                    <strong>Position:</strong> {player_position}
                   </li>
-                ))}
-              </ul>
+                  {player_stats?.map((item) => (
+                    <li key={item.stat_label}>
+                      <strong>{item.stat_label}: </strong>
+                      {item.stat}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </a>
