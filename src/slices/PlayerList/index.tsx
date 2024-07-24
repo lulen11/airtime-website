@@ -4,6 +4,11 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "@/prismicio";
 import { SliceComponentProps, SliceLike } from "@prismicio/react";
 import PlayerCard from "../../components/PlayerCard/PlayerCard";
+import {
+  PlayerData,
+  PrismicPlayerDocument,
+  isPrismicPlayerDocument,
+} from "../../components/PlayerCard/types";
 import styles from "./PlayerList.module.scss";
 
 type PlayerListSlice = SliceLike<string> & {
@@ -16,16 +21,16 @@ type PlayerListSlice = SliceLike<string> & {
 
 type PlayerListProps = SliceComponentProps<PlayerListSlice>;
 
-type PlayerCardData = {
-  uid: string;
-  player_name: string;
-  player_position: string;
-  image?: any;
-  player_stats?: { stat_label: string; stat: string }[];
-};
+// type PlayerCardData = {
+//   uid: string;
+//   player_name: string;
+//   player_position: string;
+//   image?: any;
+//   player_stats?: { stat_label: string; stat: string }[];
+// };
 
 const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
-  const [players, setPlayers] = useState<PlayerCardData[]>([]);
+  const [players, setPlayers] = useState<PlayerData[]>([]);
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -45,13 +50,23 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
         ],
       });
 
-      const playerData: PlayerCardData[] = response.results.map((player) => ({
-        uid: player.id,
-        player_name: player.data.player_name,
-        player_position: player.data.player_position,
-        image: player.data.image,
-        player_stats: player.data.player_stats,
-      }));
+      console.log("Fetched documents:", response.results);
+
+      // Debugging type guard
+      response.results.forEach((doc) => {
+        console.log("Checking document:", doc);
+        console.log("Is player document:", isPrismicPlayerDocument(doc));
+      });
+
+      const playerData: PlayerData[] = response.results
+        .filter(isPrismicPlayerDocument)
+        .map((player) => ({
+          uid: player.id,
+          player_name: player.data.player_name,
+          player_position: player.data.player_position,
+          image: player.data.image,
+          player_stats: player.data.player_stats,
+        }));
 
       setPlayers(playerData);
     };
