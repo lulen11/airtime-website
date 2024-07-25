@@ -18,6 +18,7 @@ export default async function Header() {
             <PrismicNextImage field={nav.data.logo} className={styles.logo} />
           </a>
         </div>
+        <h1>This is your development branch</h1>
         <div className="flex gap-8 items-center">
           <ul className="flex gap-8">
             {nav.data.menu_items.map((item) => {
