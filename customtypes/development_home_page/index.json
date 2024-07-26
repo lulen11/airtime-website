@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "home_page",
-  "label": "Home Page",
+  "id": "development_home_page",
+  "label": "Development Home Page",
   "repeatable": false,
   "status": true,
   "json": {
@@ -21,10 +21,10 @@
             "player_list": {
               "type": "SharedSlice"
             },
-            "text_block": {
+            "video_block": {
               "type": "SharedSlice"
             },
-            "video_block": {
+            "text_block": {
               "type": "SharedSlice"
             }
           }
@@ -56,6 +56,13 @@
           "placeholder": "A title of the page used for social media and search engines"
         },
         "type": "Text"
+      },
+      "meta_robots": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Robots",
+          "placeholder": ""
+        }
       }
     }
   }

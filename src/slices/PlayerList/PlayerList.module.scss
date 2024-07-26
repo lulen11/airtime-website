@@ -1,0 +1,12 @@
+@import "../../styles/globals.module.scss";
+
+.playerCards {
+  &List {
+    max-width: $page-wrapper;
+    padding: 1rem;
+  }
+  &Grid {
+    @include playerCardsGrid;
+    grid-template-rows: repeat(1, 1fr);
+  }
+}

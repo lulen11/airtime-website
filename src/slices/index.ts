@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  player_card: dynamic(() => import("./PlayerCard")),
+  player_list: dynamic(() => import("./PlayerList")),
   text_block: dynamic(() => import("./TextBlock")),
   video_block: dynamic(() => import("./VideoBlock")),
 };

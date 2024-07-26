@@ -1,16 +1,17 @@
 {
   "format": "page",
-  "id": "player_page",
-  "label": "Player",
-  "repeatable": true,
+  "id": "player_listing_page",
+  "label": "Player Listing Page",
+  "repeatable": false,
   "status": true,
   "json": {
     "Main": {
       "uid": {
+        "type": "UID",
         "config": {
-          "label": "UID"
-        },
-        "type": "UID"
+          "label": "UID",
+          "placeholder": ""
+        }
       },
       "slices": {
         "type": "Slices",
@@ -18,9 +19,6 @@
         "config": {
           "choices": {
             "text_block": {
-              "type": "SharedSlice"
-            },
-            "player_card": {
               "type": "SharedSlice"
             }
           }
@@ -52,6 +50,13 @@
           "placeholder": "A title of the page used for social media and search engines"
         },
         "type": "Text"
+      },
+      "meta_robots": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Robots",
+          "placeholder": ""
+        }
       }
     }
   }

@@ -11,7 +11,7 @@
     "strictPropertyInitialization": false, // Disable strict property initialization
     "noImplicitThis": false, // Allow `this` expressions with an implicit `any` type
     "alwaysStrict": false, // Disable `alwaysStrict` option
-    "noEmit": true,
+    "noEmit": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",

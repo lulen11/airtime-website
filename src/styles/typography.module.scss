@@ -5,23 +5,34 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
 @mixin headingFont {
   font-family: $heading-font;
   color: $primary-white;
-  font-size: 6.875rem;
+  font-size: 3rem;
   line-height: 1.1;
   font-style: normal;
   font-weight: 600;
   margin-bottom: 3.5rem;
+  @media only screen and (min-width: $md) {
+    font-size: 6.875rem;
+  }
 }
 
 @mixin headingFontUnderline {
   position: relative;
-  z-index: -1;
-  font-weight: 600;
-  text-decoration-thickness: 25px;
-  text-decoration-color: $primary-pink;
-  text-decoration-line: underline;
-  text-decoration-style: inherit;
-  text-underline-offset: 2px;
-  text-underline-position: auto;
+  &::after {
+    content: " ";
+    background: $primary-pink;
+    width: 102%;
+    height: 17px;
+    position: absolute;
+    display: inline-block;
+    bottom: 0.9rem;
+    z-index: -1;
+    left: 0;
+    @media only screen and (min-width: $md) {
+      height: 25px;
+      bottom: 1.9rem;
+      width: 105%;
+    }
+  }
 }
 
 @mixin bodyFont {

@@ -1,0 +1,65 @@
+{
+  "id": "player_list",
+  "type": "SharedSlice",
+  "name": "PlayerList",
+  "description": "PlayerList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "number_of_players": {
+          "type": "Number",
+          "config": {
+            "label": "Number of players to show",
+            "placeholder": ""
+          }
+        },
+        "type_filter": {
+          "type": "Select",
+          "config": {
+            "label": "Type Filter",
+            "placeholder": "",
+            "options": [
+              "Local",
+              "US"
+            ]
+          }
+        },
+        "player_1": {
+          "type": "Link",
+          "config": {
+            "label": "Player 1",
+            "select": "document"
+          }
+        },
+        "player_2": {
+          "type": "Link",
+          "config": {
+            "label": "Player 2",
+            "select": "document"
+          }
+        },
+        "player_3": {
+          "type": "Link",
+          "config": {
+            "label": "Player 3",
+            "select": "document"
+          }
+        },
+        "player_4": {
+          "type": "Link",
+          "config": {
+            "label": "Player 4",
+            "select": "document"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

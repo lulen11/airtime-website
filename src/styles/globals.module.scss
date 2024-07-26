@@ -9,7 +9,25 @@ $md: 64rem; //1024px
 $lg: 100rem; //1600px
 $xl: 150rem; //2400px
 
+$page-wrapper: $lg;
+
 // interactions
 $smooth-transition: all 0.2s ease-in-out;
 
 $primary-border: 2px dashed $primary-pink;
+
+@mixin playerCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  @media only screen and (min-width: $sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media only screen and (min-width: $md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

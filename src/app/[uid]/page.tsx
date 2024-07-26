@@ -1,3 +1,5 @@
+// TODO: REMOVE THIS EVENTUALLY. KEEPING HERE FOR REFERENCE
+
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SliceZone } from "@prismicio/react";
@@ -10,7 +12,7 @@ type Params = { uid: string };
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
   const page = await client
-    .getByUID("player_page", params.uid)
+    .getByUID("player_card", params.uid)
     .catch(() => notFound());
 
   return <SliceZone slices={page.data.slices} components={components} />;
@@ -23,7 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getByUID("player_page", params.uid)
+    .getByUID("player_card", params.uid)
     .catch(() => notFound());
 
   return {
@@ -34,7 +36,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const client = createClient();
-  const pages = await client.getAllByType("player_page");
+  const pages = await client.getAllByType("player_card");
 
   return pages.map((page) => {
     return { uid: page.uid };

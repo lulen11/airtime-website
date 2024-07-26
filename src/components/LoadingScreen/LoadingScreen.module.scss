@@ -1,0 +1,31 @@
+@import "../../styles/globals.module.scss";
+
+.loadingScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $primary-grey;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Make sure it covers all other content */
+}
+
+.spinner {
+  width: 80%;
+  height: 80vh;
+  animation: fly 2s linear;
+  background: url("../../images/airtime-bird@2x.png") no-repeat center center /
+    contain transparent;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

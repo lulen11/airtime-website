@@ -1,0 +1,150 @@
+@import "../../styles/globals.module.scss";
+
+.playerCard {
+  cursor: pointer;
+  transition: $smooth-transition;
+  position: relative;
+  perspective: 1000px;
+  background-color: transparent;
+  width: 100%;
+  height: 26rem;
+  // min-width: 16rem;
+  background-color: $primary-pink;
+  box-shadow: 0 0 60px $primary-pink;
+  z-index: 1;
+
+  &Inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  &:hover .playerCardInner {
+    transform: rotateY(180deg);
+  }
+  &Front,
+  &Back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  &Front {
+    background-color: $primary-blue;
+    color: $primary-white;
+    border: 1px solid $primary-white;
+
+    &::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      z-index: 2;
+      bottom: 0.8rem;
+      left: 0.5rem;
+      background: url("../../images/player-cards/bird-initials@2x.png")
+        no-repeat bottom left / contain transparent;
+      width: 28%;
+      height: 10rem;
+    }
+    &::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      z-index: 2;
+      bottom: 0.8rem;
+      right: 0.6rem;
+      background: url("../../images/player-cards/ball-pink-stroke@2x.png")
+        no-repeat bottom right / contain transparent;
+      width: 28%;
+      height: 10rem;
+    }
+  }
+  &Back {
+    background-color: $primary-grey;
+    color: $primary-blue;
+    background: url("../../images/player-cards/player-card-bg-pattern@2x.jpg")
+      no-repeat top left / cover $primary-grey;
+    z-index: 2;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &Logo {
+      background: url("../../images/player-cards/logo-star@2x.png") no-repeat
+        top center / contain transparent;
+      width: 100%;
+      height: 8rem;
+      display: block;
+    }
+  }
+}
+
+.name {
+  font-family: $heading-font;
+  color: $primary-white;
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px $primary-blue;
+  text-stroke: 1px $primary-blue;
+  font-size: 1.7rem;
+  line-height: 0.8;
+  padding: 1rem;
+  position: relative;
+  z-index: 2;
+  span {
+    color: $primary-pink;
+    -webkit-text-stroke: 1px $primary-white;
+    text-stroke: 1px $primary-white;
+    font-size: 1rem;
+  }
+}
+
+.playerImage {
+  // max-height: 26rem;
+  // width: auto;
+  // margin: 0 auto;
+  height: auto;
+  width: 100%;
+  margin: auto;
+  position: relative;
+  top: -3.5rem;
+  z-index: 1;
+}
+
+.playerDetails {
+  background-color: $primary-grey;
+  border: 2px solid $primary-blue;
+  margin: 2rem;
+  padding: 0.5rem;
+  .name {
+    color: $primary-blue;
+    padding: 0;
+    &::after {
+      content: " ";
+      display: block;
+      background-color: $primary-blue;
+      width: 100%;
+      height: 3px;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.stats {
+  margin: 0;
+  li {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  width: 12.5rem;
+  height: 3.56rem;
+}
