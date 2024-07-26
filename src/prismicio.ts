@@ -21,6 +21,11 @@ const routes: prismic.ClientConfig["routes"] = [
     uid: "homepage",
     path: "/",
   },
+  {
+    type: "development_home_page",
+    uid: "development-home",
+    path: "/development-home",
+  },
   // {
   //   type: "player_page",
   //   path: "/:uid",

@@ -4,6 +4,85 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type DevelopmentHomePageDocumentDataSlicesSlice =
+  | PlayerListSlice
+  | VideoBlockSlice
+  | TextBlockSlice;
+
+/**
+ * Content for Development Home Page documents
+ */
+interface DevelopmentHomePageDocumentData {
+  /**
+   * Slice Zone field in *Development Home Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: development_home_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<DevelopmentHomePageDocumentDataSlicesSlice> /**
+   * Meta Description field in *Development Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: development_home_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Development Home Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: development_home_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Development Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: development_home_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Robots field in *Development Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: development_home_page.meta_robots
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_robots: prismic.KeyTextField;
+}
+
+/**
+ * Development Home Page document from Prismic
+ *
+ * - **API ID**: `development_home_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DevelopmentHomePageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<DevelopmentHomePageDocumentData>,
+    "development_home_page",
+    Lang
+  >;
+
 type HomePageDocumentDataSlicesSlice =
   | PlayerListSlice
   | TextBlockSlice
@@ -345,6 +424,17 @@ interface PlayerListingPageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Robots field in *Player Listing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_listing_page.meta_robots
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_robots: prismic.KeyTextField;
 }
 
 /**
@@ -364,6 +454,7 @@ export type PlayerListingPageDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | DevelopmentHomePageDocument
   | HomePageDocument
   | NavigationDocument
   | PlayerCardDocument
@@ -725,6 +816,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      DevelopmentHomePageDocument,
+      DevelopmentHomePageDocumentData,
+      DevelopmentHomePageDocumentDataSlicesSlice,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,

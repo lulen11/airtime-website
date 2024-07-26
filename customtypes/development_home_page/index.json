@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "player_listing_page",
-  "label": "Player Listing Page",
+  "id": "development_home_page",
+  "label": "Development Home Page",
   "repeatable": false,
   "status": true,
   "json": {
@@ -18,6 +18,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "player_list": {
+              "type": "SharedSlice"
+            },
+            "video_block": {
+              "type": "SharedSlice"
+            },
             "text_block": {
               "type": "SharedSlice"
             }
