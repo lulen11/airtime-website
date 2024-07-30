@@ -1,5 +1,44 @@
 @import "../../styles/globals.module.scss";
 
+.playersPage {
+  background: url("../../images/graph-paper-white.svg") repeat top left / 5rem
+    $primary-grey;
+  padding: 2rem 2rem 2rem;
+  position: relative;
+  margin-top: -6rem;
+  z-index: 0;
+
+  &Wrapper {
+    border: $primary-border;
+    border-color: $primary-blue;
+    // padding: 2rem 0rem;
+  }
+}
+
 .playerCardsGrid {
   @include playerCardsGrid;
+  grid-template-rows: repeat(2, 1fr);
+  place-items: center;
+  margin: 0;
+}
+
+.playerCardWrapper {
+  border-right: $primary-border;
+  border-bottom: $primary-border;
+  border-color: $primary-blue;
+  padding: 2rem;
+  width: 100%;
+
+  &:nth-child(3) {
+    border-right: none;
+  }
+  // border-top: none;
+
+  // &:nth-child(1) {
+  //   border-top: none;
+  //   border-left: none;
+  // }
+  // &:nth-child(-n + 3) {
+  //   border-top: none;
+  // }
 }

@@ -12,6 +12,9 @@
   background-color: $primary-pink;
   box-shadow: 0 0 60px $primary-pink;
   z-index: 1;
+  @media only screen and (min-width: $sm) {
+    max-width: 17rem;
+  }
 
   &Inner {
     position: relative;

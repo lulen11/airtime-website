@@ -11,7 +11,8 @@ const LoadingWrapper: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+      // }, 1500);
+    }, 1);
   }, []);
 
   return loading ? <LoadingScreen /> : <>{children}</>;
