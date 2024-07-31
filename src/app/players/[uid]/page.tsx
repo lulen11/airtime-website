@@ -1,6 +1,8 @@
 import React from "react";
+import { PrismicRichText } from "@prismicio/react";
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
+import styles from "./playerPage.module.scss";
 
 type Params = { uid: string };
 
@@ -21,9 +23,41 @@ export default async function PlayerPage({ params }: { params: Params }) {
 
   return (
     <>
-      <h1>{page.data.player_name}</h1>
-      <p>{page.data.player_location}</p>
-      {/* TODO: Add other player details here */}
+      <div className={styles.playerPage}>
+        <section className={styles.sectionHero}>
+          <div className={styles.wrapper}>
+            <div>video</div>
+            <h1>{page.data.player_name}</h1>
+            <div className={styles.content}>
+              <p>
+                <mark>{page.data.short_bio} </mark>
+              </p>
+            </div>
+          </div>
+        </section>
+        <section className={styles.sectionStats}>
+          <ul>
+            {page.data.player_stats?.map((item) => (
+              <li key={item.stat_label}>
+                {item.stat_label}: {item.stat}
+              </li>
+            ))}
+            <li>another one</li>
+            <li>another oneone</li>
+            <li>another one</li>
+            <li>another lone</li>
+            <li>another oneone</li>
+            <li>another one</li>
+          </ul>
+        </section>
+        <section className={styles.sectionStory}>
+          <div className={styles.wrapper}>
+            <div className={styles.content}>
+              <PrismicRichText field={page.data.player_story} />
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
