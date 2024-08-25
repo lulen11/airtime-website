@@ -330,6 +330,17 @@ interface PlayerCardDocumentData {
   player_type: prismic.SelectField<"Local" | "US">;
 
   /**
+   * Player Video field in *Player*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.player_video
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  player_video: prismic.EmbedField;
+
+  /**
    * Slice Zone field in *Player*
    *
    * - **Field Type**: Slice Zone

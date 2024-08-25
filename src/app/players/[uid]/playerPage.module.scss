@@ -34,6 +34,13 @@
   }
 }
 
+.playerVideo,
+.playerVideo iframe {
+  width: 100%;
+  height: 30rem;
+  margin-bottom: 2rem;
+}
+
 .sectionStats {
   padding: 1rem;
   background-color: $primary-blue;

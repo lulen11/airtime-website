@@ -81,6 +81,13 @@
           "options": ["Local", "US"]
         }
       },
+      "player_video": {
+        "type": "Embed",
+        "config": {
+          "label": "Player Video",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

@@ -3,10 +3,14 @@
 .playersPage {
   background: url("../../images/graph-paper-white.svg") repeat top left / 5rem
     $primary-grey;
-  padding: 2.5rem;
+  padding: 6rem 1rem 1rem;
   position: relative;
   margin-top: -6rem;
   z-index: 0;
+
+  @media only screen and (min-width: $md) {
+    padding: 2.5rem;
+  }
 
   &Wrapper {
     border: $primary-border;
@@ -23,16 +27,30 @@
 }
 
 .playerCardWrapper {
-  border-right: $primary-border;
   border-bottom: $primary-border;
   border-color: $primary-blue;
-  padding: 2.5rem;
   width: 100%;
   display: flex;
   place-content: center;
-
-  &:nth-child(3) {
-    border-right: none;
+  padding: 1rem;
+  @media only screen and (min-width: $sm) and (max-width: $sm-md) {
+    border-right: $primary-border;
+    border-color: $primary-blue;
+    &:nth-child(even) {
+      border-right: none;
+    }
+  }
+  @media only screen and (min-width: $sm-md) and (max-width: $lg) {
+    border-right: $primary-border;
+    border-color: $primary-blue;
+    &:nth-child(3) {
+      border-right: none;
+    }
+  }
+  @media only screen and (min-width: $md) {
+    border-right: $primary-border;
+    border-color: $primary-blue;
+    padding: 2.5rem;
   }
   // border-top: none;
 

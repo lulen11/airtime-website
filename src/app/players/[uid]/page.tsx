@@ -26,7 +26,29 @@ export default async function PlayerPage({ params }: { params: Params }) {
       <div className={styles.playerPage}>
         <section className={styles.sectionHero}>
           <div className={styles.wrapper}>
-            <div>video</div>
+            {/* <div
+              className={styles.playerVideo}
+              dangerouslySetInnerHTML={{
+                __html: page.data.player_video.html,
+              }}
+            />
+            <h1>hey</h1>
+            <video
+              className={styles.playerVideo}
+              autoPlay
+              muted
+              src={page.data.player_video.embed_url}
+            /> */}
+            {/* OK WHEN YOU COME BACK TO IT, you need to update how you input the URL in prismic CMS */}
+            <iframe
+              className={styles.playerVideo}
+              id="inlineFrameExample"
+              title="Inline Frame Example"
+              width="1920"
+              height="1080"
+              src="https://player.vimeo.com/video/857061291?autoplay=1&loop=1&muted=1"
+              allow="autoplay"
+            ></iframe>
             <h1>{page.data.player_name}</h1>
             <div className={styles.content}>
               <p>
