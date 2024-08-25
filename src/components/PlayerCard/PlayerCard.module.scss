@@ -6,12 +6,16 @@
   position: relative;
   perspective: 1000px;
   background-color: transparent;
-  width: 100%;
+  // width: 100%;
   height: 26rem;
   // min-width: 16rem;
   background-color: $primary-pink;
   box-shadow: 0 0 60px $primary-pink;
   z-index: 1;
+
+  aspect-ratio: 2 / 2.85;
+  margin: 0 auto;
+
   @media only screen and (min-width: $sm) {
     max-width: 17rem;
   }
