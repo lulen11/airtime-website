@@ -41,7 +41,7 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
       });
 
       const playerData = response.results.map((player) => ({
-        uid: player.id,
+        uid: player.uid,
         player_name: (player.data as any).player_name,
         player_position: (player.data as any).player_position,
         image: (player.data as any).image,

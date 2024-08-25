@@ -4,6 +4,9 @@
   @include bodyFont;
   padding: 2rem 1rem;
   overflow: hidden;
+  position: relative;
+  z-index: 2;
+  height: $header-height;
 }
 
 .navItem {

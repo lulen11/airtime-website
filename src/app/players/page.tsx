@@ -29,14 +29,17 @@ export default async function AllPlayersPage() {
 
   return (
     <>
-      <SliceZone slices={playerPage.data.slices} components={components} />
-      <div>
-        <h1>All Players</h1>
-        <section className={styles.playerCardsGrid}>
-          {formattedPlayers.map((player) => (
-            <PlayerCard key={player.uid} player={player} />
-          ))}
-        </section>
+      <div className={styles.playersPage}>
+        <div className={styles.playersPageWrapper}>
+          <section className={styles.playerCardsGrid}>
+            {formattedPlayers.map((player) => (
+              <div key={player.uid} className={styles.playerCardWrapper}>
+                <PlayerCard key={player.uid} player={player} />
+              </div>
+            ))}
+          </section>
+          <SliceZone slices={playerPage.data.slices} components={components} />
+        </div>
       </div>
     </>
   );

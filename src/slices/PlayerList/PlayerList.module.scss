@@ -8,5 +8,25 @@
   &Grid {
     @include playerCardsGrid;
     grid-template-rows: repeat(1, 1fr);
+
+    // display: flex;
+    // flex-direction: column;
+
+    // @media only screen and (min-width: $md) {
+    //   flex-wrap: nowrap;
+    //   flex-direction: row;
+    // }
+    @media only screen and (min-width: $sm) {
+      grid-row-gap: 2rem;
+    }
+    @media only screen and (min-width: $md) {
+      > div {
+        margin-right: 1rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
   }
 }
