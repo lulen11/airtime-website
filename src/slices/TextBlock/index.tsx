@@ -44,7 +44,11 @@ const TextBlock = ({ slice }: TextBlockProps): JSX.Element => {
           />
         )}
 
-        {titleField && <PrismicRichText field={titleField} />}
+        <div
+          className={`${slice.variation && textAlign === "text-left" ? styles.contentLeft : styles.contentCenter}`}
+        >
+          {titleField && <PrismicRichText field={titleField} />}
+        </div>
 
         <div
           className={`${slice.variation && textAlign === "text-left" ? styles.contentLeft : styles.contentCenter}`}

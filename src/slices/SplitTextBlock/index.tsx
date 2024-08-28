@@ -33,10 +33,10 @@ const SplitTextBlock = ({ slice }: SplitTextBlockProps): JSX.Element => {
       <h3 className={styles.sectionTitle}>Airtime Assist</h3>
       <div className={`${styles.wrapper} `}>
         <div className={styles.column}>
-          <span className={styles.eyebrow}>
-            {slice.primary.heading_one_eyebrow}
-          </span>
           <div className={styles.content}>
+            <span className={styles.eyebrow}>
+              {slice.primary.heading_one_eyebrow}
+            </span>
             <PrismicRichText field={slice.primary.heading_one} />
             <PrismicRichText field={slice.primary.body_content_one} />
             <PrismicNextLink field={slice.primary.link_one}>
@@ -45,10 +45,10 @@ const SplitTextBlock = ({ slice }: SplitTextBlockProps): JSX.Element => {
           </div>
         </div>
         <div className={styles.column}>
-          <span className={styles.eyebrow}>
-            {slice.primary.heading_two_eyebrow}
-          </span>
           <div className={styles.content}>
+            <span className={styles.eyebrow}>
+              {slice.primary.heading_two_eyebrow}
+            </span>
             <PrismicRichText field={slice.primary.heading_two} />
             <PrismicRichText field={slice.primary.body_content_two} />
             <PrismicNextLink field={slice.primary.link_two}>

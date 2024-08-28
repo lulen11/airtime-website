@@ -25,6 +25,7 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
 
 @mixin headingFontUnderline {
   position: relative;
+  font-weight: normal;
   &::after {
     content: " ";
     background: $primary-pink;

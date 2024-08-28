@@ -3,7 +3,7 @@
 .sectionSplitTextBlock {
   position: relative;
   overflow: hidden;
-  margin-top: -5rem;
+  margin: -5rem auto -15rem;
 
   &::before {
     background: url("../../images/player-illustrations/dribbler-layer@2x.png")
@@ -39,20 +39,34 @@
     bottom: 15.25rem;
 
     @media only screen and (min-width: $sm-md) {
-      bottom: 14rem;
+      // bottom: 14rem;
       width: 19rem;
       height: 28rem;
-      left: -2rem;
+      left: -4rem;
       margin-bottom: -12rem;
+      bottom: 22rem;
+    }
+
+    @media only screen and (min-width: $md) {
+      left: -4.5rem;
+      bottom: 17rem;
+    }
+
+    @media only screen and (min-width: $lg) {
+      left: 2rem;
+      bottom: 24rem;
+    }
+    @media only screen and (min-width: $xl) {
+      left: 25rem;
     }
   }
 
   .wrapper {
-    max-width: $page-wrapper;
     border: 1px dashed white;
     margin: 0 auto;
     @media only screen and (min-width: $sm-md) {
       display: flex;
+      justify-content: center;
     }
   }
 
@@ -87,10 +101,15 @@
   padding: 3rem 1rem;
   position: relative;
   color: $primary-blue;
+  width: 50%;
   @media only screen and (min-width: $sm-md) {
-    min-height: 100vh;
+    min-height: 50rem;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+  }
+  @media only screen and (min-width: $md) {
+    min-height: 60rem;
   }
 
   @media only screen and (min-width: $md) {
@@ -107,7 +126,7 @@
     @media only screen and (min-width: $sm-md) {
       text-align: right;
       justify-content: flex-end;
-      align-items: flex-end;
+      align-items: flex-start;
       .eyebrow {
         right: 1rem;
         left: initial;
@@ -124,6 +143,9 @@
       right: 0;
       background: url("../../images/line-bird-line@2x.png") no-repeat center /
         contain transparent;
+      @media only screen and (min-width: $lg) {
+        left: 43rem;
+      }
     }
     &::before {
       left: 0;
@@ -156,4 +178,5 @@
 
 .content {
   max-width: 70%;
+  max-width: 40rem;
 }
