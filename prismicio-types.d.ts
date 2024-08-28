@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type DevelopmentHomePageDocumentDataSlicesSlice =
+  | SplitTextBlockSlice
   | PlayerListSlice
   | VideoBlockSlice
   | TextBlockSlice;
@@ -567,6 +568,141 @@ export type PlayerListSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *SplitTextBlock → Default → Primary*
+ */
+export interface SplitTextBlockSliceDefaultPrimary {
+  /**
+   * Heading One Eyebrow field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.heading_one_eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_one_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Heading One field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.heading_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading_one: prismic.RichTextField;
+
+  /**
+   * Body Content One field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.body_content_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_content_one: prismic.RichTextField;
+
+  /**
+   * Link One field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.link_one
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_one: prismic.LinkField;
+
+  /**
+   * Link Label One field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.link_label_one
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label_one: prismic.KeyTextField;
+
+  /**
+   * Heading Two Eyebrow field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.heading_two_eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_two_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Heading Two field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.heading_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading_two: prismic.RichTextField;
+
+  /**
+   * Body Content Two field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.body_content_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_content_two: prismic.RichTextField;
+
+  /**
+   * Link Two field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.link_two
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_two: prismic.LinkField;
+
+  /**
+   * Link Label Two field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.link_label_two
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label_two: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for SplitTextBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SplitTextBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SplitTextBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SplitTextBlock*
+ */
+type SplitTextBlockSliceVariation = SplitTextBlockSliceDefault;
+
+/**
+ * SplitTextBlock Shared Slice
+ *
+ * - **API ID**: `split_text_block`
+ * - **Description**: SplitTextBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SplitTextBlockSlice = prismic.SharedSlice<
+  "split_text_block",
+  SplitTextBlockSliceVariation
+>;
+
+/**
  * Primary content in *TextBlock → TextBlock → Primary*
  */
 export interface TextBlockSliceDefaultPrimary {
@@ -848,6 +984,10 @@ declare module "@prismicio/client" {
       PlayerListSliceDefaultPrimary,
       PlayerListSliceVariation,
       PlayerListSliceDefault,
+      SplitTextBlockSlice,
+      SplitTextBlockSliceDefaultPrimary,
+      SplitTextBlockSliceVariation,
+      SplitTextBlockSliceDefault,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceTextBlockWithButtonPrimary,
