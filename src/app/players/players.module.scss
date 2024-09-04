@@ -9,7 +9,13 @@
   z-index: 0;
 
   @media only screen and (min-width: $md) {
-    padding: 2.5rem;
+    padding: 2.75rem 0;
+  }
+  @media only screen and (min-width: $md-lg) {
+    padding: 2.75rem 1.5rem;
+  }
+  @media only screen and (min-width: $lg) {
+    padding: 2.75rem 2.5rem;
   }
 
   &Wrapper {
@@ -35,27 +41,30 @@
   display: flex;
   place-content: center;
   padding: 1rem;
-  @media only screen and (min-width: $sm) and (max-width: $sm-md) {
+  @media only screen and (min-width: $sm) and (max-width: $md) {
     border-right: $primary-border;
     border-color: $primary-blue;
     &:nth-child(even) {
       border-right: none;
     }
   }
-  @media only screen and (min-width: $sm-md) and (max-width: $md-lg) {
+  // @media only screen and (min-width: $sm-md) and (max-width: $md-lg) {
+  //   border-right: $primary-border;
+  //   border-color: $primary-blue;
+  //   &:nth-child(3) {
+  //     border-right: none;
+  //   }
+  // }
+  @media only screen and (min-width: $md) {
     border-right: $primary-border;
     border-color: $primary-blue;
-    &:nth-child(3) {
+    padding: 0.5rem;
+    &:nth-child(4) {
       border-right: none;
     }
   }
   @media only screen and (min-width: $md-lg) {
-    border-right: $primary-border;
-    border-color: $primary-blue;
-    padding: 2rem;
-    &:nth-child(4) {
-      border-right: none;
-    }
+    padding: 1.5rem;
   }
 
   @media only screen and (min-width: 1370px) {

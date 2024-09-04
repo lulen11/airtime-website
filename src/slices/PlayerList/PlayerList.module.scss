@@ -20,14 +20,5 @@
     @media only screen and (min-width: $sm) {
       grid-row-gap: 2rem;
     }
-    @media only screen and (min-width: $md) {
-      > div {
-        margin-right: 1rem;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
   }
 }
