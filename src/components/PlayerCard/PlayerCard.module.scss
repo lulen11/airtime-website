@@ -12,12 +12,27 @@
   background-color: $primary-pink;
   box-shadow: 0 0 60px $primary-pink;
   z-index: 1;
-
   aspect-ratio: 2 / 2.85;
   margin: 0 auto;
 
+  &::after {
+    content: " ";
+    display: block;
+    background: url("../../images/blur-glow-pink.png") no-repeat center / 42rem;
+    width: 200%;
+    left: -50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    margin: 0 auto;
+    z-index: 0;
+    transform: scale(0);
+    transition: $smooth-transition;
+    transition-duration: 0.5s;
+  }
   @media only screen and (min-width: $sm) {
-    max-width: 17rem;
+    max-width: 16rem;
+    height: 24rem;
   }
 
   &Inner {
@@ -28,9 +43,15 @@
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
   }
-  &:hover .playerCardInner {
-    transform: rotateY(180deg);
+  &:hover {
+    &::after {
+      transform: scale(1);
+    }
+    .playerCardInner {
+      transform: rotateY(180deg);
+    }
   }
   &Front,
   &Back {

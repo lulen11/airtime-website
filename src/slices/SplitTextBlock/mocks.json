@@ -1,0 +1,87 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading_one_eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "long",
+				"type": "Text"
+			},
+			"heading_one": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore sit est labore mollit."
+						}
+					}
+				]
+			},
+			"body_content_one": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Do irure exercitation do labore do pariatur et et. Amet duis est incididunt labore pariatur qui non reprehenderit irure et deserunt. Aliqua incididunt ea minim ut."
+						}
+					}
+				]
+			},
+			"link_one": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
+			},
+			"heading_two_eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "explanation",
+				"type": "Text"
+			},
+			"heading_two": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nisi exercitation officia irure incididunt Lorem. Esse anim ad non irure."
+						}
+					}
+				]
+			},
+			"body_content_two": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ipsum dolore minim est. Quis non et consectetur do laborum aliquip est."
+						}
+					}
+				]
+			},
+			"link_two": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"link_label_two": {
+				"__TYPE__": "FieldContent",
+				"value": "flew",
+				"type": "Text"
+			},
+			"link_label_one": {
+				"__TYPE__": "FieldContent",
+				"value": "black",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

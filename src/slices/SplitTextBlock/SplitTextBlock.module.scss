@@ -1,0 +1,182 @@
+@import "../../styles/globals.module.scss";
+
+.sectionSplitTextBlock {
+  position: relative;
+  overflow: hidden;
+  margin: -5rem auto -15rem;
+
+  &::before {
+    background: url("../../images/player-illustrations/dribbler-layer@2x.png")
+      no-repeat top left / contain transparent;
+    content: " ";
+    position: relative;
+    left: 68%;
+    display: block;
+    z-index: 3;
+    width: 10rem;
+    height: 14rem;
+    margin-top: -6rem;
+    top: 6.25rem;
+
+    @media only screen and (min-width: $sm-md) {
+      top: 10.25rem;
+      margin-top: -10rem;
+      width: 19rem;
+      height: 25rem;
+    }
+  }
+  &::after {
+    background: url("../../images/player-illustrations/shooter-m.png") no-repeat
+      top left / contain transparent;
+    content: " ";
+    position: relative;
+    display: block;
+    z-index: 3;
+
+    left: 82%;
+    width: 13rem;
+    height: 19rem;
+    bottom: 15.25rem;
+
+    @media only screen and (min-width: $sm-md) {
+      // bottom: 14rem;
+      width: 19rem;
+      height: 28rem;
+      left: -4rem;
+      margin-bottom: -12rem;
+      bottom: 22rem;
+    }
+
+    @media only screen and (min-width: $md) {
+      left: -4.5rem;
+      bottom: 17rem;
+    }
+
+    @media only screen and (min-width: $lg) {
+      left: 2rem;
+      bottom: 24rem;
+    }
+    @media only screen and (min-width: $xl) {
+      left: 25rem;
+    }
+  }
+
+  .wrapper {
+    border: 1px dashed white;
+    margin: 0 auto;
+    @media only screen and (min-width: $sm-md) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  h2,
+  h3 {
+    @include headingFontH3;
+  }
+  p,
+  a {
+    @include bodyFont;
+    margin-bottom: 1.5rem;
+  }
+  h2,
+  h3,
+  p,
+  a {
+    color: $primary-blue;
+  }
+
+  .sectionTitle {
+    margin: 0 1rem 0.75rem;
+    line-height: 0;
+    color: $primary-white;
+    @media only screen and (min-width: $sm-md) {
+      margin: 0 auto 1.25rem;
+      text-align: center;
+    }
+  }
+}
+
+.column {
+  padding: 3rem 1rem;
+  position: relative;
+  color: $primary-blue;
+  width: 50%;
+  @media only screen and (min-width: $sm-md) {
+    min-height: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  @media only screen and (min-width: $md) {
+    min-height: 60rem;
+  }
+
+  @media only screen and (min-width: $md) {
+    padding: 3rem 3rem 2.5rem;
+  }
+  &:first-child {
+    background: url("../../images/graph-paper-grey.svg") repeat top left / 5rem
+      $primary-white;
+  }
+  &:last-child {
+    background-color: $primary-grey;
+    position: relative;
+
+    @media only screen and (min-width: $sm-md) {
+      text-align: right;
+      justify-content: flex-end;
+      align-items: flex-start;
+      .eyebrow {
+        right: 1rem;
+        left: initial;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: " ";
+      position: absolute;
+      height: 100%;
+      width: 3.25rem;
+      bottom: 0;
+      right: 0;
+      background: url("../../images/line-bird-line@2x.png") no-repeat center /
+        contain transparent;
+      @media only screen and (min-width: $lg) {
+        left: 43rem;
+      }
+    }
+    &::before {
+      left: 0;
+      transform: scaleX(-1);
+      display: none;
+      @media only screen and (min-width: $sm-md) {
+        display: block;
+      }
+    }
+    &::after {
+      @media only screen and (min-width: $sm-md) {
+        display: none;
+      }
+      @media only screen and (min-width: $md) {
+        display: block;
+      }
+    }
+  }
+  .eyebrow {
+    top: 1rem;
+    left: 1rem;
+    margin-bottom: 2.5rem;
+    display: block;
+    @include bodyFont;
+    color: $primary-blue;
+    font-weight: 100;
+    letter-spacing: -0.02rem;
+  }
+}
+
+.content {
+  max-width: 70%;
+  max-width: 40rem;
+}

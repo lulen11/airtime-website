@@ -4,6 +4,7 @@ import { repositoryName } from "@/prismicio";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 import LoadingWrapper from "@/components/LoadingWrapper/LoadingWrapper";
 import styles from "./layout.module.scss";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
           <Header />
           <LoadingWrapper>{children}</LoadingWrapper>
           <PrismicPreview repositoryName={repositoryName} />
+          <Footer />
         </body>
       </html>
     </>

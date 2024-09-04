@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "split_text_block": {
+              "type": "SharedSlice"
+            },
             "player_list": {
               "type": "SharedSlice"
             },

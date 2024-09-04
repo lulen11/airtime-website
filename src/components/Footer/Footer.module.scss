@@ -1,0 +1,81 @@
+@import "../../styles/globals.module.scss";
+
+.footer {
+  @include bodyFont;
+  padding: 2rem 0 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+
+  &ContentWrapper {
+    margin-top: 1rem;
+    padding: 1rem;
+    @media only screen and (min-width: $sm) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &Content {
+    flex-basis: 60%;
+    @media only screen and (min-width: $sm) {
+      padding-right: 4rem;
+    }
+    @media only screen and (min-width: $md) {
+      padding-right: 6rem;
+    }
+  }
+
+  &Menu {
+    display: flex;
+    align-items: flex-end;
+    @media only screen and (max-width: $sm) {
+      margin-top: 1rem;
+      border-top: 1px dashed white;
+      padding-top: 1rem;
+    }
+
+    li {
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .icon {
+      margin-left: 0.25rem;
+      width: 1.25rem;
+      svg {
+        fill: $primary-white;
+      }
+    }
+  }
+}
+
+.bigFooterImage {
+  width: 100%;
+  position: relative;
+  min-height: 11rem;
+  display: block;
+  background: url("../../images/logo-wordmark.svg") no-repeat center center /
+    cover transparent;
+  @media only screen and (min-width: $sm) {
+    min-height: 21rem;
+  }
+
+  @media only screen and (min-width: $md) {
+    min-height: 28rem;
+  }
+
+  @media only screen and (min-width: $lg) {
+    background-size: contain;
+  }
+}
+
+.footerLink {
+  transition: $smooth-transition;
+  &:hover,
+  svg:hover {
+    color: $primary-pink;
+    fill: $primary-pink;
+  }
+}

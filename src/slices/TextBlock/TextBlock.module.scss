@@ -7,12 +7,22 @@
 
   .wrapper {
     padding: 3rem 1rem;
+    max-width: $page-wrapper;
+    margin: 0 auto;
+    &Left {
+      h1,
+      p {
+        text-align: left;
+        @media only screen and (min-width: $md) {
+          width: 70%;
+        }
+        @media only screen and (min-width: $lg) {
+          width: 65%;
+        }
+      }
+    }
     @media only screen and (min-width: $md) {
       padding: 6rem 2rem;
-
-      &Left {
-        width: 80%;
-      }
     }
   }
 
@@ -20,6 +30,7 @@
   h2 {
     @include headingFont;
     color: $primary-white;
+    text-align: center;
   }
 
   h1 strong {
@@ -29,6 +40,9 @@
   p {
     @include bodyFont;
     color: $primary-white;
+    position: relative;
+    z-index: 5;
+    text-align: center;
   }
 }
 
@@ -45,6 +59,14 @@
 
 .contentCenter {
   display: block;
+  text-align: center;
+  margin: 0 auto;
+  @media only screen and (min-width: $md) {
+    width: 70%;
+  }
+  @media only screen and (min-width: $lg) {
+    width: 65%;
+  }
   .btnWrapper {
     display: flex;
     flex-direction: column;
