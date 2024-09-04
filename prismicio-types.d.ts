@@ -84,6 +84,38 @@ export type DevelopmentHomePageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Text Field field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.text_field
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text_field: prismic.RichTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
 type HomePageDocumentDataSlicesSlice =
   | PlayerListSlice
   | TextBlockSlice
@@ -467,6 +499,7 @@ export type PlayerListingPageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | DevelopmentHomePageDocument
+  | FooterDocument
   | HomePageDocument
   | NavigationDocument
   | PlayerCardDocument
@@ -966,6 +999,8 @@ declare module "@prismicio/client" {
       DevelopmentHomePageDocument,
       DevelopmentHomePageDocumentData,
       DevelopmentHomePageDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
