@@ -1,5 +1,11 @@
 import { createClient } from "@/prismicio";
-import { IconInstagram, IconTikTok, IconYouTube } from "../../images/icons";
+import {
+  IconFacebook,
+  IconInstagram,
+  // IconTikTok,
+  // IconYouTube,
+  // IconX,
+} from "../../images/icons";
 import { PrismicRichText } from "@prismicio/react";
 
 import styles from "./Footer.module.scss";
@@ -28,20 +34,36 @@ export default async function Footer() {
               </a>
             </li>
             <li className={styles.icon}>
-              <a className={styles.footerLink} href="#">
+              <a
+                className={styles.footerLink}
+                href="https://www.facebook.com/profile.php?id=61565089387926"
+              >
+                <IconFacebook />
+              </a>
+            </li>
+            <li className={styles.icon}>
+              <a
+                className={styles.footerLink}
+                href="https://www.instagram.com/airtime.basketball/"
+              >
                 <IconInstagram />
               </a>
             </li>
-            <li className={styles.icon}>
+            {/* <li className={styles.icon}>
+              <a className={styles.footerLink} href="#">
+                <IconX />
+              </a>
+            </li> */}
+            {/* <li className={styles.icon}>
               <a className={styles.footerLink} href="#">
                 <IconTikTok />
               </a>
-            </li>
-            <li className={styles.icon}>
+            </li> */}
+            {/* <li className={styles.icon}>
               <a className={styles.footerLink} href="#">
                 <IconYouTube />
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
