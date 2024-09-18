@@ -306,7 +306,7 @@ interface PlayerCardDocumentData {
   player_position: prismic.KeyTextField;
 
   /**
-   * Image field in *Player*
+   * Player Card Image field in *Player*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -363,18 +363,7 @@ interface PlayerCardDocumentData {
   player_type: prismic.SelectField<"Local" | "US">;
 
   /**
-   * Player Video field in *Player*
-   *
-   * - **Field Type**: Embed
-   * - **Placeholder**: *None*
-   * - **API ID Path**: player_card.player_video
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#embed
-   */
-  player_video: prismic.EmbedField;
-
-  /**
-   * Player Feature Image field in *Player*
+   * Player Banner Image field in *Player*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*

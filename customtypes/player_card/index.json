@@ -29,7 +29,7 @@
       "image": {
         "type": "Image",
         "config": {
-          "label": "Image",
+          "label": "Player Card Image",
           "constraint": {},
           "thumbnails": []
         }
@@ -81,17 +81,10 @@
           "options": ["Local", "US"]
         }
       },
-      "player_video": {
-        "type": "Embed",
-        "config": {
-          "label": "Player Video",
-          "placeholder": ""
-        }
-      },
       "player_feature_image": {
         "type": "Image",
         "config": {
-          "label": "Player Feature Image",
+          "label": "Player Banner Image",
           "constraint": {},
           "thumbnails": []
         }
