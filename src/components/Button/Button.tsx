@@ -3,6 +3,7 @@ import styles from "./Button.module.scss";
 
 const Button = ({ link, label }: { link: any; label: any }) => {
   const buttonLabel = label || "";
+
   const wrapOInSpan = (text) => {
     const index = text.indexOf("o");
     if (index !== -1) {
@@ -17,12 +18,20 @@ const Button = ({ link, label }: { link: any; label: any }) => {
     return text;
   };
 
+  // Checking if it's a prismic link or a string
+  const isPrismicLink =
+    typeof link === "object" && link !== null && "link_type" in link;
+
   return (
     <button className={styles.button}>
-      <PrismicNextLink field={link}>
-        {/* {label} */}
-        {wrapOInSpan(buttonLabel)}
-      </PrismicNextLink>
+      {isPrismicLink ? (
+        <PrismicNextLink field={link}>
+          {/* {label} */}
+          {wrapOInSpan(buttonLabel)}
+        </PrismicNextLink>
+      ) : (
+        <a href={link}> {wrapOInSpan(buttonLabel)}</a>
+      )}
     </button>
   );
 };

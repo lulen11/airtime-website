@@ -34,6 +34,39 @@
   }
 }
 
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 8rem;
+  @media only screen and (min-width: $md) {
+    min-height: 25rem;
+  }
+
+  &Text {
+    position: absolute;
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .content {
+    display: none;
+    @media only screen and (min-width: $md) {
+      display: block;
+    }
+  }
+
+  & > img {
+    @media only screen and (min-width: $md) {
+      min-width: 60rem;
+    }
+  }
+}
+
 .playerVideo,
 .playerVideo iframe {
   width: 100%;
@@ -48,13 +81,28 @@
   font-family: $body-font;
   text-transform: uppercase;
   font-size: 1rem;
-  min-height: 15rem;
   position: relative;
+  @media only screen and (min-width: $sm) {
+    min-height: 15rem;
+  }
+
+  ul {
+    max-width: 60rem;
+    margin: 0 auto;
+    position: relative;
+    @media only screen and (min-width: $sm) {
+      min-height: 15rem;
+    }
+  }
 
   li {
     font-weight: 100;
     display: inline-block;
     padding: 0.25rem 0.75rem;
+    &::selection {
+      background: $primary-pink;
+      color: $primary-white;
+    }
     @media only screen and (min-width: $md) {
       position: absolute;
     }
@@ -105,19 +153,70 @@
     cover transparent;
 
   .content {
-    max-width: 35rem;
     padding: 4rem 2.5rem;
     background: url("../../../images/border-dash.svg") repeat-y top left
       transparent;
 
     p {
       margin-bottom: 1.5rem;
+      max-width: 35rem;
       @include bodyFont;
       color: $primary-blue;
 
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    div:has(iframe) {
+      // border: 2px solid red;
+    }
+    iframe,
+    img {
+      margin-bottom: 1.5rem;
+      @media only screen and (min-width: $sm) {
+        margin-left: -1rem;
+      }
+      @media only screen and (min-width: $md) {
+        margin: 3rem 0 3rem -5rem;
+      }
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 30rem;
+    }
+  }
+}
+
+.btnWrapper {
+  position: relative;
+  bottom: 5rem;
+  button {
+    position: absolute;
+    right: 1rem;
+    @media only screen and (min-width: $sm) {
+      right: 3rem;
+    }
+    @media only screen and (min-width: $md) {
+      right: 6rem;
+    }
+  }
+  &::after {
+    position: absolute;
+    content: " ";
+    right: 0;
+    top: 1.45rem;
+    width: 1rem;
+    height: 2px;
+    border-bottom: $primary-border;
+    vertical-align: middle;
+    display: inline-block;
+    @media only screen and (min-width: $sm) {
+      width: 3rem;
+    }
+    @media only screen and (min-width: $md) {
+      width: 6rem;
     }
   }
 }

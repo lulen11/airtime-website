@@ -3,63 +3,80 @@ import { PrismicRichText } from "@prismicio/react";
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
 import styles from "./playerPage.module.scss";
+import { PrismicNextImage } from "@prismicio/next";
+import Button from "@/components/Button/Button";
 
 type Params = { uid: string };
 
 export default async function PlayerPage({ params }: { params: Params }) {
   const client = createClient();
-  let page;
+  //   old code for just the one current player_card data
+  // let page;
+
+  // Fetch current player by UID
+  let currentPlayer;
+  let allPlayers;
 
   try {
-    page = await client.getByUID("player_card", params.uid);
+    //   old code just fetching the current player_card data
+    //   page = await client.getByUID("player_card", params.uid);
+    // } catch (error) {
+    //   console.error("Error fetching player:", error);
+    //   notFound();
+
+    // Fetch all players to determine the next one
+    allPlayers = await client.getAllByType("player_card");
+
+    // Fetch the current player data
+    currentPlayer = await client.getByUID("player_card", params.uid);
   } catch (error) {
-    console.error("Error fetching player:", error);
+    console.error("Error fetching player or player list:", error);
     notFound();
   }
 
-  if (!page) {
+  //   old code for just the one current player_card data
+  // if (!page) {
+  //   return <div>Player not found</div>;
+  // }
+
+  if (!currentPlayer) {
     return <div>Player not found</div>;
   }
+
+  // Find the current player's index in the list
+  const currentIndex = allPlayers.findIndex(
+    (player) => player.uid === params.uid
+  );
+
+  // Determine the next player's UID
+  const nextPlayerUid =
+    currentIndex !== -1 && currentIndex + 1 < allPlayers.length
+      ? allPlayers[currentIndex + 1].uid // Next player
+      : allPlayers[0].uid; // Loop back to the first player if this is the last one
 
   return (
     <>
       <div className={styles.playerPage}>
         <section className={styles.sectionHero}>
           <div className={styles.wrapper}>
-            {/* <div
-              className={styles.playerVideo}
-              dangerouslySetInnerHTML={{
-                __html: page.data.player_video.html,
-              }}
-            />
-            <h1>hey</h1>
-            <video
-              className={styles.playerVideo}
-              autoPlay
-              muted
-              src={page.data.player_video.embed_url}
-            /> */}
-            {/* OK WHEN YOU COME BACK TO IT, you need to update how you input the URL in prismic CMS */}
-            <iframe
-              className={styles.playerVideo}
-              id="inlineFrameExample"
-              title="Inline Frame Example"
-              width="1920"
-              height="1080"
-              src="https://player.vimeo.com/video/857061291?autoplay=1&loop=1&muted=1"
-              allow="autoplay"
-            ></iframe>
-            <h1>{page.data.player_name}</h1>
-            <div className={styles.content}>
-              <p>
-                <mark>{page.data.short_bio} </mark>
-              </p>
+            <div className={styles.banner}>
+              <PrismicNextImage
+                field={currentPlayer.data.player_feature_image}
+              />
+              <div className={styles.bannerText}>
+                <h1>{currentPlayer.data.player_name}</h1>
+                <div className={styles.content}>
+                  <p>
+                    <mark>{currentPlayer.data.short_bio} </mark>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
         <section className={styles.sectionStats}>
           <ul>
-            {page.data.player_stats?.map((item) => (
+            {currentPlayer.data.player_stats?.map((item) => (
               <li key={item.stat_label}>
                 {item.stat_label}: {item.stat}
               </li>
@@ -75,10 +92,22 @@ export default async function PlayerPage({ params }: { params: Params }) {
         <section className={styles.sectionStory}>
           <div className={styles.wrapper}>
             <div className={styles.content}>
-              <PrismicRichText field={page.data.player_story} />
+              <PrismicRichText field={currentPlayer.data.player_story} />
+              {/* <video
+                className={styles.playerVideo}
+                autoPlay
+                muted
+                src={page.data.player_video.embed_url}
+              /> */}
             </div>
           </div>
         </section>
+        <div className={styles.btnWrapper}>
+          <Button
+            link={`/players/${nextPlayerUid}`}
+            label={"Meet the next player"}
+          />
+        </div>
       </div>
     </>
   );
