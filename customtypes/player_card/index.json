@@ -88,6 +88,14 @@
           "placeholder": ""
         }
       },
+      "player_feature_image": {
+        "type": "Image",
+        "config": {
+          "label": "Player Feature Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

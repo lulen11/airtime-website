@@ -374,6 +374,17 @@ interface PlayerCardDocumentData {
   player_video: prismic.EmbedField;
 
   /**
+   * Player Feature Image field in *Player*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: player_card.player_feature_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  player_feature_image: prismic.ImageField<never>;
+
+  /**
    * Slice Zone field in *Player*
    *
    * - **Field Type**: Slice Zone
