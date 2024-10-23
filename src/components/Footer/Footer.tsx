@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { createClient } from "@/prismicio";
 import {
   IconFacebook,
@@ -7,66 +11,97 @@ import {
   // IconX,
 } from "../../images/icons";
 import { PrismicRichText } from "@prismicio/react";
-
 import styles from "./Footer.module.scss";
 
-export default async function Footer() {
-  const client = createClient();
-  const footer = await client.getSingle("footer");
+export default function Footer() {
+  const [footerClass, setFooterClass] = useState("");
+  const pathname = usePathname();
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    if (pathname === "/players") {
+      setFooterClass(`${styles.footer} ${styles.playersPageFooter}`);
+    } else {
+      setFooterClass(`${styles.footer} ${styles.defaultFooter}`);
+    }
+  }, [pathname]);
+
+  const [footerData, setFooterData] = useState(null);
+
+  useEffect(() => {
+    async function fetchFooterData() {
+      const client = createClient();
+      const footer = await client.getSingle("footer");
+      setFooterData(footer);
+    }
+    fetchFooterData();
+  }, []);
+
+  // Scroll event listener to detect when footer is in view
+  useEffect(() => {
+    const handleScroll = () => {
+      const footerElement = footerRef.current;
+      if (!footerElement) return;
+
+      const rect = footerElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Check if the footer is in view
+      if (rect.top < windowHeight && rect.bottom >= 0) {
+        setFooterClass((prev) => `${prev} ${styles.inView}`);
+      } else {
+        setFooterClass((prev) => prev.replace(` ${styles.inView}`, ""));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial check in case the footer is already in view when the page loads
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  if (!footerData) {
+    return null; // or a loading spinner
+  }
 
   return (
-    <>
-      <div className={styles.footer}>
-        <div className={styles.bigFooterImage}>&nbsp;</div>
-        <div className={styles.footerContentWrapper}>
-          <div className={styles.footerContent}>
-            <PrismicRichText field={footer.data.text_field} />
-          </div>
-          <ul className={styles.footerMenu}>
-            {/* <li>Players</li>
-            <li>About</li> */}
-            <li>
-              <a
-                className={styles.footerLink}
-                href="mailto:michael@airtimebasketball.com"
-              >
-                Contact
-              </a>
-            </li>
-            <li className={styles.icon}>
-              <a
-                className={styles.footerLink}
-                href="https://www.facebook.com/profile.php?id=61565089387926"
-              >
-                <IconFacebook />
-              </a>
-            </li>
-            <li className={styles.icon}>
-              <a
-                className={styles.footerLink}
-                href="https://www.instagram.com/airtime.basketball/"
-              >
-                <IconInstagram />
-              </a>
-            </li>
-            {/* <li className={styles.icon}>
-              <a className={styles.footerLink} href="#">
-                <IconX />
-              </a>
-            </li> */}
-            {/* <li className={styles.icon}>
-              <a className={styles.footerLink} href="#">
-                <IconTikTok />
-              </a>
-            </li> */}
-            {/* <li className={styles.icon}>
-              <a className={styles.footerLink} href="#">
-                <IconYouTube />
-              </a>
-            </li> */}
-          </ul>
+    <div ref={footerRef} className={footerClass}>
+      <div className={styles.bigFooterImage}>&nbsp;</div>
+      <div className={styles.footerContentWrapper}>
+        <div className={styles.footerContent}>
+          <PrismicRichText field={footerData.data.text_field} />
         </div>
+        <ul className={styles.footerMenu}>
+          <li>
+            <a
+              className={styles.footerLink}
+              href="mailto:michael@airtimebasketball.com"
+            >
+              Contact
+            </a>
+          </li>
+          <li className={styles.icon}>
+            <a
+              className={styles.footerLink}
+              href="https://www.facebook.com/profile.php?id=61565089387926"
+            >
+              <IconFacebook />
+            </a>
+          </li>
+          <li className={styles.icon}>
+            <a
+              className={styles.footerLink}
+              href="https://www.instagram.com/airtime.basketball/"
+            >
+              <IconInstagram />
+            </a>
+          </li>
+        </ul>
       </div>
-    </>
+    </div>
   );
 }
