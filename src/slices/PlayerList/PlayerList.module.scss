@@ -5,6 +5,7 @@
     max-width: $page-wrapper;
     margin: 0 auto;
     padding: 1rem;
+    position: relative;
   }
   &Grid {
     @include playerCardsGrid;
@@ -17,8 +18,21 @@
     //   flex-wrap: nowrap;
     //   flex-direction: row;
     // }
+
     @media only screen and (min-width: $sm) {
       grid-row-gap: 2rem;
+    }
+
+    & + .btnWrapper {
+      z-index: 1;
+      text-align: center;
+      margin: 2rem 0 0;
+      @media only screen and (min-width: $lg) {
+        position: absolute;
+        transform: rotate(-90deg);
+        right: -2rem;
+        top: 37.5%;
+      }
     }
   }
 }

@@ -79,3 +79,34 @@
     fill: $primary-pink;
   }
 }
+
+@keyframes roll-in {
+  0% {
+    transform: translateX(0) translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(80vw) translateY(-50%) rotate(360deg);
+  }
+}
+
+.playersPageFooter {
+  position: relative;
+  padding-top: 24rem;
+  &::before {
+    content: " ";
+    position: absolute;
+    display: inline-block;
+    background: url(../../images/ball.svg) no-repeat transparent top left /
+      cover;
+
+    width: 35rem;
+    height: 35rem;
+    bottom: 5rem;
+    left: -12rem;
+  }
+  &.inView::before {
+    transform: translateY(-50%);
+    animation: roll-in 3s ease-in-out forwards;
+    animation-delay: 1s;
+  }
+}

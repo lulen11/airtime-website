@@ -6,6 +6,7 @@ import { SliceComponentProps, SliceLike } from "@prismicio/react";
 import PlayerCard from "../../components/PlayerCard/PlayerCard";
 import { PlayerData } from "../../components/PlayerCard/types";
 import styles from "./PlayerList.module.scss";
+import Button from "@/components/Button/Button";
 
 type PlayerListSlice = SliceLike<string> & {
   primary: {
@@ -60,6 +61,10 @@ const PlayerList = ({ slice }: PlayerListProps): JSX.Element => {
         {players.map((player) => (
           <PlayerCard player={player} key={player.uid} />
         ))}
+      </div>
+
+      <div className={styles.btnWrapper}>
+        <Button link="/players/" label={"Meet more players"} />
       </div>
     </section>
   );

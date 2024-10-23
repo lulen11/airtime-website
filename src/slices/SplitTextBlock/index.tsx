@@ -30,7 +30,7 @@ const SplitTextBlock = ({ slice }: SplitTextBlockProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className={styles.sectionSplitTextBlock}
     >
-      <h3 className={styles.sectionTitle}>Airtime Assist</h3>
+      {/* <h3 className={styles.sectionTitle}>Airtime Assist</h3> */}
       <div className={`${styles.wrapper} `}>
         <div className={styles.column}>
           <div className={styles.content}>
