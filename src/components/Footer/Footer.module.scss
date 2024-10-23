@@ -85,13 +85,40 @@
     transform: translateX(0) translateY(-50%) rotate(0deg);
   }
   100% {
-    transform: translateX(80vw) translateY(-50%) rotate(360deg);
+    transform: translateX(160vw) translateY(-50%) rotate(360deg);
+  }
+}
+@media only screen and (min-width: $sm) {
+  @keyframes roll-in {
+    0% {
+      transform: translateX(0) translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(130vw) translateY(-50%) rotate(360deg);
+    }
+  }
+}
+@media only screen and (min-width: $md) {
+  @keyframes roll-in {
+    0% {
+      transform: translateX(0) translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(80vw) translateY(-50%) rotate(360deg);
+    }
   }
 }
 
 .playersPageFooter {
+  background: url("../../images/graph-paper-white.svg") repeat top left / 5rem
+    $primary-grey;
   position: relative;
-  padding-top: 24rem;
+  padding-top: 12rem;
+
+  @media only screen and (min-width: $md) {
+    padding-top: 24rem;
+  }
+
   &::before {
     content: " ";
     position: absolute;
@@ -99,14 +126,31 @@
     background: url(../../images/ball.svg) no-repeat transparent top left /
       cover;
 
-    width: 35rem;
-    height: 35rem;
-    bottom: 5rem;
-    left: -12rem;
+    width: 17rem;
+    height: 17rem;
+    bottom: 10rem;
+    left: -30rem;
+    @media only screen and (min-width: $sm) {
+      bottom: 16rem;
+    }
+    @media only screen and (min-width: $md) {
+      width: 35rem;
+      height: 35rem;
+      bottom: 5rem;
+      left: -12rem;
+    }
   }
   &.inView::before {
     transform: translateY(-50%);
     animation: roll-in 3s ease-in-out forwards;
-    animation-delay: 1s;
+    @media only screen and (min-width: $md) {
+      animation-delay: 1s;
+    }
+  }
+  p,
+  li,
+  .footerMenu .icon a svg {
+    color: $primary-blue;
+    fill: $primary-blue;
   }
 }
