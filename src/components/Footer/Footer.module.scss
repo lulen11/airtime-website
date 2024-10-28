@@ -154,3 +154,166 @@
     fill: $primary-blue;
   }
 }
+
+.sticker {
+  display: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  // 100% {
+  //   transform: translateY(100vh) rotate(360deg);
+  // }
+  100% {
+    transform: translate(
+        calc(var(--end-x, -15rem)),
+        calc(20vh + var(--end-y, 15rem))
+      )
+      rotate(370deg);
+  }
+}
+
+@keyframes fall1 {
+  0% {
+    transform: translateY(-10rem) rotate(0deg); /* Start above the viewport with no rotation */
+  }
+  100% {
+    transform: translateY(42rem) rotate(722deg); /* End at the bottom with two full spins */
+  }
+}
+
+@keyframes fall2 {
+  0% {
+    transform: translateY(-3rem) translateX(0rem) rotate(0deg);
+  }
+  100% {
+    transform: translateY(31rem) translateX(-18rem) rotate(-370deg);
+  }
+}
+
+@keyframes fall3 {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(29rem) rotate(380deg);
+  }
+}
+
+@keyframes fall4 {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(43rem) rotate(-369deg);
+  }
+}
+
+@keyframes fall5 {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(30rem) rotate(-365deg);
+  }
+}
+
+@keyframes fall6 {
+  0% {
+    transform: translateY(-10rem) translateX(-4rem) rotate(0deg);
+  }
+  100% {
+    transform: translateY(35rem) translateX(22rem) rotate(8deg);
+  }
+}
+
+.homePageFooter.inView {
+  padding-top: 23rem;
+
+  ul:has(.sticker) {
+    border: 1px solid red;
+    top: -25rem;
+    max-width: 40rem;
+
+    @media only screen and (min-width: $md) {
+      max-width: 80rem;
+      top: -34rem;
+    }
+    position: relative;
+    margin: 0 auto;
+    display: block;
+  }
+  @media only screen and (min-width: $md) {
+    padding-top: 33rem;
+  }
+  .bigFooterImage {
+    display: none;
+  }
+
+  .footerContentWrapper {
+    background-color: $primary-blue;
+    z-index: 2;
+    position: relative;
+  }
+
+  .sticker {
+    position: absolute;
+    z-index: -1;
+    top: -20rem;
+    display: inline-block;
+    width: 30rem;
+    height: 11rem;
+    background: url(../../images/sticker@2x.png) no-repeat transparent 0 0 /
+      contain;
+    animation: fall 4s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+    // transform: rotate(calc(360deg * var(--rotate, 1)));
+
+    @media only screen and (min-width: $md) {
+      width: 50rem;
+      height: 16.5rem;
+    }
+
+    &:nth-child(2) {
+      left: -10%;
+
+      animation-name: fall1;
+
+      animation: fall1 6s ease-out forwards;
+      animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    &:nth-child(3) {
+      // animation: fall 4s  forwards;
+      left: 30%;
+      top: -18rem;
+      animation-delay: 0.4s;
+      animation-name: fall2;
+      animation-duration: 5.5s;
+      animation-timing-function: cubic-bezier(0.82, 0, 0.18, 1);
+
+      z-index: 1;
+    }
+    &:nth-child(4) {
+      left: 30%;
+      animation-delay: 0.8s;
+      animation-name: fall3;
+    }
+    &:nth-child(5) {
+      left: 45%;
+      animation-delay: 1s;
+      animation-name: fall4;
+      z-index: -1;
+    }
+    &:nth-child(6) {
+      right: -18rem;
+      animation-delay: 1.2s;
+      animation-name: fall5;
+    }
+    &:nth-child(7) {
+      right: 0;
+      animation-delay: 1.2s;
+      animation-name: fall6;
+    }
+  }
+}
