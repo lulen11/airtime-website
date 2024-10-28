@@ -17,10 +17,13 @@ export default function Footer() {
   const [footerClass, setFooterClass] = useState("");
   const pathname = usePathname();
   const footerRef = useRef(null);
+  // const stickersCreated = useRef(false); // Flag to ensure stickers are created only once
 
   useEffect(() => {
     if (pathname === "/players") {
       setFooterClass(`${styles.footer} ${styles.playersPageFooter}`);
+    } else if (pathname === "/development-home") {
+      setFooterClass(`${styles.footer} ${styles.homePageFooter}`);
     } else {
       setFooterClass(`${styles.footer} ${styles.defaultFooter}`);
     }
@@ -49,6 +52,10 @@ export default function Footer() {
       // Check if the footer is in view
       if (rect.top < windowHeight && rect.bottom >= 0) {
         setFooterClass((prev) => `${prev} ${styles.inView}`);
+        // if (pathname === "/development-home" && !stickersCreated.current) {
+        // stickersCreated.current = true; // Set the flag to true so stickers are only created once
+        // triggerStickers();
+        // }
       } else {
         setFooterClass((prev) => prev.replace(` ${styles.inView}`, ""));
       }
@@ -62,7 +69,7 @@ export default function Footer() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
   if (!footerData) {
     return null; // or a loading spinner
@@ -71,6 +78,15 @@ export default function Footer() {
   return (
     <div ref={footerRef} className={footerClass}>
       <div className={styles.bigFooterImage}>&nbsp;</div>
+      <ul className={styles.stickers}>
+        <li className={styles.sticker}></li>
+        <li className={styles.sticker}></li>
+        <li className={styles.sticker}></li>
+        <li className={styles.sticker}></li>
+        <li className={styles.sticker}></li>
+        <li className={styles.sticker}></li>
+        <li className={styles.sticker}></li>
+      </ul>
       <div className={styles.footerContentWrapper}>
         <div className={styles.footerContent}>
           <PrismicRichText field={footerData.data.text_field} />
