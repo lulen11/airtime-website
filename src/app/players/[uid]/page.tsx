@@ -81,12 +81,6 @@ export default async function PlayerPage({ params }: { params: Params }) {
                 {item.stat_label}: {item.stat}
               </li>
             ))}
-            <li>another one</li>
-            <li>another oneone</li>
-            <li>another one</li>
-            <li>another lone</li>
-            <li>another oneone</li>
-            <li>another one</li>
           </ul>
         </section>
         <section className={styles.sectionStory}>
