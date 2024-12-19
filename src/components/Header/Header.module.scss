@@ -7,13 +7,20 @@
   position: relative;
   z-index: 2;
   height: $header-height;
+  justify-content: center;
+  @media only screen and (min-width: $md) {
+    justify-content: space-between;
+  }
 }
 
 .navItem {
   position: relative;
   font-size: 0.85rem;
+  display: none;
   @media only screen and (min-width: $md) {
     padding: 0 0.75rem;
+    display: inline-block;
+    margin-right: 2rem;
   }
   &::after {
     @media only screen and (min-width: $md) {
