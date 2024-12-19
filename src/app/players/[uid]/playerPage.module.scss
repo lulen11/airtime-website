@@ -37,16 +37,18 @@
 .banner {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   width: 100%;
   min-height: 8rem;
+  padding: 1rem;
   @media only screen and (min-width: $md) {
     min-height: 25rem;
   }
 
   &Text {
     position: absolute;
+    padding-bottom: 1rem;
   }
 
   h1 {
