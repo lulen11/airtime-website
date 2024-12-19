@@ -117,6 +117,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | SplitTextBlockSlice
   | PlayerListSlice
   | TextBlockSlice
   | VideoBlockSlice;
