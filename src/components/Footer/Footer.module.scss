@@ -58,12 +58,17 @@
   display: block;
   background: url("../../images/logo-wordmark.svg") no-repeat center center /
     cover transparent;
+  background-position: 62% 50%;
+  background-size: 105%;
   @media only screen and (min-width: $sm) {
     min-height: 21rem;
+    background-size: 120%;
   }
 
   @media only screen and (min-width: $md) {
     min-height: 28rem;
+    background-position: center;
+    background-size: cover;
   }
 
   @media only screen and (min-width: $lg) {

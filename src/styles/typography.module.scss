@@ -9,13 +9,14 @@ $button-font: "lulo-one", "DM Mono", Courier, sans-serif;
   line-height: 1.1;
   font-style: normal;
   font-weight: 600;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
   &::selection {
     background: $primary-pink;
     color: $primary-white;
   }
   @media only screen and (min-width: $md) {
     font-size: 6.875rem;
+    margin-bottom: 3.5rem;
   }
 }
 @mixin headingFontH3 {

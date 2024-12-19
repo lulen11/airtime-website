@@ -10,16 +10,14 @@ export default async function Header() {
 
   return (
     <>
-      <header
-        className={`${styles.header} h-24 flex justify-between items-center`}
-      >
+      <header className={`${styles.header} h-24 flex items-center`}>
         <div>
           <a href="/">
             <PrismicNextImage field={nav.data.logo} className={styles.logo} />
           </a>
         </div>
-        <div className="flex gap-8 items-center">
-          <ul className="flex gap-8">
+        <div className="flex items-center">
+          <ul className="flex">
             {nav.data.menu_items.map((item) => {
               return (
                 <li className={styles.navItem} key={JSON.stringify(item)}>
