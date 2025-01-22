@@ -208,6 +208,17 @@ export interface NavigationDocumentDataMenuItemsItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
+  /**
+   * Nav Group field in *Navigation → Menu Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: navigation.menu_items[].nav_group
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  nav_group: prismic.BooleanField;
 }
 
 /**

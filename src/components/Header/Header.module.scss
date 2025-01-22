@@ -1,9 +1,27 @@
 @import "../../styles/globals.module.scss";
 
+$dash-width: 7px;
+
+@keyframes marchingAnts {
+  0% {
+    background-position:
+      0 0,
+      0 100%,
+      0 0,
+      100% 0;
+  }
+  100% {
+    background-position:
+      $dash-width 0,
+      -$dash-width 100%,
+      0 -$dash-width,
+      100% $dash-width;
+  }
+}
+
 .header {
   @include bodyFont;
-  padding: 2rem 1rem;
-  overflow: hidden;
+  padding: 1rem;
   position: relative;
   z-index: 2;
   height: $header-height;
@@ -13,32 +31,81 @@
   }
 }
 
+.nav {
+  position: relative;
+  top: 0;
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+}
+
 .navItem {
   position: relative;
   font-size: 0.85rem;
   display: none;
+  margin-left: -1px;
+  margin-bottom: -1px;
   @media only screen and (min-width: $md) {
-    padding: 0 0.75rem;
     display: inline-block;
-    margin-right: 2rem;
+    // margin-right: 2rem;
   }
+
   &::after {
-    @media only screen and (min-width: $md) {
-      content: " ";
-      display: block;
-      width: 35px;
-      border-bottom: $primary-border;
-      position: absolute;
-      /* left: 0; */
-      top: 50%;
-      right: -2rem;
-      height: 2px;
-    }
+    // @media only screen and (min-width: $md) {
+    //   content: " ";
+    //   display: block;
+    //   width: 35px;
+    //   border-bottom: $primary-border;
+    //   position: absolute;
+    //   /* left: 0; */
+    //   top: 50%;
+    //   right: -2rem;
+    //   height: 2px;
+    // }
   }
 
   a {
+    padding: 1.5rem;
+    display: block;
     transition: $smooth-transition;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    transition: $smooth-transition;
+    background-size:
+      $dash-width 1.3px,
+      $dash-width 1.3px,
+      1.3px $dash-width,
+      1.3px $dash-width;
+    background-position:
+      0 0,
+      0 100%,
+      0 0,
+      100% 0;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-image: linear-gradient(
+        to right,
+        $primary-white 50%,
+        transparent 50%
+      ),
+      linear-gradient(to right, $primary-white 50%, transparent 50%),
+      linear-gradient(to bottom, $primary-white 50%, transparent 50%),
+      linear-gradient(to bottom, $primary-white 50%, transparent 50%);
+
     &:hover {
+      font-weight: bold;
+      background-image: linear-gradient(
+          to right,
+          $primary-pink 50%,
+          transparent 50%
+        ),
+        linear-gradient(to right, $primary-pink 50%, transparent 50%),
+        linear-gradient(to bottom, $primary-pink 50%, transparent 50%),
+        linear-gradient(to bottom, $primary-pink 50%, transparent 50%);
+      background-color: $primary-white;
+      animation: marchingAnts 1s linear infinite;
       color: $primary-pink;
     }
   }
