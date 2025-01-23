@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  grid_content_block: dynamic(() => import("./GridContentBlock")),
   player_list: dynamic(() => import("./PlayerList")),
   split_text_block: dynamic(() => import("./SplitTextBlock")),
   text_block: dynamic(() => import("./TextBlock")),

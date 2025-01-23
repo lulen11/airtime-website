@@ -1,0 +1,79 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"grid_items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"content",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Amet laboris nostrud aliquip enim sunt ad non veniam nisi amet do nostrud quis amet."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "visitor",
+				"type": "Text"
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "threeColumns",
+		"primary": {
+			"grid_items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"content",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Eiusmod eu non enim cupidatat excepteur in."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "needs",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]
