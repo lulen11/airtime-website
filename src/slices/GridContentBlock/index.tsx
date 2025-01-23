@@ -17,7 +17,7 @@ const GridContentBlock = ({ slice }: GridContentBlockProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={styles.sectionGridContentBlock}
+      className={`${styles.sectionGridContentBlock} ${styles[slice.variation]}`}
     >
       <div className={`${styles.wrapper} `}>
         <h3>{slice.primary.title}</h3>

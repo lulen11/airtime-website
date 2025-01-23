@@ -24,7 +24,15 @@
     @include bodyFont;
     color: $primary-white;
     position: relative;
-    z-index: 1;
+    margin-bottom: 0.75rem;
+
+    strong {
+      color: $primary-blue;
+      @include headingFontUnderline;
+      &::after {
+        bottom: 0;
+      }
+    }
   }
 }
 
@@ -41,9 +49,21 @@
   &Item {
     border: $primary-border;
     border-color: $primary-white;
-    flex-basis: 50%;
-    min-width: 50%;
-    margin: -1px 0 0 -1px;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem 1rem;
+    margin: -2px 0 0;
+    @media only screen and (min-width: $sm) {
+      flex-basis: 50%;
+      min-width: 50%;
+      margin: -2px 0 0 -2px;
+    }
+  }
+}
+
+.threeColumns {
+  .gridItem {
+    @media only screen and (min-width: $sm) {
+      flex-basis: 33%;
+      min-width: 33%;
+    }
   }
 }
