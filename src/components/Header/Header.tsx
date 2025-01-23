@@ -1,12 +1,33 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 import Button from "../Button/Button";
 import styles from "./Header.module.scss";
 
-export default async function Header() {
-  const client = createClient();
-  const nav = await client.getSingle("navigation");
+export default function Header() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [nav, setNav] = useState(null);
+
+  // const client = createClient();
+  // const nav = await client.getSingle("navigation");
+
+  const toggleMenu = () => setIsMobile(!isMobile);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const client = createClient();
+      const navigationData = await client.getSingle("navigation");
+      setNav(navigationData);
+    };
+
+    fetchData();
+  }, []);
+
+  if (!nav) {
+    return null; // Or add a loader if you want
+  }
 
   return (
     <>
@@ -16,7 +37,10 @@ export default async function Header() {
             <PrismicNextImage field={nav.data.logo} className={styles.logo} />
           </a>
         </div>
-        <div className={`${styles.nav} flex `}>
+        <div
+          className={`${styles.nav} flex ${isMobile ? styles.mobileNavActive : ""} `}
+        >
+          {/* TODO: delete this once you're sure about the new nav */}
           {/* <ul className="flex">
             <div className={styles.navGroup}>
               {nav.data.menu_items.slice(0, 3).map((item) => (
@@ -36,7 +60,7 @@ export default async function Header() {
             ))}
           </ul> */}
 
-          <ul className="flex">
+          <ul className={styles.navList}>
             {nav.data.menu_items.map((item, index) => {
               // Check if the current item starts a nav group
               if (
@@ -83,6 +107,11 @@ export default async function Header() {
           {/* <div className={styles.btnWrapper}>
             <Button link={""} label="Donate" />
           </div> */}
+        </div>
+
+        <div className={styles.hamburger} onClick={toggleMenu}>
+          <div className={styles.line}></div>
+          <div className={styles.line}></div>
         </div>
       </header>
     </>
