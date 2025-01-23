@@ -21,11 +21,13 @@ const GridContentBlock = ({ slice }: GridContentBlockProps): JSX.Element => {
     >
       <div className={`${styles.wrapper} `}>
         <h3>{slice.primary.title}</h3>
-        {slice.primary.grid_items?.map((item, index) => (
-          <div className={styles.grid} key={index}>
-            <PrismicRichText field={item.content} />
-          </div>
-        ))}
+        <div className={styles.grid}>
+          {slice.primary.grid_items?.map((item, index) => (
+            <div className={styles.gridItem} key={index}>
+              <PrismicRichText field={item.content} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
