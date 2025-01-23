@@ -14,6 +14,7 @@ export default function Header() {
   // const nav = await client.getSingle("navigation");
 
   const toggleMenu = () => setIsMobile(!isMobile);
+  const closeMenu = () => setIsMobile(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,7 +80,10 @@ export default function Header() {
                             className={styles.navItem}
                             key={`group-${JSON.stringify(groupItem)}`}
                           >
-                            <PrismicNextLink field={groupItem.link}>
+                            <PrismicNextLink
+                              field={groupItem.link}
+                              onClick={closeMenu}
+                            >
                               {groupItem.label}
                             </PrismicNextLink>
                           </li>
@@ -93,7 +97,7 @@ export default function Header() {
               if (!item.nav_group) {
                 return (
                   <li className={styles.navItem} key={JSON.stringify(item)}>
-                    <PrismicNextLink field={item.link}>
+                    <PrismicNextLink field={item.link} onClick={closeMenu}>
                       {item.label}
                     </PrismicNextLink>
                   </li>
