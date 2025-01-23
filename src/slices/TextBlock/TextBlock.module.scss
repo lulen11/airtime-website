@@ -41,7 +41,7 @@
     @include bodyFont;
     color: $primary-white;
     position: relative;
-    z-index: 5;
+    z-index: 1;
     text-align: center;
   }
 }
@@ -85,16 +85,16 @@
 .default {
   p {
     margin-bottom: 0;
-    padding: 1rem 0 1rem 2rem;
+    // padding: 1rem 0 1rem 2rem;
     background: url("../../images/border-dash.svg") repeat-y top left
       transparent;
 
-    &:first-child {
-      padding: 3rem 0 1rem 2rem;
-    }
-    &:last-child {
-      padding: 1rem 0 3rem 2rem;
-    }
+    // &:first-child {
+    //   padding: 3rem 0 1rem 2rem;
+    // }
+    // &:last-child {
+    //   padding: 1rem 0 3rem 2rem;
+    // }
   }
 }
 
