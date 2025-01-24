@@ -17,6 +17,11 @@ import styles from "./SplitTextBlock.module.scss";
 export type SplitTextBlockProps =
   SliceComponentProps<Content.SplitTextBlockSlice>;
 
+function hasCoachFields(
+  slicePrimary: any
+): slicePrimary is { coach_1: { id: string }; coach_2: { id: string } } {
+  return slicePrimary && "coach_1" in slicePrimary && "coach_2" in slicePrimary;
+}
 /**
  * Component for "SplitTextBlock" Slices.
  */
@@ -25,27 +30,29 @@ const SplitTextBlock = ({ slice }: SplitTextBlockProps): JSX.Element => {
 
   useEffect(() => {
     const fetchCoaches = async () => {
-      const client = createClient();
-      const coachIds = [slice.primary.coach_1.id, slice.primary.coach_2.id];
+      if (hasCoachFields(slice.primary)) {
+        const client = createClient();
+        const coachIds = [slice.primary.coach_1.id, slice.primary.coach_2.id];
 
-      const response = await client.getByIDs(coachIds, {
-        fetchLinks: [
-          "player_card.player_name",
-          "player_card.player_position",
-          "player_card.image",
-          "player_card.player_stats",
-        ],
-      });
+        const response = await client.getByIDs(coachIds, {
+          fetchLinks: [
+            "player_card.player_name",
+            "player_card.player_position",
+            "player_card.image",
+            "player_card.player_stats",
+          ],
+        });
 
-      const coachData = response.results.map((coach) => ({
-        uid: coach.uid,
-        player_name: (coach.data as any).player_name,
-        player_position: (coach.data as any).player_position,
-        image: (coach.data as any).image,
-        player_stats: (coach.data as any).player_stats,
-      }));
+        const coachData = response.results.map((coach) => ({
+          uid: coach.uid,
+          player_name: (coach.data as any).player_name,
+          player_position: (coach.data as any).player_position,
+          image: (coach.data as any).image,
+          player_stats: (coach.data as any).player_stats,
+        }));
 
-      setCoaches(coachData);
+        setCoaches(coachData);
+      }
     };
 
     fetchCoaches();
