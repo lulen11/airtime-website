@@ -164,6 +164,15 @@
   display: none;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes fall {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -236,9 +245,11 @@
 
 .stickerFooter.inView {
   padding-top: 23rem;
+  background: url("../../images/blur-round-pink.png") no-repeat top left /
+    contain transparent;
+  animation: fadeIn 2s ease-in-out;
 
   ul:has(.sticker) {
-    border: 1px solid red;
     top: -25rem;
     max-width: 40rem;
 
@@ -251,7 +262,8 @@
     display: block;
   }
   @media only screen and (min-width: $md) {
-    padding-top: 33rem;
+    padding-top: 37rem;
+    margin-top: -6rem;
   }
   .bigFooterImage {
     display: none;
