@@ -1,0 +1,45 @@
+{
+  "id": "image_caption_block",
+  "type": "SharedSlice",
+  "name": "ImageCaptionBlock",
+  "description": "ImageCaptionBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image_align": {
+          "type": "Select",
+          "config": {
+            "label": "Image Align",
+            "placeholder": "",
+            "options": [
+              "left",
+              "center"
+            ]
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

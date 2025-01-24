@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_caption_block": {
+              "type": "SharedSlice"
+            },
             "player_list": {
               "type": "SharedSlice"
             },

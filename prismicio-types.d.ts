@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type ContentPageDocumentDataSlicesSlice =
+  | ImageCaptionBlockSlice
   | PlayerListSlice
   | SplitTextBlockSlice
   | VideoBlockSlice
@@ -795,6 +796,71 @@ export type GridContentBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ImageCaptionBlock → Default → Primary*
+ */
+export interface ImageCaptionBlockSliceDefaultPrimary {
+  /**
+   * Image Align field in *ImageCaptionBlock → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_caption_block.default.primary.image_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  image_align: prismic.SelectField<"left" | "center">;
+
+  /**
+   * Image field in *ImageCaptionBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_caption_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *ImageCaptionBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_caption_block.default.primary.caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ImageCaptionBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageCaptionBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageCaptionBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageCaptionBlock*
+ */
+type ImageCaptionBlockSliceVariation = ImageCaptionBlockSliceDefault;
+
+/**
+ * ImageCaptionBlock Shared Slice
+ *
+ * - **API ID**: `image_caption_block`
+ * - **Description**: ImageCaptionBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageCaptionBlockSlice = prismic.SharedSlice<
+  "image_caption_block",
+  ImageCaptionBlockSliceVariation
+>;
+
+/**
  * Primary content in *PlayerList → Default → Primary*
  */
 export interface PlayerListSliceDefaultPrimary {
@@ -1478,6 +1544,10 @@ declare module "@prismicio/client" {
       GridContentBlockSliceDefault,
       GridContentBlockSliceThreeColumns,
       GridContentBlockSliceThreeColumnsImagesLinks,
+      ImageCaptionBlockSlice,
+      ImageCaptionBlockSliceDefaultPrimary,
+      ImageCaptionBlockSliceVariation,
+      ImageCaptionBlockSliceDefault,
       PlayerListSlice,
       PlayerListSliceDefaultPrimary,
       PlayerListSliceVariation,

@@ -1,0 +1,79 @@
+@import "../../styles/globals.module.scss";
+
+.sectionImageBlock {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: hidden;
+
+  .wrapper {
+    padding: 3rem 1rem;
+    max-width: $page-wrapper;
+    margin: 0 auto;
+  }
+
+  .content {
+    @media only screen and (min-width: $sm) {
+      display: flex;
+      align-items: flex-end;
+    }
+    p {
+      @include bodyFont;
+      color: $primary-white;
+      position: relative;
+      margin-bottom: 0.75rem;
+      max-width: 18rem;
+    }
+  }
+
+  &.center {
+    .content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .imageWrapper {
+      margin: 0 0 1rem 0;
+
+      & + p {
+        margin-top: -7rem;
+        &::before {
+          background: url("../../images/player-illustrations/ball-flying@2x.png")
+            no-repeat bottom left / contain transparent;
+          left: -2rem;
+        }
+      }
+    }
+  }
+}
+
+.imageWrapper {
+  background-color: $primary-white;
+  padding: 0.75rem;
+  @media only screen and (min-width: $sm) {
+    margin: 0 1rem 0 0;
+    padding: 1.5rem;
+  }
+  .image {
+    width: auto;
+    max-height: 30rem;
+    border: 3px dashed $primary-blue;
+    object-fit: contain;
+    @media only screen and (min-width: $sm) {
+      max-width: 50rem;
+    }
+  }
+
+  & + p::before {
+    content: " ";
+    display: block;
+    position: relative;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 9rem;
+    height: 7rem;
+    margin-bottom: 1rem;
+    background: url("../../images/player-illustrations/ball-flying-down@2x.png")
+      no-repeat bottom left / contain transparent;
+  }
+}
