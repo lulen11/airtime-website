@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type ContentPageDocumentDataSlicesSlice =
+  | VideoBlockSlice
   | GridContentBlockSlice
   | TextBlockSlice;
 
@@ -616,6 +617,41 @@ export interface GridContentBlockSliceThreeColumnsPrimaryGridItemsItem {
 }
 
 /**
+ * Item in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+ */
+export interface GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsItem {
+  /**
+   * Content field in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Button Label field in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[].button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
  * Primary content in *GridContentBlock → Two Columns → Primary*
  */
 export interface GridContentBlockSliceDefaultPrimary {
@@ -696,11 +732,53 @@ export type GridContentBlockSliceThreeColumns = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *GridContentBlock → Three Columns w/ Images&Links → Primary*
+ */
+export interface GridContentBlockSliceThreeColumnsImagesLinksPrimary {
+  /**
+   * Title field in *GridContentBlock → Three Columns w/ Images&Links → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Grid Items field in *GridContentBlock → Three Columns w/ Images&Links → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid_items: prismic.GroupField<
+    Simplify<GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsItem>
+  >;
+}
+
+/**
+ * Three Columns w/ Images&Links variation for GridContentBlock Slice
+ *
+ * - **API ID**: `threeColumnsImagesLinks`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridContentBlockSliceThreeColumnsImagesLinks =
+  prismic.SharedSliceVariation<
+    "threeColumnsImagesLinks",
+    Simplify<GridContentBlockSliceThreeColumnsImagesLinksPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *GridContentBlock*
  */
 type GridContentBlockSliceVariation =
   | GridContentBlockSliceDefault
-  | GridContentBlockSliceThreeColumns;
+  | GridContentBlockSliceThreeColumns
+  | GridContentBlockSliceThreeColumnsImagesLinks;
 
 /**
  * GridContentBlock Shared Slice
@@ -1232,9 +1310,12 @@ declare module "@prismicio/client" {
       GridContentBlockSliceDefaultPrimary,
       GridContentBlockSliceThreeColumnsPrimaryGridItemsItem,
       GridContentBlockSliceThreeColumnsPrimary,
+      GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsItem,
+      GridContentBlockSliceThreeColumnsImagesLinksPrimary,
       GridContentBlockSliceVariation,
       GridContentBlockSliceDefault,
       GridContentBlockSliceThreeColumns,
+      GridContentBlockSliceThreeColumnsImagesLinks,
       PlayerListSlice,
       PlayerListSliceDefaultPrimary,
       PlayerListSliceVariation,

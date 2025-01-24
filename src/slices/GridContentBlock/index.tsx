@@ -1,6 +1,7 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
+import Button from "../../components/Button/Button";
 import styles from "./GridContentBlock.module.scss";
 
 /**
@@ -25,6 +26,11 @@ const GridContentBlock = ({ slice }: GridContentBlockProps): JSX.Element => {
           {slice.primary.grid_items?.map((item, index) => (
             <div className={styles.gridItem} key={index}>
               <PrismicRichText field={item.content} />
+              {item.button_label && (
+                <div className={styles.btnWrapper}>
+                  <Button link={item.button_link} label={item.button_label} />
+                </div>
+              )}
             </div>
           ))}
         </div>
