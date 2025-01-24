@@ -234,7 +234,7 @@
   }
 }
 
-.homePageFooter.inView {
+.stickerFooter.inView {
   padding-top: 23rem;
 
   ul:has(.sticker) {
@@ -302,7 +302,7 @@
     &:nth-child(4) {
       left: 30%;
       animation-delay: 0.8s;
-      animation-name: fall3;
+      animation-name: fall5;
     }
     &:nth-child(5) {
       left: 45%;
@@ -313,7 +313,7 @@
     &:nth-child(6) {
       right: -18rem;
       animation-delay: 1.2s;
-      animation-name: fall5;
+      animation-name: fall3;
     }
     &:nth-child(7) {
       right: 0;
