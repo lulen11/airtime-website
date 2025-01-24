@@ -17,6 +17,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "player_list": {
+              "type": "SharedSlice"
+            },
+            "split_text_block": {
+              "type": "SharedSlice"
+            },
             "video_block": {
               "type": "SharedSlice"
             },

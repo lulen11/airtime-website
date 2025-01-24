@@ -5,6 +5,8 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type ContentPageDocumentDataSlicesSlice =
+  | PlayerListSlice
+  | SplitTextBlockSlice
   | VideoBlockSlice
   | GridContentBlockSlice
   | TextBlockSlice;
@@ -1006,9 +1008,159 @@ export type SplitTextBlockSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *SplitTextBlock → Horizontal Split → Primary*
+ */
+export interface SplitTextBlockSliceHorizontalSplitPrimary {
+  /**
+   * Section Title field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Heading One Eyebrow field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_one_eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_one_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Heading One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading_one: prismic.RichTextField;
+
+  /**
+   * Coach 1 field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.coach_1
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  coach_1: prismic.ContentRelationshipField;
+
+  /**
+   * Body Content One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.body_content_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_content_one: prismic.RichTextField;
+
+  /**
+   * Link One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_one
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_one: prismic.LinkField;
+
+  /**
+   * Link Label One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_label_one
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label_one: prismic.KeyTextField;
+
+  /**
+   * Heading Two Eyebrow field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_two_eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_two_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Heading Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading_two: prismic.RichTextField;
+
+  /**
+   * Coach 2 field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.coach_2
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  coach_2: prismic.ContentRelationshipField;
+
+  /**
+   * Body Content Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.body_content_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_content_two: prismic.RichTextField;
+
+  /**
+   * Link Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_two
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_two: prismic.LinkField;
+
+  /**
+   * Link Label Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_label_two
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label_two: prismic.KeyTextField;
+}
+
+/**
+ * Horizontal Split variation for SplitTextBlock Slice
+ *
+ * - **API ID**: `horizontalSplit`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SplitTextBlockSliceHorizontalSplit = prismic.SharedSliceVariation<
+  "horizontalSplit",
+  Simplify<SplitTextBlockSliceHorizontalSplitPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *SplitTextBlock*
  */
-type SplitTextBlockSliceVariation = SplitTextBlockSliceDefault;
+type SplitTextBlockSliceVariation =
+  | SplitTextBlockSliceDefault
+  | SplitTextBlockSliceHorizontalSplit;
 
 /**
  * SplitTextBlock Shared Slice
@@ -1322,8 +1474,10 @@ declare module "@prismicio/client" {
       PlayerListSliceDefault,
       SplitTextBlockSlice,
       SplitTextBlockSliceDefaultPrimary,
+      SplitTextBlockSliceHorizontalSplitPrimary,
       SplitTextBlockSliceVariation,
       SplitTextBlockSliceDefault,
+      SplitTextBlockSliceHorizontalSplit,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceTextBlockWithButtonPrimary,

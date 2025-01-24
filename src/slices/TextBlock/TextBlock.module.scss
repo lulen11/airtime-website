@@ -27,7 +27,8 @@
   }
 
   h1,
-  h2 {
+  h2,
+  h3 {
     @include headingFont;
     color: $primary-white;
     text-align: center;
@@ -35,6 +36,11 @@
 
   h1 strong {
     @include headingFontUnderline;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin: 0.5rem auto 1.5rem;
   }
 
   p {

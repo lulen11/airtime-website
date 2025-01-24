@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  overflow-x: hidden;
+
   h1,
   h2,
   h3 {
@@ -129,6 +131,10 @@
         left: initial;
         bottom: -4rem;
         right: -4rem;
+        display: none;
+        @media only screen and (min-width: $sm) {
+          display: block;
+        }
         @media only screen and (min-width: $md) {
           right: -5rem;
         }
