@@ -80,6 +80,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "black",
 				"type": "Text"
+			},
+			"section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Mollit elit do culpa sint mollit aliquip voluptate laborum. Qui ipsum non consequat tempor nisi commodo ea excepteur et laboris anim. Nisi non in quis consequat ad excepteur pariatur eu fugiat ad."
+						}
+					}
+				]
 			}
 		},
 		"items": []

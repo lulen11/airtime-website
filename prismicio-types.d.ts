@@ -894,6 +894,16 @@ export type PlayerListSlice = prismic.SharedSlice<
  */
 export interface SplitTextBlockSliceDefaultPrimary {
   /**
+   * Section Title field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_title: prismic.RichTextField;
+
+  /**
    * Heading One Eyebrow field in *SplitTextBlock → Default → Primary*
    *
    * - **Field Type**: Text
