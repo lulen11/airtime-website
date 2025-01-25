@@ -39,6 +39,13 @@
     @include headingFontUnderline;
   }
 
+  h2 {
+    font-size: 2.7rem;
+    @media only screen and (min-width: $md) {
+      font-size: 5rem;
+    }
+  }
+
   h3 {
     font-size: 2rem;
     margin: 0.5rem auto 1.5rem;
