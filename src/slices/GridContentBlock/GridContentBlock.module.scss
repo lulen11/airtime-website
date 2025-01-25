@@ -34,6 +34,16 @@
         bottom: 0;
       }
     }
+
+    a {
+      text-decoration: underline;
+      text-underline-position: under;
+      transition: $smooth-transition;
+
+      &:hover {
+        color: $primary-pink;
+      }
+    }
   }
 }
 
@@ -143,6 +153,10 @@
 }
 
 .oneColumn {
+  .wrapper {
+    padding: 0 1rem;
+    max-width: $page-wrapper;
+  }
   .wrapper,
   .grid,
   .gridItem {

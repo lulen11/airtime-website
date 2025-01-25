@@ -23,7 +23,8 @@ export default function Footer() {
     if (
       pathname === "/" ||
       pathname === "/development-training" ||
-      pathname === "/yet-another-page"
+      pathname === "/high-performance" ||
+      pathname === "/youth-engagement"
     ) {
       setFooterClass(`${styles.footer} ${styles.stickerFooter}`);
     } else if (pathname === "/players") {
