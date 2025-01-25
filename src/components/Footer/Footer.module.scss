@@ -245,8 +245,8 @@
 
 .stickerFooter.inView {
   padding-top: 23rem;
-  background: url("../../images/blur-round-pink.png") no-repeat top left /
-    contain transparent;
+  background: url("../../images/blur-round-pink.png") no-repeat center / contain
+    transparent;
   animation: fadeIn 2s ease-in-out;
 
   ul:has(.sticker) {
