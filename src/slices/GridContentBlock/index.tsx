@@ -21,7 +21,7 @@ const GridContentBlock = ({ slice }: GridContentBlockProps): JSX.Element => {
       className={`${styles.sectionGridContentBlock} ${styles[slice.variation]}`}
     >
       <div className={`${styles.wrapper} `}>
-        <h3>{slice.primary.title}</h3>
+        {slice.primary.title && <h3>{slice.primary.title}</h3>}
         <div className={styles.grid}>
           {slice.primary.grid_items?.map((item, index) => (
             <div className={styles.gridItem} key={index}>

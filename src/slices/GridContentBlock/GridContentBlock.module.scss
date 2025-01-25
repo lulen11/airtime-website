@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  overflow-x: hidden;
 
   h1,
   h2,
@@ -33,6 +32,16 @@
       @include headingFontUnderline;
       &::after {
         bottom: 0;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+      text-underline-position: under;
+      transition: $smooth-transition;
+
+      &:hover {
+        color: $primary-pink;
       }
     }
   }
@@ -140,6 +149,22 @@
         }
       }
     }
+  }
+}
+
+.oneColumn {
+  .wrapper {
+    padding: 0 1rem;
+    max-width: $page-wrapper;
+  }
+  .wrapper,
+  .grid,
+  .gridItem {
+    display: block;
+    width: 100%;
+  }
+  .gridItem img {
+    max-width: 15rem;
   }
 }
 
