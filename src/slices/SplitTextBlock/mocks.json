@@ -80,8 +80,134 @@
 				"__TYPE__": "FieldContent",
 				"value": "black",
 				"type": "Text"
+			},
+			"section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Mollit elit do culpa sint mollit aliquip voluptate laborum. Qui ipsum non consequat tempor nisi commodo ea excepteur et laboris anim. Nisi non in quis consequat ad excepteur pariatur eu fugiat ad."
+						}
+					}
+				]
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "horizontalSplit",
+		"primary": {
+			"heading_one_eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "mainly",
+				"type": "Text"
+			},
+			"heading_one": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Consequat adipisicing mollit cupidatat est est minim occaecat dolore culpa consectetur. Sunt aliqua minim mollit veniam eu eu id enim reprehenderit dolor eiusmod veniam eiusmod. Eiusmod do dolore aute sit sunt cillum."
+						}
+					}
+				]
+			},
+			"body_content_one": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Reprehenderit et do adipisicing."
+						}
+					}
+				]
+			},
+			"link_one": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"link_label_one": {
+				"__TYPE__": "FieldContent",
+				"value": "frequently",
+				"type": "Text"
+			},
+			"heading_two_eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "night",
+				"type": "Text"
+			},
+			"heading_two": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "In enim consequat ipsum labore exercitation est. Eiusmod sint eiusmod dolor pariatur est exercitation officia ut veniam. Mollit magna est aliqua nisi id aliqua tempor sit dolore."
+						}
+					}
+				]
+			},
+			"body_content_two": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Consequat ea reprehenderit aute ea mollit ad minim sunt. Consectetur deserunt deserunt magna laboris occaecat nulla cillum sint deserunt consectetur incididunt incididunt."
+						}
+					}
+				]
+			},
+			"link_two": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"link_label_two": {
+				"__TYPE__": "FieldContent",
+				"value": "unless",
+				"type": "Text"
+			},
+			"coach_1": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			},
+			"coach_2": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			},
+			"section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eiusmod ipsum ullamco consectetur pariatur do nostrud non do duis amet ex proident."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

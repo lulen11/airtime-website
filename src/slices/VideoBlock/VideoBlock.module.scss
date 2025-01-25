@@ -1,23 +1,51 @@
+@import "../../styles/globals.module.scss";
 /* VideoBlock.module.css */
+.sectionVideoBlock {
+  overflow-x: hidden;
+}
+
 .videoContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
+  position: relative;
+  padding-top: 2rem;
+  margin-top: -2rem;
+  max-width: 67rem;
+  margin: 0 auto;
 
-.title {
-  font-size: 24px;
-  color: #333;
-}
+  &::before,
+  &::after {
+    content: " ";
+    position: absolute;
+    display: block;
+    z-index: 3;
+  }
+  &::before {
+    background: url("../../images/player-illustrations/ball@2x.png") no-repeat
+      top left / contain transparent;
 
-.video {
-  width: 100%;
-  max-width: 600px;
-}
+    width: 7rem;
+    height: 12rem;
+    top: 0;
+    right: -3rem;
+  }
+  &::after {
+    background: url("../../images/player-illustrations/bird@2x.png") no-repeat
+      top left / contain transparent;
+    height: 8rem;
+    width: 8rem;
+    bottom: 7rem;
+    left: -3rem;
+  }
+  iframe {
+    width: 100%;
+    min-height: 20rem;
+    margin-bottom: 1.5rem;
 
-.boop {
-  border: 10px solid red;
-  font-size: 10rem;
-  color: hotpink;
+    @media only screen and (min-width: $sm) {
+      min-height: 30rem;
+    }
+  }
 }

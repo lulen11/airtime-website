@@ -62,6 +62,19 @@
     }
   }
 
+  .sectionTitle {
+    h3 {
+      @include headingFont;
+      font-size: 2rem;
+      color: $primary-white;
+      margin: 5rem 0 0;
+      @media only screen and (min-width: $sm-md) {
+        font-size: 3.25rem;
+        margin: 0 0 -2.15rem;
+      }
+    }
+  }
+
   .wrapper {
     border: 1px dashed white;
     margin: 0 auto;
@@ -71,20 +84,22 @@
     }
   }
 
-  h2,
-  h3 {
-    @include headingFontH3;
-  }
-  p,
-  a {
-    @include bodyFont;
-    margin-bottom: 1.5rem;
-  }
-  h2,
-  h3,
-  p,
-  a {
-    color: $primary-blue;
+  .content {
+    h2,
+    h3 {
+      @include headingFontH3;
+    }
+    p,
+    a {
+      @include bodyFont;
+      margin-bottom: 1.5rem;
+    }
+    h2,
+    h3,
+    p,
+    a {
+      color: $primary-blue;
+    }
   }
 
   .sectionTitle {
@@ -133,38 +148,44 @@
         left: initial;
       }
     }
-
-    &::before,
-    &::after {
-      content: " ";
-      position: absolute;
+    .contentWrapper {
+      position: relative;
       height: 100%;
-      width: 3.25rem;
-      bottom: 0;
-      right: 0;
-      background: url("../../images/line-bird-line@2x.png") no-repeat center /
-        contain transparent;
-      @media only screen and (min-width: $lg) {
-        left: 43rem;
+      display: flex;
+      align-items: flex-end;
+      &::before,
+      &::after {
+        content: " ";
+        position: absolute;
+        height: 100%;
+        width: 3.25rem;
+        bottom: 0;
+        right: -3rem;
+        background: url("../../images/line-bird-line@2x.png") no-repeat center /
+          contain transparent;
+        @media only screen and (min-width: $lg) {
+          right: -3rem;
+        }
       }
-    }
-    &::before {
-      left: 0;
-      transform: scaleX(-1);
-      display: none;
-      @media only screen and (min-width: $sm-md) {
-        display: block;
-      }
-    }
-    &::after {
-      @media only screen and (min-width: $sm-md) {
+      &::before {
+        left: -3rem;
+        transform: scaleX(-1);
         display: none;
+        @media only screen and (min-width: $sm-md) {
+          display: block;
+        }
       }
-      @media only screen and (min-width: $md) {
-        display: block;
+      &::after {
+        @media only screen and (min-width: $sm-md) {
+          display: none;
+        }
+        @media only screen and (min-width: $md) {
+          display: block;
+        }
       }
     }
   }
+
   .eyebrow {
     top: 1rem;
     left: 1rem;
@@ -180,4 +201,82 @@
 .content {
   max-width: 70%;
   max-width: 40rem;
+}
+
+.horizontalSplit {
+  .wrapper {
+    @media only screen and (min-width: $sm-md) {
+      flex-direction: column;
+    }
+  }
+  .column {
+    width: 100%;
+    min-height: initial;
+    flex-direction: row;
+    position: relative;
+    @media only screen and (min-width: $md) {
+      padding-top: 5rem;
+      justify-content: center;
+    }
+  }
+  &::before {
+    background: url("../../images/player-illustrations/hoop@2x.png") no-repeat
+      top left / contain transparent;
+
+    left: -1rem;
+    display: block;
+    z-index: 3;
+    width: 10rem;
+    height: 10rem;
+    margin-top: -5rem;
+    top: 5rem;
+
+    @media only screen and (min-width: $sm-md) {
+    }
+  }
+
+  .contentWrapper {
+    display: flex;
+    max-width: 50rem;
+    flex-direction: column;
+    align-items: flex-start;
+    @media only screen and (min-width: $md) {
+      justify-content: center;
+      flex-direction: row;
+    }
+  }
+
+  .column:last-child {
+    .contentWrapper {
+      @media only screen and (min-width: $md) {
+        flex-direction: row-reverse;
+        align-items: flex-start;
+      }
+    }
+    .playerCardWrapper {
+      @media only screen and (min-width: $md) {
+        margin: -1rem -1rem 1.5rem 1.5rem;
+      }
+    }
+  }
+}
+
+.playerCardWrapper {
+  display: flex;
+  place-content: center;
+  padding: 1rem;
+  margin: 0 -1rem 1.5rem;
+  @media only screen and (min-width: $md) {
+    margin: -1rem 1.5rem 1.5rem -1rem;
+  }
+
+  div {
+    cursor: default;
+  }
+
+  a {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
 }

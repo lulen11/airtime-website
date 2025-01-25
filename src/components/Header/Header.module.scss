@@ -1,52 +1,145 @@
 @import "../../styles/globals.module.scss";
 
-.header {
-  @include bodyFont;
-  padding: 2rem 1rem;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
-  height: $header-height;
-  justify-content: center;
-  @media only screen and (min-width: $md) {
-    justify-content: space-between;
+$dash-width: 7px;
+
+@keyframes marchingAnts {
+  0% {
+    background-position:
+      0 0,
+      0 100%,
+      0 0,
+      100% 0;
+  }
+  100% {
+    background-position:
+      $dash-width 0,
+      -$dash-width 100%,
+      0 -$dash-width,
+      100% $dash-width;
   }
 }
 
-.navItem {
+.header {
+  @include bodyFont;
+  padding: 1rem;
   position: relative;
-  font-size: 0.85rem;
-  display: none;
+  z-index: 2;
+  height: $header-height;
+  justify-content: space-between;
   @media only screen and (min-width: $md) {
-    padding: 0 0.75rem;
-    display: inline-block;
-    margin-right: 2rem;
-  }
-  &::after {
-    @media only screen and (min-width: $md) {
-      content: " ";
-      display: block;
-      width: 35px;
-      border-bottom: $primary-border;
-      position: absolute;
-      /* left: 0; */
-      top: 50%;
-      right: -2rem;
-      height: 2px;
-    }
-  }
-
-  a {
-    transition: $smooth-transition;
-    &:hover {
-      color: $primary-pink;
-    }
   }
 }
 
 .logo {
   width: 12.5rem;
   height: 3.56rem;
+  position: relative;
+  z-index: 20;
+}
+
+.nav {
+  z-index: 10;
+
+  @media only screen and (max-width: $md) {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    background: $primary-blue url("../../images/noise_tile@2x.png") repeat top
+      left / 20rem;
+  }
+
+  @media only screen and (min-width: 64.01rem) {
+    display: block;
+    position: relative;
+    top: 0;
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: $md) {
+      flex-direction: row;
+    }
+  }
+
+  &Group {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.navItem {
+  position: relative;
+  font-size: 0.85rem;
+  margin-left: -1px;
+  margin-bottom: -1px;
+  @media only screen and (min-width: $md) {
+    display: inline-block;
+    // margin-right: 2rem;
+  }
+
+  &::after {
+    // @media only screen and (min-width: $md) {
+    //   content: " ";
+    //   display: block;
+    //   width: 35px;
+    //   border-bottom: $primary-border;
+    //   position: absolute;
+    //   /* left: 0; */
+    //   top: 50%;
+    //   right: -2rem;
+    //   height: 2px;
+    // }
+  }
+
+  a {
+    padding: 1.5rem;
+    display: block;
+    transition: $smooth-transition;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    transition: $smooth-transition;
+    background-size:
+      $dash-width 1.3px,
+      $dash-width 1.3px,
+      1.3px $dash-width,
+      1.3px $dash-width;
+    background-position:
+      0 0,
+      0 100%,
+      0 0,
+      100% 0;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-image: linear-gradient(
+        to right,
+        $primary-white 50%,
+        transparent 50%
+      ),
+      linear-gradient(to right, $primary-white 50%, transparent 50%),
+      linear-gradient(to bottom, $primary-white 50%, transparent 50%),
+      linear-gradient(to bottom, $primary-white 50%, transparent 50%);
+
+    &:hover {
+      font-weight: bold;
+      background-image: linear-gradient(
+          to right,
+          $primary-pink 50%,
+          transparent 50%
+        ),
+        linear-gradient(to right, $primary-pink 50%, transparent 50%),
+        linear-gradient(to bottom, $primary-pink 50%, transparent 50%),
+        linear-gradient(to bottom, $primary-pink 50%, transparent 50%);
+      background-color: $primary-white;
+      animation: marchingAnts 1s linear infinite;
+      color: $primary-pink;
+    }
+  }
 }
 
 .navItem::after,
@@ -60,4 +153,50 @@
   padding: 0.5rem 5rem 0.4rem 1.25rem;
   font-size: 1.2rem;
   letter-spacing: -0.2rem;
+}
+
+.hamburger {
+  display: block;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  border: 1px dashed $primary-white;
+  padding: 0.7rem 0.8rem 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 4rem;
+  .line {
+    width: 1.5rem;
+    height: 3px;
+    background-color: white;
+    margin: 0.35rem 0 0.5rem;
+    border-radius: 30px;
+    transition: $smooth-transition;
+    transform-origin: 5px 5px;
+    &:last-child {
+      margin-bottom: 0;
+      transform-origin: 6px -2px;
+    }
+  }
+  cursor: pointer;
+  @media only screen and (min-width: $md) {
+    display: none;
+  }
+}
+
+.nav.mobileNavActive {
+  display: flex;
+  justify-content: center;
+
+  & + .hamburger {
+    .line {
+      // margin: 0.25rem 0 0 0.25rem;
+      &:first-child {
+        transform: rotate(45deg);
+      }
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
 }

@@ -4,6 +4,77 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type ContentPageDocumentDataSlicesSlice =
+  | ImageCaptionBlockSlice
+  | PlayerListSlice
+  | SplitTextBlockSlice
+  | VideoBlockSlice
+  | GridContentBlockSlice
+  | TextBlockSlice;
+
+/**
+ * Content for Content Page documents
+ */
+interface ContentPageDocumentData {
+  /**
+   * Slice Zone field in *Content Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContentPageDocumentDataSlicesSlice> /**
+   * Meta Description field in *Content Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: content_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Content Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Content Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: content_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Content Page document from Prismic
+ *
+ * - **API ID**: `content_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContentPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ContentPageDocumentData>,
+    "content_page",
+    Lang
+  >;
+
 type DevelopmentHomePageDocumentDataSlicesSlice =
   | SplitTextBlockSlice
   | PlayerListSlice
@@ -208,6 +279,17 @@ export interface NavigationDocumentDataMenuItemsItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
+  /**
+   * Nav Group field in *Navigation → Menu Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: navigation.menu_items[].nav_group
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  nav_group: prismic.BooleanField;
 }
 
 /**
@@ -499,12 +581,284 @@ export type PlayerListingPageDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | ContentPageDocument
   | DevelopmentHomePageDocument
   | FooterDocument
   | HomePageDocument
   | NavigationDocument
   | PlayerCardDocument
   | PlayerListingPageDocument;
+
+/**
+ * Item in *GridContentBlock → Two Columns → Primary → Grid Items*
+ */
+export interface GridContentBlockSliceDefaultPrimaryGridItemsItem {
+  /**
+   * Content field in *GridContentBlock → Two Columns → Primary → Grid Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.default.primary.grid_items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Item in *GridContentBlock → Three Columns → Primary → Grid Items*
+ */
+export interface GridContentBlockSliceThreeColumnsPrimaryGridItemsItem {
+  /**
+   * Content field in *GridContentBlock → Three Columns → Primary → Grid Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumns.primary.grid_items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Item in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+ */
+export interface GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsItem {
+  /**
+   * Content field in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Button Label field in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[].button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *GridContentBlock → Three Columns w/ Images&Links → Primary → Grid Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *GridContentBlock → Two Columns → Primary*
+ */
+export interface GridContentBlockSliceDefaultPrimary {
+  /**
+   * Title field in *GridContentBlock → Two Columns → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Grid Items field in *GridContentBlock → Two Columns → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.default.primary.grid_items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid_items: prismic.GroupField<
+    Simplify<GridContentBlockSliceDefaultPrimaryGridItemsItem>
+  >;
+}
+
+/**
+ * Two Columns variation for GridContentBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridContentBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GridContentBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *GridContentBlock → Three Columns → Primary*
+ */
+export interface GridContentBlockSliceThreeColumnsPrimary {
+  /**
+   * Title field in *GridContentBlock → Three Columns → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumns.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Grid Items field in *GridContentBlock → Three Columns → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumns.primary.grid_items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid_items: prismic.GroupField<
+    Simplify<GridContentBlockSliceThreeColumnsPrimaryGridItemsItem>
+  >;
+}
+
+/**
+ * Three Columns variation for GridContentBlock Slice
+ *
+ * - **API ID**: `threeColumns`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridContentBlockSliceThreeColumns = prismic.SharedSliceVariation<
+  "threeColumns",
+  Simplify<GridContentBlockSliceThreeColumnsPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *GridContentBlock → Three Columns w/ Images&Links → Primary*
+ */
+export interface GridContentBlockSliceThreeColumnsImagesLinksPrimary {
+  /**
+   * Title field in *GridContentBlock → Three Columns w/ Images&Links → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Grid Items field in *GridContentBlock → Three Columns w/ Images&Links → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.threeColumnsImagesLinks.primary.grid_items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid_items: prismic.GroupField<
+    Simplify<GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsItem>
+  >;
+}
+
+/**
+ * Three Columns w/ Images&Links variation for GridContentBlock Slice
+ *
+ * - **API ID**: `threeColumnsImagesLinks`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridContentBlockSliceThreeColumnsImagesLinks =
+  prismic.SharedSliceVariation<
+    "threeColumnsImagesLinks",
+    Simplify<GridContentBlockSliceThreeColumnsImagesLinksPrimary>,
+    never
+  >;
+
+/**
+ * Slice variation for *GridContentBlock*
+ */
+type GridContentBlockSliceVariation =
+  | GridContentBlockSliceDefault
+  | GridContentBlockSliceThreeColumns
+  | GridContentBlockSliceThreeColumnsImagesLinks;
+
+/**
+ * GridContentBlock Shared Slice
+ *
+ * - **API ID**: `grid_content_block`
+ * - **Description**: GridContentBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridContentBlockSlice = prismic.SharedSlice<
+  "grid_content_block",
+  GridContentBlockSliceVariation
+>;
+
+/**
+ * Primary content in *ImageCaptionBlock → Default → Primary*
+ */
+export interface ImageCaptionBlockSliceDefaultPrimary {
+  /**
+   * Image Align field in *ImageCaptionBlock → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_caption_block.default.primary.image_align
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  image_align: prismic.SelectField<"left" | "center">;
+
+  /**
+   * Image field in *ImageCaptionBlock → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_caption_block.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Caption field in *ImageCaptionBlock → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_caption_block.default.primary.caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ImageCaptionBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageCaptionBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageCaptionBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageCaptionBlock*
+ */
+type ImageCaptionBlockSliceVariation = ImageCaptionBlockSliceDefault;
+
+/**
+ * ImageCaptionBlock Shared Slice
+ *
+ * - **API ID**: `image_caption_block`
+ * - **Description**: ImageCaptionBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageCaptionBlockSlice = prismic.SharedSlice<
+  "image_caption_block",
+  ImageCaptionBlockSliceVariation
+>;
 
 /**
  * Primary content in *PlayerList → Default → Primary*
@@ -605,6 +959,16 @@ export type PlayerListSlice = prismic.SharedSlice<
  * Primary content in *SplitTextBlock → Default → Primary*
  */
 export interface SplitTextBlockSliceDefaultPrimary {
+  /**
+   * Section Title field in *SplitTextBlock → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_title: prismic.RichTextField;
+
   /**
    * Heading One Eyebrow field in *SplitTextBlock → Default → Primary*
    *
@@ -720,9 +1084,159 @@ export type SplitTextBlockSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *SplitTextBlock → Horizontal Split → Primary*
+ */
+export interface SplitTextBlockSliceHorizontalSplitPrimary {
+  /**
+   * Section Title field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Heading One Eyebrow field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_one_eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_one_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Heading One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading_one: prismic.RichTextField;
+
+  /**
+   * Coach 1 field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.coach_1
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  coach_1: prismic.ContentRelationshipField;
+
+  /**
+   * Body Content One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.body_content_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_content_one: prismic.RichTextField;
+
+  /**
+   * Link One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_one
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_one: prismic.LinkField;
+
+  /**
+   * Link Label One field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_label_one
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label_one: prismic.KeyTextField;
+
+  /**
+   * Heading Two Eyebrow field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_two_eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_two_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Heading Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.heading_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading_two: prismic.RichTextField;
+
+  /**
+   * Coach 2 field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.coach_2
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  coach_2: prismic.ContentRelationshipField;
+
+  /**
+   * Body Content Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.body_content_two
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_content_two: prismic.RichTextField;
+
+  /**
+   * Link Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_two
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_two: prismic.LinkField;
+
+  /**
+   * Link Label Two field in *SplitTextBlock → Horizontal Split → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_text_block.horizontalSplit.primary.link_label_two
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label_two: prismic.KeyTextField;
+}
+
+/**
+ * Horizontal Split variation for SplitTextBlock Slice
+ *
+ * - **API ID**: `horizontalSplit`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SplitTextBlockSliceHorizontalSplit = prismic.SharedSliceVariation<
+  "horizontalSplit",
+  Simplify<SplitTextBlockSliceHorizontalSplitPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *SplitTextBlock*
  */
-type SplitTextBlockSliceVariation = SplitTextBlockSliceDefault;
+type SplitTextBlockSliceVariation =
+  | SplitTextBlockSliceDefault
+  | SplitTextBlockSliceHorizontalSplit;
 
 /**
  * SplitTextBlock Shared Slice
@@ -997,6 +1511,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ContentPageDocument,
+      ContentPageDocumentData,
+      ContentPageDocumentDataSlicesSlice,
       DevelopmentHomePageDocument,
       DevelopmentHomePageDocumentData,
       DevelopmentHomePageDocumentDataSlicesSlice,
@@ -1016,14 +1533,31 @@ declare module "@prismicio/client" {
       PlayerListingPageDocumentData,
       PlayerListingPageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      GridContentBlockSlice,
+      GridContentBlockSliceDefaultPrimaryGridItemsItem,
+      GridContentBlockSliceDefaultPrimary,
+      GridContentBlockSliceThreeColumnsPrimaryGridItemsItem,
+      GridContentBlockSliceThreeColumnsPrimary,
+      GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsItem,
+      GridContentBlockSliceThreeColumnsImagesLinksPrimary,
+      GridContentBlockSliceVariation,
+      GridContentBlockSliceDefault,
+      GridContentBlockSliceThreeColumns,
+      GridContentBlockSliceThreeColumnsImagesLinks,
+      ImageCaptionBlockSlice,
+      ImageCaptionBlockSliceDefaultPrimary,
+      ImageCaptionBlockSliceVariation,
+      ImageCaptionBlockSliceDefault,
       PlayerListSlice,
       PlayerListSliceDefaultPrimary,
       PlayerListSliceVariation,
       PlayerListSliceDefault,
       SplitTextBlockSlice,
       SplitTextBlockSliceDefaultPrimary,
+      SplitTextBlockSliceHorizontalSplitPrimary,
       SplitTextBlockSliceVariation,
       SplitTextBlockSliceDefault,
+      SplitTextBlockSliceHorizontalSplit,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceTextBlockWithButtonPrimary,

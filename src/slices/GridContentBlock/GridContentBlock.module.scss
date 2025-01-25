@@ -1,0 +1,152 @@
+@import "../../styles/globals.module.scss";
+
+.sectionGridContentBlock {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: hidden;
+
+  h1,
+  h2,
+  h3 {
+    @include headingFont;
+    color: $primary-white;
+  }
+
+  h1 strong {
+    @include headingFontUnderline;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    @include bodyFont;
+    color: $primary-white;
+    position: relative;
+    margin-bottom: 0.75rem;
+
+    strong {
+      color: $primary-blue;
+      @include headingFontUnderline;
+      &::after {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.wrapper {
+  padding: 3rem 1rem;
+  max-width: $page-wrapper;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  &Item {
+    border: $primary-border;
+    border-color: $primary-white;
+    padding: 2rem 1.5rem 1rem;
+    margin: -2px 0 0;
+    @media only screen and (min-width: $sm) {
+      flex-basis: 50%;
+      min-width: 50%;
+      margin: -2px 0 0 -2px;
+    }
+  }
+}
+
+.threeColumns,
+.threeColumnsImagesLinks {
+  .gridItem {
+    width: 100%;
+    @media only screen and (min-width: $md) {
+      flex-basis: 33%;
+      min-width: 33%;
+    }
+  }
+}
+
+.threeColumnsImagesLinks {
+  .gridItem {
+    background: url("../../images/graph-paper-grey.svg") repeat top left / 5rem
+      $primary-white;
+    position: relative;
+    min-height: 12rem;
+
+    h3,
+    p {
+      color: $primary-blue;
+    }
+
+    h3 {
+      width: 60%;
+    }
+
+    &::before {
+      background: url("../../images/player-illustrations/dribbler2@2x.png")
+        no-repeat top left / contain transparent;
+      content: " ";
+      position: absolute;
+      display: block;
+      z-index: 3;
+      width: 7rem;
+      height: 12rem;
+      bottom: -3rem;
+      left: -3rem;
+      @media only screen and (min-width: $md) {
+        width: 10rem;
+        height: 14rem;
+        bottom: -9rem;
+        left: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      background-color: $primary-grey;
+
+      &::before {
+        background: url("../../images/player-illustrations/shooter2@2x.png")
+          no-repeat top left / contain transparent;
+        bottom: 2rem;
+        right: -4rem;
+        left: initial;
+        @media only screen and (min-width: $md) {
+          top: -3rem;
+          left: -2rem;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      &::before {
+        background: url("../../images/player-illustrations/dribbler3@2x.png")
+          no-repeat top left / contain transparent;
+        width: 7.5rem;
+        left: initial;
+        bottom: -4rem;
+        right: -4rem;
+        display: none;
+        @media only screen and (min-width: $sm) {
+          display: block;
+        }
+        @media only screen and (min-width: $md) {
+          right: -5rem;
+        }
+      }
+    }
+  }
+}
+
+.btnWrapper {
+  text-align: right;
+  button {
+    padding: 0.4rem 1.2rem 0.3rem;
+    font-size: 0.95rem;
+  }
+}

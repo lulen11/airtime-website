@@ -164,6 +164,15 @@
   display: none;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes fall {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -234,11 +243,13 @@
   }
 }
 
-.homePageFooter.inView {
+.stickerFooter.inView {
   padding-top: 23rem;
+  background: url("../../images/blur-round-pink.png") no-repeat center / contain
+    transparent;
+  animation: fadeIn 2s ease-in-out;
 
   ul:has(.sticker) {
-    border: 1px solid red;
     top: -25rem;
     max-width: 40rem;
 
@@ -251,7 +262,8 @@
     display: block;
   }
   @media only screen and (min-width: $md) {
-    padding-top: 33rem;
+    padding-top: 37rem;
+    margin-top: -6rem;
   }
   .bigFooterImage {
     display: none;
@@ -302,7 +314,7 @@
     &:nth-child(4) {
       left: 30%;
       animation-delay: 0.8s;
-      animation-name: fall3;
+      animation-name: fall5;
     }
     &:nth-child(5) {
       left: 45%;
@@ -313,7 +325,7 @@
     &:nth-child(6) {
       right: -18rem;
       animation-delay: 1.2s;
-      animation-name: fall5;
+      animation-name: fall3;
     }
     &:nth-child(7) {
       right: 0;

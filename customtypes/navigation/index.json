@@ -34,6 +34,15 @@
                 "placeholder": "",
                 "select": null
               }
+            },
+            "nav_group": {
+              "type": "Boolean",
+              "config": {
+                "label": "Nav Group",
+                "default_value": false,
+                "placeholder_true": "true",
+                "placeholder_false": "false"
+              }
             }
           }
         }

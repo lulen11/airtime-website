@@ -27,7 +27,8 @@
   }
 
   h1,
-  h2 {
+  h2,
+  h3 {
     @include headingFont;
     color: $primary-white;
     text-align: center;
@@ -37,12 +38,24 @@
     @include headingFontUnderline;
   }
 
+  h3 {
+    font-size: 2rem;
+    margin: 0.5rem auto 1.5rem;
+  }
+
   p {
     @include bodyFont;
     color: $primary-white;
     position: relative;
-    z-index: 5;
+    z-index: 1;
     text-align: center;
+  }
+
+  &:last-of-type {
+    .contentCenter img {
+      max-width: 15rem;
+      margin: 0.5rem auto;
+    }
   }
 }
 
@@ -61,12 +74,19 @@
   display: block;
   text-align: center;
   margin: 0 auto;
-  @media only screen and (min-width: $md) {
-    width: 70%;
+  width: 100%;
+  // @media only screen and (min-width: $md) {
+  //   width: 90%;
+  // }
+  // @media only screen and (min-width: $lg) {
+  //   width: 65%;
+  // }
+
+  img {
+    margin: 0 auto;
+    display: block;
   }
-  @media only screen and (min-width: $lg) {
-    width: 65%;
-  }
+
   .btnWrapper {
     display: flex;
     flex-direction: column;
@@ -82,19 +102,26 @@
   }
 }
 
+.sectionTextBlock:has(.contentCenter h1) p {
+  @media only screen and (min-width: $md) {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
 .default {
   p {
     margin-bottom: 0;
-    padding: 1rem 0 1rem 2rem;
+    // padding: 1rem 0 1rem 2rem;
     background: url("../../images/border-dash.svg") repeat-y top left
       transparent;
 
-    &:first-child {
-      padding: 3rem 0 1rem 2rem;
-    }
-    &:last-child {
-      padding: 1rem 0 3rem 2rem;
-    }
+    // &:first-child {
+    //   padding: 3rem 0 1rem 2rem;
+    // }
+    // &:last-child {
+    //   padding: 1rem 0 3rem 2rem;
+    // }
   }
 }
 

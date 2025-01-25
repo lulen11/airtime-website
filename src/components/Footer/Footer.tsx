@@ -20,10 +20,14 @@ export default function Footer() {
   // const stickersCreated = useRef(false); // Flag to ensure stickers are created only once
 
   useEffect(() => {
-    if (pathname === "/players") {
+    if (
+      pathname === "/" ||
+      pathname === "/development-training" ||
+      pathname === "/yet-another-page"
+    ) {
+      setFooterClass(`${styles.footer} ${styles.stickerFooter}`);
+    } else if (pathname === "/players") {
       setFooterClass(`${styles.footer} ${styles.playersPageFooter}`);
-    } else if (pathname === "/development-home") {
-      setFooterClass(`${styles.footer} ${styles.homePageFooter}`);
     } else {
       setFooterClass(`${styles.footer} ${styles.defaultFooter}`);
     }
