@@ -11,6 +11,7 @@
     margin: 0 auto;
     &Left {
       h1,
+      h2,
       p {
         text-align: left;
         @media only screen and (min-width: $md) {
@@ -31,10 +32,10 @@
   h3 {
     @include headingFont;
     color: $primary-white;
-    text-align: center;
   }
 
-  h1 strong {
+  h1 strong,
+  h2 strong {
     @include headingFontUnderline;
   }
 
@@ -81,6 +82,12 @@
   // @media only screen and (min-width: $lg) {
   //   width: 65%;
   // }
+
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+  }
 
   img {
     margin: 0 auto;
