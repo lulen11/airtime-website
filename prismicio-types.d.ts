@@ -655,6 +655,21 @@ export interface GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsIte
 }
 
 /**
+ * Item in *GridContentBlock → One Column → Primary → Grid Items*
+ */
+export interface GridContentBlockSliceOneColumnPrimaryGridItemsItem {
+  /**
+   * Content field in *GridContentBlock → One Column → Primary → Grid Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.oneColumn.primary.grid_items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
  * Primary content in *GridContentBlock → Two Columns → Primary*
  */
 export interface GridContentBlockSliceDefaultPrimary {
@@ -776,12 +791,53 @@ export type GridContentBlockSliceThreeColumnsImagesLinks =
   >;
 
 /**
+ * Primary content in *GridContentBlock → One Column → Primary*
+ */
+export interface GridContentBlockSliceOneColumnPrimary {
+  /**
+   * Title field in *GridContentBlock → One Column → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.oneColumn.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Grid Items field in *GridContentBlock → One Column → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: grid_content_block.oneColumn.primary.grid_items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid_items: prismic.GroupField<
+    Simplify<GridContentBlockSliceOneColumnPrimaryGridItemsItem>
+  >;
+}
+
+/**
+ * One Column variation for GridContentBlock Slice
+ *
+ * - **API ID**: `oneColumn`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridContentBlockSliceOneColumn = prismic.SharedSliceVariation<
+  "oneColumn",
+  Simplify<GridContentBlockSliceOneColumnPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *GridContentBlock*
  */
 type GridContentBlockSliceVariation =
   | GridContentBlockSliceDefault
   | GridContentBlockSliceThreeColumns
-  | GridContentBlockSliceThreeColumnsImagesLinks;
+  | GridContentBlockSliceThreeColumnsImagesLinks
+  | GridContentBlockSliceOneColumn;
 
 /**
  * GridContentBlock Shared Slice
@@ -1540,10 +1596,13 @@ declare module "@prismicio/client" {
       GridContentBlockSliceThreeColumnsPrimary,
       GridContentBlockSliceThreeColumnsImagesLinksPrimaryGridItemsItem,
       GridContentBlockSliceThreeColumnsImagesLinksPrimary,
+      GridContentBlockSliceOneColumnPrimaryGridItemsItem,
+      GridContentBlockSliceOneColumnPrimary,
       GridContentBlockSliceVariation,
       GridContentBlockSliceDefault,
       GridContentBlockSliceThreeColumns,
       GridContentBlockSliceThreeColumnsImagesLinks,
+      GridContentBlockSliceOneColumn,
       ImageCaptionBlockSlice,
       ImageCaptionBlockSliceDefaultPrimary,
       ImageCaptionBlockSliceVariation,
