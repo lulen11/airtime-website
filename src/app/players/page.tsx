@@ -18,8 +18,15 @@ export default async function AllPlayersPage() {
 
   const playerPage = await client.getSingle("player_listing_page");
 
+  // UIDs of players to exclude
+  const excludedUids = ["michael-houben", "manny-hendrix"];
+  // Filter out players with the excluded UIDs
+  const filteredPlayers = players.filter(
+    (player) => !excludedUids.includes(player.uid)
+  );
+
   // Map players to match the PlayerCardProps type
-  const formattedPlayers = players.map((player) => ({
+  const formattedPlayers = filteredPlayers.map((player) => ({
     uid: player.uid,
     player_name: player.data.player_name,
     player_position: player.data.player_position,
