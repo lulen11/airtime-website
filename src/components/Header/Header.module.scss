@@ -142,7 +142,7 @@ $dash-width: 7px;
   }
 }
 
-.playerHeader .navItem a {
+.playerHeader:not(.mobileNavActive) .navItem a {
   background-image: linear-gradient(
       to right,
       $primary-blue 50%,
