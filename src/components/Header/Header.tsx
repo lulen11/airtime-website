@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { usePathname } from "next/navigation";
 
 import Button from "../Button/Button";
 import styles from "./Header.module.scss";
@@ -9,6 +10,7 @@ import styles from "./Header.module.scss";
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [nav, setNav] = useState(null);
+  const pathname = usePathname(); // Get the current path
 
   // const client = createClient();
   // const nav = await client.getSingle("navigation");
@@ -30,9 +32,21 @@ export default function Header() {
     return null; // Or add a loader if you want
   }
 
+  // Determine the dynamic class based on the current page
+  const dynamicClass = () => {
+    if (pathname === "/") return styles.homeHeader;
+    // if (pathname.includes("/players")) return styles.playerHeader;
+    if (pathname.startsWith("/players")) return styles.playerHeader;
+    return styles.defaultHeader;
+  };
+
   return (
     <>
-      <header className={`${styles.header} flex `}>
+      <header
+        className={`${styles.header} flex ${dynamicClass()} ${
+          isMobile ? styles.mobileNavActive : ""
+        }`}
+      >
         <div>
           <a href="/">
             <PrismicNextImage field={nav.data.logo} className={styles.logo} />
