@@ -31,9 +31,11 @@
     .content {
       flex-direction: column;
       align-items: flex-start;
+      display: block;
     }
     .imageWrapper {
       margin: 0 0 1rem 0;
+      max-width: 60rem;
 
       & + p {
         margin-top: -7rem;
