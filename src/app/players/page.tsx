@@ -7,7 +7,7 @@ import { createClient } from "@/prismicio";
 import { PrismicDocument } from "@prismicio/types";
 // import { PrismicNextImage } from "@prismicio/next";
 import PlayerCard from "../../components/PlayerCard/PlayerCard";
-
+import PlayersPageWrapper from "@/components/PlayersPageWrapper/PlayersPageWrapper";
 import styles from "./players.module.scss";
 
 export default async function AllPlayersPage() {
@@ -35,7 +35,7 @@ export default async function AllPlayersPage() {
   }));
 
   return (
-    <>
+    <PlayersPageWrapper>
       <div className={styles.playersPage}>
         <div className={styles.playersPageWrapper}>
           <section className={styles.playerCardsGrid}>
@@ -48,7 +48,7 @@ export default async function AllPlayersPage() {
           <SliceZone slices={playerPage.data.slices} components={components} />
         </div>
       </div>
-    </>
+    </PlayersPageWrapper>
   );
 }
 

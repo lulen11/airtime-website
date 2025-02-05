@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import LoadingWrapper from "@/components/LoadingWrapper/LoadingWrapper";
+import BodyWrapper from "@/components/BodyWrapper/BodyWrapper";
 import styles from "./layout.module.scss";
 
 import "./globals.css";
@@ -22,7 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const bodyClass = "globalBodyClass";
+  // const bodyClass = "globalBodyClass";
 
   return (
     <>
@@ -41,12 +43,16 @@ export default function RootLayout({
             rel="stylesheet"
           />
         </head>
-        <body className={`${styles.pageBody} ${bodyClass}`}>
+        {/* <body
+          className={`${styles.pageBody} ${bodyClass} ${isPlayersPage ? styles.playersPageBody : ""}`}
+        > */}
+        <BodyWrapper>
           <Header />
           <LoadingWrapper>{children}</LoadingWrapper>
           <PrismicPreview repositoryName={repositoryName} />
           <Footer />
-        </body>
+          {/* </body> */}
+        </BodyWrapper>
       </html>
     </>
   );
