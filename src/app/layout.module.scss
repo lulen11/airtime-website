@@ -4,3 +4,11 @@
   background: $primary-blue url("../images/noise_tile@2x.png") repeat top left /
     20rem;
 }
+.playersPageBody {
+  background: url("../images/graph-paper-white.svg") repeat top left / 5rem
+    $primary-grey;
+}
+.singlePlayerPageBody {
+  background: none;
+  background-color: $primary-grey;
+}
