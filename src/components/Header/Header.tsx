@@ -20,8 +20,17 @@ export default function Header() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const client = createClient();
+      // const client = createClient();
+      const client = createClient({
+        routes: [
+          // 🔥 Force routes here (hopefully can remove in future)
+          { type: "content_page", path: "/:uid" },
+          { type: "player_listing_page", path: "/players" },
+        ],
+      });
       const navigationData = await client.getSingle("navigation");
+      console.log("Menu Items:", navigationData.data.menu_items);
+
       setNav(navigationData);
     };
 
@@ -55,28 +64,14 @@ export default function Header() {
         <div
           className={`${styles.nav} flex ${isMobile ? styles.mobileNavActive : ""} `}
         >
-          {/* TODO: delete this once you're sure about the new nav */}
-          {/* <ul className="flex">
-            <div className={styles.navGroup}>
-              {nav.data.menu_items.slice(0, 3).map((item) => (
-                <li className={styles.navItem} key={JSON.stringify(item)}>
-                  <PrismicNextLink field={item.link}>
-                    {item.label}
-                  </PrismicNextLink>
-                </li>
-              ))}
-            </div>
-            {nav.data.menu_items.slice(3).map((item) => (
-              <li className={styles.navItem} key={JSON.stringify(item)}>
-                <PrismicNextLink field={item.link}>
-                  {item.label}
-                </PrismicNextLink>
-              </li>
-            ))}
-          </ul> */}
-
           <ul className={styles.navList}>
             {nav.data.menu_items.map((item, index) => {
+              console.log(`Nav Item ${index}:`, item);
+              // Check if link exists
+              if (!item.link || !item.link.url) {
+                console.warn(`⚠️ Missing link for menu item:`, item);
+              }
+
               // Check if the current item starts a nav group
               if (
                 item.nav_group &&
